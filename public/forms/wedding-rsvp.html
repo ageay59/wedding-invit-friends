@@ -4,7 +4,8 @@
   <title>Wedding RSVP Form</title>
 </head>
 <body>
-  <form name="wedding-rsvp" netlify netlify-honeypot="bot-field" hidden>
+  <form name="wedding-rsvp" netlify netlify-honeypot="bot-field" action="/thank-you" hidden>
+    <input type="hidden" name="form-name" value="wedding-rsvp" />
     <input type="text" name="name" />
     <input type="text" name="attendance" />
     <input type="text" name="guests" />
