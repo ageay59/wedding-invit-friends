@@ -7,7 +7,6 @@ import Link from "next/link";
 import { useInView } from "react-intersection-observer";
 import CountdownTimer from "./Countdown";
 import Form from "./Form";
-import WishesList from "./WishesList";
 import { config } from "@/lib/config";
 
 type WeddingScreenProps = {
@@ -72,9 +71,6 @@ const WeddingScreen = ({ name }: WeddingScreenProps) => {
     threshold: 0.5,
   });
   const { ref: slide9Ref, inView: isSlide9InView } = useInView({
-    threshold: 0.5,
-  });
-  const { ref: slide10Ref, inView: isSlide10InView } = useInView({
     threshold: 0.5,
   });
   const { ref: endRef, inView: isEndInView } = useInView({
@@ -515,26 +511,6 @@ const WeddingScreen = ({ name }: WeddingScreenProps) => {
               </div>
             </div>
             )}
-
-            {/* SLIDE 10 */}
-            <div
-              className="snap-start text-white h-screen flex flex-col justify-center pt-16 pb-16 px-8"
-              style={{
-                backgroundImage: `url(/slide_9.jpg)`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-              }}
-            >
-              <div
-                ref={slide10Ref}
-                className={`${isSlide10InView ? "active" : ""} fadeInMove`}
-              >
-                <h1 className="text-3xl text-white font-ovo text-center uppercase">
-                  Wishes
-                </h1>
-                <WishesList />
-              </div>
-            </div>
 
             {/* SLIDE AKHIR */}
             <div

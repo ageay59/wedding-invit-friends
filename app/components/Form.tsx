@@ -1,54 +1,53 @@
+"use client";
+
 import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 
 const Form = () => {
-  const [loading, setLoading] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setLoading(true);
+    setIsSubmitting(true);
 
     const form = e.currentTarget;
-    if (!form) {
-      setLoading(false);
-      return;
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(Array.from(formData.entries()) as [string, string][]).toString(),
+      });
+
+      if (response.ok) {
+        router.push("/thank-you");
+      } else {
+        alert("Terjadi kesalahan. Silakan coba lagi.");
+        setIsSubmitting(false);
+      }
+    } catch (error) {
+      console.error("Form submission error:", error);
+      alert("Terjadi kesalahan. Silakan coba lagi.");
+      setIsSubmitting(false);
     }
-
-    const formData = new FormData(e.currentTarget);
-    const data = {
-      name: formData.get("name"),
-      attendance: formData.get("attendance"),
-      guests: formData.get("guests"),
-      message: formData.get("message"),
-    };
-
-
-    if (!data.name || !data.attendance || !data.guests || !data.message) {
-      alert("All fields are required!");
-      setLoading(false); 
-      return;
-    }
-
-    const response = await fetch("/api/submit", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
-
-    if (response.ok) {
-      // Reset the form if submission is successful
-      form.reset();
-      alert("RSVP submitted successfully!");
-    } else {
-      alert("Failed to submit RSVP");
-    }
-
-    setLoading(false); // Set loading to false after response
   };
 
   return (
-    <form onSubmit={handleSubmit} className="mt-8 space-y-4">
+    <form 
+      name="wedding-rsvp" 
+      method="POST"
+      onSubmit={handleSubmit}
+      className="mt-8 space-y-4"
+    >
+      {/* Hidden fields for Netlify Forms */}
+      <input type="hidden" name="form-name" value="wedding-rsvp" />
+      <p hidden>
+        <label>
+          Don&apos;t fill this out: <input name="bot-field" />
+        </label>
+      </p>
       {/* Form fields */}
       <div>
         <label htmlFor="name" className="block text-sm font-medium text-white">
@@ -122,10 +121,10 @@ const Form = () => {
       <div>
         <button
           type="submit"
-          className="block w-full p-2 text-sm font-medium text-center text-black bg-white border border-transparent rounded-md shadow-sm"
-          disabled={loading} 
+          disabled={isSubmitting}
+          className="block w-full p-2 text-sm font-medium text-center text-black bg-white border border-transparent rounded-md shadow-sm hover:bg-gray-100 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          {loading ? "Submitting..." : "Submit"} 
+          {isSubmitting ? "Mengirim..." : "Submit"}
         </button>
       </div>
     </form>
