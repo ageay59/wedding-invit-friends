@@ -1,14 +1,11 @@
-<!DOCTYPE html>
 <html>
-<head>
-  <title>Wedding RSVP Form</title>
-</head>
+<head></head>
 <body>
-  <form name="wedding-rsvp" netlify netlify-honeypot="bot-field" action="/thank-you" hidden>
+  <form name="wedding-rsvp" data-netlify="true" hidden>
     <input type="hidden" name="form-name" value="wedding-rsvp" />
-    <input type="text" name="name" />
-    <input type="text" name="attendance" />
-    <input type="text" name="guests" />
+    <input name="name" type="text" />
+    <input name="attendance" type="text" />
+    <input name="guests" type="text" />
     <textarea name="message"></textarea>
   </form>
 </body>

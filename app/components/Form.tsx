@@ -7,30 +7,19 @@ const Form = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const router = useRouter();
 
-  const encode = (data: Record<string, string>) => {
-    return Object.keys(data)
-      .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-      .join("&");
-  };
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     setIsSubmitting(true);
 
-    const form = e.currentTarget;
-    const formData = new FormData(form);
-    const data: Record<string, string> = {};
-    
-    formData.forEach((value, key) => {
-      data[key] = value.toString();
-    });
+    const formData = new FormData(event.currentTarget);
 
     try {
-      await fetch("/", {
+      await fetch("/forms/wedding-rsvp.html", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: encode({ "form-name": "wedding-rsvp", ...data })
+        body: new URLSearchParams(Array.from(formData.entries()) as [string, string][]).toString(),
       });
+      
       router.push("/thank-you");
     } catch (error) {
       console.error("Form submission error:", error);
@@ -42,7 +31,6 @@ const Form = () => {
   return (
     <form 
       name="wedding-rsvp" 
-      method="POST"
       onSubmit={handleSubmit}
       className="mt-8 space-y-4"
     >
