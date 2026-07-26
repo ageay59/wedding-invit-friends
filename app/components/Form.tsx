@@ -1,43 +1,19 @@
 "use client";
 
 import React, { useState } from "react";
-import { useRouter } from "next/navigation";
 
 const Form = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const router = useRouter();
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleSubmit = () => {
     setIsSubmitting(true);
-
-    const form = e.currentTarget;
-    const formData = new FormData(form);
-
-    try {
-      const response = await fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(Array.from(formData.entries()) as [string, string][]).toString(),
-      });
-
-      if (response.ok) {
-        router.push("/thank-you");
-      } else {
-        alert("Terjadi kesalahan. Silakan coba lagi.");
-        setIsSubmitting(false);
-      }
-    } catch (error) {
-      console.error("Form submission error:", error);
-      alert("Terjadi kesalahan. Silakan coba lagi.");
-      setIsSubmitting(false);
-    }
   };
 
   return (
     <form 
       name="wedding-rsvp" 
       method="POST"
+      action="/thank-you"
       onSubmit={handleSubmit}
       className="mt-8 space-y-4"
     >
