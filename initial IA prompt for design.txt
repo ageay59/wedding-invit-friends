@@ -1,0 +1,187 @@
+Goal:
+Create a wedding website
+
+Resources: 
+- A UX mockup I have created: mockup.jpeg
+- A couple photography: photo_1.jpg
+- The philosopher font: https://fonts.google.com/specimen/Philosopher
+- The website source template codebase: https://github.com/petershaan12/Weddingly-Free 
+- The website source template live demo: https://weddingly-free.vercel.app/
+
+How to:
+I will be using the website source template that relies on a right sidebar with slides each containing photos.
+Those slides content have been imagined through the mockup and you nee to use it as point of reference for visual identity.
+From this mockup you need to generated real code and an improved design.
+Warning: ALL text / informative content in the generated visuals MUST be extracted and correspond EXACTLY to the jpeg content (Can you extract it?)
+
+Additional information:
+- Sidebar containing slide can be found here in codebase:  (https://github.com/petershaan12/Weddingly-Free/blob/main/app/components/MainContent.tsx under the '<div className=" md:w-1/3 h-full overflow-y-scroll snap-y snap-mandatory scroll-smooth">')
+
+Constraints: 
+- All generated slides must all use the photo_1.jpeg as a background for now
+- Slides must each be sized: 1920px width & 2880px height
+- The font used must be philosopher
+- As all slides use photographic background top layer elements must be lighter / not cumbersome
+- Do not use any photo as top layer element on background photo
+- All text and content must fit exactly what is in the jpeg
+- Website needs to be responsive as it will be used on both computer and mobile
+
+Expected visual identity: 
+While the mockups are nice lookup they remain simple and can be ameliorated through proposing a coherent artistic vision that fits what's already in there and correspond to the following theme : love, wedding, classy, castle, friendly. 
+A special focus must be given to the second slide design that offers a nice and original merging timeline like diagram that follows the important places / milestones location across the couple journey and the fourth slide displaying the wedding day plan / unfolding that could be improved in terms of design.
+You can also propose to me additional design of slides that you think might fit or add value.
+
+Prompt 2:
+I have provided you with all photos from the mockup so you can use it for their respective slides instead:
+
+Global feedback:
+- Glass effect need to be less important as background phoos must be seen and are quite the essence of this design
+- Cards like visual with double glass effect within slide in sidebare with already a glass effect is not good, avoid double layering same visual effect when possible (not the casse for timeline for example)
+- Colors must be shifted a bit, brown is key indeed but gold undertones must be shifted to something more playful and fitting all photos average color more (yellow/green/joy/nature)
+
+Here are feedbacks for specific slides:
+- Slide 1: needs to display SIGLE_MARIAGE.svg on top of "Shauna & Antoine"
+- Slide 2: timeline is all wronge, you might not have able to extract diagram from background. You need to propose to me some sort of visual with the following places and sequences:
+    - First: two places: "Dreux" on one side (groom) and "Anywhere" on the other (bride)
+    - Second: both link to a central place "Créapôle", from "Dreux" its a straight line from "Anywhere" it's a hectic trace (symbolize a life of travel and many moves out from the bride side)
+    - Third: paths seperate again, goes to "Shanghai" for the groom and "Paris" for the bride
+    - Fourth: reunite again to "Lille" making both those are previous paths make a circle 
+    - Fifth; straight together to "Viroflay"
+    - Sixt: line going straight down to the next slide
+- Slide 3: should be the only one presenting a top arrow that comes from the previous slide
+- Slide 4: No need for "Hebergements" button, keep it simple, take more space with current information and remove the card like design
+- Slide 5: english time (aka pm) need to be underneath french time to to the right, also add some sort of left timeline where bubble display a round logo and remove round display around times
+- Slide 6: RSVP can be improved, add a selector for number of adults & children, make diet a specific section with available clickable tags OR an open allergies texts, and add a free text section ("Bon à savoir ? Petits mots doux ?")
+- Slide 7: should be slide 8
+- Slide 8: should be slide 7
+- Slide 9: to be added and containing a countdown till wedding day 
+
+We're nearly there, only remain some proportions issues and content trimming:
+- Main frame: background should now be 01.jpg centeredn all texts should be remove except "Shauna & Antoine" centered at middle bottom, added slid tracker must only appear after slide 1 clicking on mouse or open the invitation and remove selected halo effect when not focused
+- Slide 1: backgrounds should be all other images transitionning to each other (like done in source codebase), top text "Bienvenue" can be removed, svg needs to be way bigger and central above "Invitation au mariage" badge, which itself needs to be added same jumpy anymiation that the mouse because it can also be clicked on to go further (text must be same orange color than mouse icon to understand click interaction), and finally remove wedding location (which it a suprise further down) by the wedding date (15-05-2027) like displayed currently on slide 6
+- Slide 2: use 03.jpg as background for now, create timeline is nice-ish but need to take ALL height, also middle cercle need to touch all "Creapole" "Shanghai" "Lille" and "Creapole" 
+- Slide 3: the top arrow needs to fit the background arrow (aka bigger and no animation), as it previous slide paths kept going
+- Slide 4: Domain card need to be aligne to bottom
+- Slide 5: Timeline needs to take more height (60% ish), also timeline could be further designed / made playful, propose to me a better version with a icon for each event
+- Slide 6: No need for middle card "Tu es invite" at top is the only thing necessary and the background photo, maybe add light confetti animation or some playful thing
+- Slide 7: RSVP form aligne to top, and selector when selected should not be blue but follow visual Colors
+- Slide 8: Should be inverted with slide 9, all text has been made up and can be replace by those 3 parts: 1 "Hôtel Le confort", 2 "+337859526 Code à annoncer : 15/18min en voiture Payer sur place" with line jumps, 2 "18min by car. Announce the code XXXX and pay on site. If you cannot call France, let us know, we will do it for you" smaller underneath no line jump
+- Slide 9: Should be inverted with slide 8, align to bottom and add short text saying to not miss the brunch the day after (16-05-2027)
+- Slide 10: countdown aligned to bottom and remove text inside, put real date in it, bottom text removed
+
+Last painpoints / feedbacks: 
+- Main frame: background photo needs to be centered (on their faces / their kiss, more bottom left)
+- Main frame: "&" of bottom text should be replace by the svg (same size than font)
+- All slides: now that slide 1 uses all photos as carousel, slide must be using their number (ex: slide 8 uses photo 8) ; only exception being slide 2 using photo 3 like slide 3 (because cannot be used currently). There should be 9 slides therefore you can delete slide 3 which has been wrongfully added and is a duplicate.
+- All slides: the veil effect on background photos should be way lighter / nearly removed because it dims photos currently which are the center of the visual identity 
+- Slide 1: Add light top margin to "Invitation au mariage" badge so it has room for its animation
+- Slide 2: Diagram places are not rightfully placed at the diagram intersection now that it has been expanded to take all height. Also diagram proportion are wrong: there is 4 section (dreux to creapole, circle, path lille viroflay, then dotted line), the first 3 should take 30% height and last 10% continuing on next slide. Make section 2 more round it's too far from a circly actually.
+- Current slide 3: as said previously should disappear is duplicate
+- Futur slide 3: Le domain - location text should be at top like other slide not within card
+- Futur slide 3: there should be a dotted path with arrow from the top
+- Futur slide 4: left round should only concer icons and times in both french and english should be stack on right outside of bubble / left of text
+- Futur slide 5: confetti effect is kitsh / of bad taste currently, make it more of a single source like a confetti cannon and give a short duration so it appears when sliding from or to the associated slide
+- Futur slide 6: Remove the top text "Confirmation souhaitée ..."
+- Futur slide 7: card content english part should not be smaller underneath but be mirrored / symetrical on right of card 
+- Futur slide 7: align card on top
+- Future slide 8: aligne card on top 
+- Tablet preview: slides / sidebar shoudl take half width 
+- Mobile preview: slides should take 100% they are a bit too big at the moment and a scroll action scroll within a single slide rather than going to the next always 
+- Mobile preview: Down context menu should resemble more the breadcrumbs in desktop version, ideally there would be breadcrumbs on left and right corresponding to all slides and 3 middle breadcrumbs (previous, current and nex) by current full name of slide display 
+
+- You inverted slide 7 & 8 photo background
+- Slide 2: Places are not at the paths intersections at all
+- Slide 2: Sections 1 and 2 should take 40% height rather (more than last path)
+- Slide 2: Round section should be less oval, i'd say halway to previous interaction
+- Slide 3: dotte line should touch top
+- Slide 4: Make last event orange bubble as well because party is important. Also orange bubble associated hours should not be in orange but remain as usual 
+- Slide 5: animation center point and rather than going up should start from underneath the title and go down 
+- Slide 6: Last text are not same font and size in mirrored english / french sections, please align them 
+- Slide 9: add a big text under the countdown like with "We're so excited" and two bubbles undeaneath, one with a cat paw icon, the other with a dog paw icon. Both need to be clickable and have similar hover visual than usual clickable thing (i'll later on link easter eggs to it)
+- Mobile preview: slides are still higher than screen size, therefore making scroll within a single slide possible which should not be 
+- Mobile preview: breadcrumbs is perfect now, just center the 3 central names so it does not move left or right 
+
+- Remove veil from slides, it still bothers me visually and dims photos
+- Desktop breadcrumb need to be aligned to bottom 
+- Main frame: use new 01b photo for background (same positionning)
+- Slide 2: use new 02b photo for background
+- Slide 2: places are still not are vectorial nodes (please take example on provided MARIAGE_ligne de vie 3 svg) (IMPORTANT)
+- Slide 3: use new 03b photo for background
+- Slide 3: make "Domaine de Coulonge" text way bigger
+- Slide 3: put card height (15% height higer)
+- Slide 4: english text must be 80% as big as their french counterpart above
+- For all slides, if they have italic text it's usually english as it needs there also to be 80% of font size of above french "ex: Timeline of the day, You are warmly invited)
+- Slide 6: confetti canon must start from top of the slide and be bigger and reach down more 
+- Slide 7 and 8: invert their background photos 
+- Mobile preview: slides still are heighir than screen size and bottom elements on slides appear behind the breadcrumbs which is really bad, IMPORTANT please fix it 
+
+
+- Slide 2: distance between Lille and Viroflay should be same than between previous places, make it bigger
+- Slide 2: Path from Anywhere to Créapôle was more hectic before, make it more hectic again 
+- Slide 2: Try making circle containing creapole, shanghai, paris and lille a heart instead, go up from creapole sides then down on each side through shanghai and paris and joigning to Lille (heart shaped)
+- Slide 3: Put domain content card higher (15%)
+- Slide 4: make italic text bigger
+- Slide 5: Make animation shorter
+- Slide 5: Make "you are warmly invited" text bigger 
+- Slide 6: reorganize RSVP form so that there no "*" as all inputs are mandatory, also remove presence field label and put selector at top of form, and also remove regimes label and put those badges in the last bon a savoir section above the text field
+- Slide 7: use photo 08 as background
+- Slide 8: use photo 07 as background 
+- Main frame: (only desktop) remove breadcrumbs glassy background and only leave dots, add an orange delimiter line on left as border 
+- Slide 9: rather than paw icon using cat and dog icons
+
+- Slide 2: Previous hectic line was better before, inspire yourself from the associated svg part (now it's too spirally)
+- Slide 2: in order to have a clean top heart dreux and anywhere need to join before reaching creapole
+- Slide 2: make heard sides larger
+- Slide 3: on the castl baground add a shimmer effect from left to right effect when sliding to the slide
+- Slide 4: "pm" for english hour do not need a space before it, stick it to number
+- Slide 5: make "Tu es invité" and "You are warmly invited" texts same sizes
+- Slide 9: add a real dog icon current one is a robot
+
+last feedbacks, breadcrumbs are broken
+- Desktop: they disappear, please add them back taking into account last constraints 
+- Mobile: last iteration on it broke it now it only display a single section name (not 3) and no dots on side for additional slides 
+
+- Slide 2 is getting hideous, please  recreate it from the exact svg shape instead
+- Slide 3: Shimmer effect is too much, it needs to be horizontal, with nearly no allow, as if a glass under the sun is slightly rotated
+- All slides: remove content card border and glass effect, texts are better directly on background with the shadow effect you use elsewhere
+
+
+- Slide 2: distance between Lille and Viroflay should be same than between previous places, make it bigger
+- Slide 2: Path from Anywhere to Créapôle need to look exactly like the MARIAGE_ligne de vie 3 (1).png part of the png
+- Main slide: breadcrumbs should be slightly higher so it is above down text (so they don't overlap on tablet)
+- Main slide: breadcrumbs color should be secondary like the svg between shauna and antoine texts
+- Slide 3: shimmer effect is still too present, make it straight and vertical, and less visible (less halo effect / blur width)
+- Slide 7: Remove herbergement title and make "hotel le confort" like slide 2 uses castle name as title, should be then white also 
+- Slide 8: Date badge should be full / filled not transparent
+- Slide 8: Remove text from text is it already there in above badge
+- Slide 8: Add english translation in italic with same size as french text like always 
+- Slide 9: find another icon this one is too squished / look like a potato
+
+- Slide 3: make castle adress text lines bigger 
+- Slide 7: number needs to be above a common to two language sides 
+- Slide 8: align content to bottom instead
+
+also on desktop put back breadcrumb where they where (left of slides and vertical, no glass background)
+
+
+You'll will find in
+- /app folder a react code source template for a wedding website I have download
+- /config the file necessary to configurate the react app
+- /goal the goal html I have generated with Google Stich IA
+- /asset all assets necessary to build the final visual
+
+Your task is to integrated the goal html within the react app so that npm run dev will render exact goal website using local assets and so that all texts are now configurable through the local config (reworked structure).
+Inspect all files as let me know all your implementation question before starting it
+
+You'll find in /app folder a react webapp for a wedding invitation.
+As a senior developer I need you to execute refactoring task in order for repository to be clean before going futher on with developmenet: 
+- Remove tailwind and implements instead BEM scss classes and styling
+- In assets when there is an image and its b counterpart (01 & 01b.jpg) keep the b one with the simple naming (no b)
+- Make Monogram component import a display a separate svg file rather than inlining it
+- Rework config.ts deeply at it will used by business part not running local watch servor; therefore it should:
+    - not contain css / visual properties that will be directly in components scss
+    - not contain accessbility properties (aria, alt etc...), those should be infered from other slides proporties
+    - all slides should contain nested object, one common regarding header (common ts type), and ones regarding their own specificites (ex: rsvp slide should contain a nested rsvp object)
+    - vocabulary should be adapter to business side (ex: couple should contain bride and groom rather than first and second)
+    - file should be easily understandable and modifiable by a non technical person (ex: no need for dateLabel that can be extrapolated from date)
+Inspect all files as let me know all your implementation question before starting it

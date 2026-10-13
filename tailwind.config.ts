@@ -1,34 +1,35 @@
 import type { Config } from "tailwindcss";
+import forms from "@tailwindcss/forms";
 
 const config: Config = {
-  content: [
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
+  content: ["./app/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
     extend: {
       fontFamily: {
-        ovo: ["var(--font-ovo)", "serif"],
-        legan: ["var(--font-legan)", "serif"],
-        wonder: ["var(--font-wonder)", "sans-serif"],
-        thesignature: ["var(--font-thesignature)", "serif"],
+        philosopher: ["var(--font-philosopher)", "serif"],
+        sans: ["var(--font-montserrat)", "sans-serif"],
       },
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        amberaccent: "#e59b34",
+        amberwarm: "#d97706",
+        champagne: "#f3e6d3",
+        goldtone: "#b58a57",
+        earth: {
+          800: "#4a3522",
+          900: "#2c1e14",
+        },
       },
       keyframes: {
-        upDown: {
+        subtleJump: {
           "0%, 100%": { transform: "translateY(0)" },
-          "50%": { transform: "translateY(-10px)" },
+          "50%": { transform: "translateY(-6px)" },
         },
       },
       animation: {
-        upDown: "upDown 1s ease-in-out infinite",
+        "badge-jump": "subtleJump 1.8s infinite ease-in-out",
       },
     },
   },
-  plugins: [],
+  plugins: [forms],
 };
 export default config;

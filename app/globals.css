@@ -2,108 +2,100 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --font-ovo: 'Ovo', serif;
-  --font-legan: 'Legan', serif;
-  --font-wonder: 'Wonder', sans-serif;
-  --font-thesignature: 'Thesignature', sans-serif;
+.snap-container {
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
 }
 
-/* @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+.snap-slide {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  box-sizing: border-box;
+}
+
+.text-glow {
+  text-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.75),
+    0 1px 3px rgba(0, 0, 0, 0.9);
+}
+
+.text-glow-subtle {
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.7);
+}
+
+.pill-badge {
+  background: rgba(22, 17, 14, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+@keyframes shimmerSweep {
+  0% {
+    transform: translateX(-150%) skewX(-20deg);
+    opacity: 0;
   }
-} */
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  20% {
+    opacity: 0.85;
   }
-}
-
-
-.fade-in {
-  animation: fadeIn 1s ease-in-out;
-}
-
-#backgroundWedding {
-  background-size: cover;
-  background-position: center;
-  background-image: url(../public/foto_2.jpg);
-  background-repeat: no-repeat;
-  transition: 5s;
-  animation-name: animate;
-  animation-direction: alternate-reverse;
-  animation-play-state: running;
-  animation-timing-function: ease-in-out;
-  animation-duration: 10s;
-  animation-fill-mode: forwards;
-  animation-iteration-count: infinite;
-  background-color: #0a0a0a;
-}
-
-@keyframes animate {
- 0% {
-  background-image: url(../public/foto_2.jpg);
- }
- 45% {
-  background-image: url(../public/foto_4.jpg);
- }
-  85% {
-    background-image: url(../public/foto_1.jpg);
+  80% {
+    opacity: 0.85;
   }
   100% {
-    background-image: url(../public/foto_2.jpg);
+    transform: translateX(250%) skewX(-20deg);
+    opacity: 0;
   }
 }
 
-#backgroundWedding > div {
-  animation: fade 5s infinite;
+.shimmer-active {
+  animation: shimmerSweep 1.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
-/* Animasi fade-in dan gerakan */
-.fadeMain {
-  opacity: 0;
-  transition: opacity 3s ease-in;
-}
-.fadeMain2 {
-  opacity: 0;
-  transition: opacity 0.8s ease-out;
-}
-
-.fadeInMove {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 1.5s ease-out, transform 1.5s ease-out;
-}
-.fadeInMoveSlow {
-  opacity: 0;
-  transform: translateY(-20px);
-  transition: opacity 2s ease-in, transform 2s ease-out;
+@keyframes confettiShower {
+  0% {
+    transform: translate(0, 0) scale(0.4) rotate(0deg);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 0.95;
+  }
+  100% {
+    transform: translate(var(--tx), var(--ty)) scale(1) rotate(var(--rot));
+    opacity: 0;
+  }
 }
 
-.fadeInLeft {
-  opacity: 0;
-  transform: translateX(-50px);
-  transition: opacity 1.5s ease-out, transform 1.5s ease-out;
+.cannon-particle {
+  animation: confettiShower 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
 
-.fadeInLeftSlow {
-  opacity: 0;
-  transform: translateX(-50px);
-  transition: opacity 2.5s ease-out, transform 2.5s ease-out;
+input[type="radio"]:checked,
+input[type="checkbox"]:checked {
+  background-color: #e59b34 !important;
+  border-color: #e59b34 !important;
+  color: #e59b34 !important;
+  box-shadow: none !important;
 }
 
-.active {
-  opacity: 1;
-  transform: translateY(0);
+input:focus,
+select:focus,
+textarea:focus {
+  --tw-ring-color: #e59b34 !important;
+  border-color: #e59b34 !important;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(229, 155, 52, 0.4);
+  border-radius: 4px;
 }

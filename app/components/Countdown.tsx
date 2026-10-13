@@ -1,62 +1,64 @@
-import { useState, useEffect } from "react";
+"use client";
 
-const eventDate = process.env.NEXT_PUBLIC_EVENT_DATE
+import { useEffect, useState } from "react";
+import { config } from "@/config/config";
 
-const CountdownTimer = () => {
-  const calculateTimeLeft = () => {
-    const targetDate = new Date(eventDate || "2025-01-01T00:00:00"); 
-    const now = new Date();
-    const difference = Number(targetDate) - Number(now);
+type TimeLeft = { days: number; hours: number; minutes: number; seconds: number };
 
-    let timeLeft = {
-      days: 0,
-      hours: 0,
-      minutes: 0,
-      seconds: 0,
-    };
-
-    if (difference > 0) {
-      timeLeft = {
-        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-        minutes: Math.floor((difference / 1000 / 60) % 60),
-        seconds: Math.floor((difference / 1000) % 60),
-      };
-    }
-
-    return timeLeft;
+function computeTimeLeft(target: number): TimeLeft {
+  const diff = Math.max(0, target - Date.now());
+  return {
+    days: Math.floor(diff / 86_400_000),
+    hours: Math.floor((diff % 86_400_000) / 3_600_000),
+    minutes: Math.floor((diff % 3_600_000) / 60_000),
+    seconds: Math.floor((diff % 60_000) / 1000),
   };
+}
 
-  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
+const boxClass = "p-2.5 rounded-2xl bg-black/60 border border-white/20";
+const unitClass = "text-[9px] uppercase tracking-wider text-white/80";
+
+export default function Countdown() {
+  const { units } = config.slides.countdown;
+  // Null until mounted so server and client markup match
+  const [timeLeft, setTimeLeft] = useState<TimeLeft | null>(null);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setTimeLeft(calculateTimeLeft());
-    }, 1000);
+    const target = new Date(config.event.countdownTarget).getTime();
+    const tick = () => setTimeLeft(computeTimeLeft(target));
+    tick();
+    const id = setInterval(tick, 1000);
+    return () => clearInterval(id);
+  }, []);
 
-    return () => clearTimeout(timer);
-  }, [timeLeft]);
+  const value = (n?: number) => (n === undefined ? "--" : n);
 
   return (
-    <div className="flex space-x-4 mt-5 text-center font-legan">
-      <div className="flex flex-col">
-        <span className="text-4xl font-bold">{timeLeft.days}</span>
-        <span className="text-sm uppercase">Days</span>
+    <div className="grid grid-cols-4 gap-2 mb-4">
+      <div className={boxClass}>
+        <span className="text-2xl sm:text-3xl font-bold font-philosopher text-white block text-glow">
+          {value(timeLeft?.days)}
+        </span>
+        <span className={unitClass}>{units.days}</span>
       </div>
-      <div className="flex flex-col">
-        <span className="text-4xl font-bold">{timeLeft.hours}</span>
-        <span className="text-sm uppercase">Hours</span>
+      <div className={boxClass}>
+        <span className="text-2xl sm:text-3xl font-bold font-philosopher text-white block text-glow">
+          {value(timeLeft?.hours)}
+        </span>
+        <span className={unitClass}>{units.hours}</span>
       </div>
-      <div className="flex flex-col">
-        <span className="text-4xl font-bold">{timeLeft.minutes}</span>
-        <span className="text-sm uppercase">Minutes</span>
+      <div className={boxClass}>
+        <span className="text-2xl sm:text-3xl font-bold font-philosopher text-white block text-glow">
+          {value(timeLeft?.minutes)}
+        </span>
+        <span className={unitClass}>{units.minutes}</span>
       </div>
-      <div className="flex flex-col">
-        <span className="text-4xl font-bold">{timeLeft.seconds}</span>
-        <span className="text-sm uppercase">Seconds</span>
+      <div className={boxClass}>
+        <span className="text-2xl sm:text-3xl font-bold font-philosopher text-amberaccent block text-glow">
+          {value(timeLeft?.seconds)}
+        </span>
+        <span className={unitClass}>{units.seconds}</span>
       </div>
     </div>
   );
-};
-
-export default CountdownTimer;
+}

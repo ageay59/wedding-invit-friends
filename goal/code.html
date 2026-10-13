@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Shauna &amp; Antoine — 15 Mai 2027</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&amp;family=Montserrat:wght@300;400;500;600;700&amp;family=Playfair+Display:ital,wght@0,400;0,600;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            philosopher: ['"Philosopher"', 'serif'],
+            sans: ['"Montserrat"', 'sans-serif'],
+            playfair: ['"Playfair Display"', 'serif'],
+          },
+          colors: {
+            amberaccent: '#e59b34',
+            amberwarm: '#d97706',
+            champagne: '#f3e6d3',
+            goldtone: '#b58a57',
+            earth: {
+              800: '#4a3522',
+              900: '#2c1e14',
+            }
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .snap-container {
+      scroll-snap-type: y mandatory;
+      scroll-behavior: smooth;
+    }
+    .snap-slide {
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+      box-sizing: border-box;
+    }
+    .text-glow {
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.75), 0 1px 3px rgba(0, 0, 0, 0.9);
+    }
+    .text-glow-subtle {
+      text-shadow: 0 1px 6px rgba(0, 0, 0, 0.7);
+    }
+    .pill-blur {
+      background: rgba(18, 14, 12, 0.52);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+    }
+    .pill-badge {
+      background: rgba(22, 17, 14, 0.65);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+    }
+    /* Subtle jump animation for slide 1 invitation badge */
+    @keyframes subtleJump {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-6px);
+      }
+    }
+    .animate-badge-jump {
+      animation: subtleJump 1.8s infinite ease-in-out;
+    }
+    /* Shimmer sweep effect for Slide 3 (Le Domaine) */
+    @keyframes shimmerSweep {
+      0% {
+        transform: translateX(-150%) skewX(-20deg);
+        opacity: 0;
+      }
+      20% {
+        opacity: 0.85;
+      }
+      80% {
+        opacity: 0.85;
+      }
+      100% {
+        transform: translateX(250%) skewX(-20deg);
+        opacity: 0;
+      }
+    }
+    .shimmer-active {
+      animation: shimmerSweep 1.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    }
+    /* Quick, punchy Confetti Shower Keyframe */
+    @keyframes confettiShower {
+      0% {
+        transform: translate(0, 0) scale(0.4) rotate(0deg);
+        opacity: 0;
+      }
+      15% {
+        opacity: 1;
+      }
+      75% {
+        opacity: 0.95;
+      }
+      100% {
+        transform: translate(var(--tx), var(--ty)) scale(1) rotate(var(--rot));
+        opacity: 0;
+      }
+    }
+    .cannon-burst-active .cannon-particle {
+      animation: confettiShower 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    }
+    /* Form inputs */
+    input[type="radio"]:checked,
+    input[type="checkbox"]:checked {
+      background-color: #e59b34 !important;
+      border-color: #e59b34 !important;
+      color: #e59b34 !important;
+      box-shadow: none !important;
+    }
+    input:focus, select:focus, textarea:focus {
+      --tw-ring-color: #e59b34 !important;
+      border-color: #e59b34 !important;
+    }
+    ::-webkit-scrollbar {
+      width: 4px;
+    }
+    ::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0.2);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(229, 155, 52, 0.4);
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body class="h-full bg-stone-950 text-white font-sans overflow-hidden antialiased selection:bg-amber-600 selection:text-white">
+<div class="relative w-full h-full flex flex-col md:flex-row overflow-hidden">
+<!-- ========================================================
+       1. MAIN FRAME (Left Desktop/Tablet Column)
+       - Background photo: 01b.jpg centered on faces / kiss
+       - Middle bottom couple title with monogram logo replacing '&'
+       - 9 Dots desktop navigation tracker moved to BOTTOM with subtle orange vertical delimiter line (no glassy container background)
+       ======================================================== -->
+<div class="hidden md:block md:w-1/2 lg:w-7/12 relative h-full overflow-hidden bg-stone-950">
+<img alt="Shauna &amp; Antoine" class="w-full h-full object-cover filter contrast-105" id="desktopHeroImg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDG_6ZI5Jd8g2bohQMfADtwNSn_HPm_6TVcbu3oXu6uRSyov4G9kyPem295zopNmD3vQVYzjjaC3HftCi2d1Ohv6Utu2yQu1QTrar2uyzDzTM566P7Ky1QBpY7oPNXPuTidJ2EbusEQR6Y54b1G1XlL3o659NFHySP8r7aIPdsKJ90W1KMUFfe7a8Fjw-m1PCeSzyL3p4tdXKw11Bmgkvcv3Dof2zzH4wOwta9zLBeMDaNkBTScmq-2FVTdNr_lZkdhsw" style="object-position: 55% 25%;"/>
+<!-- Centered Middle Bottom Couple Title with SVG Monogram Logo as '&' -->
+<div class="absolute bottom-10 left-0 right-0 flex justify-center text-center z-20 pointer-events-none px-6">
+<h1 class="text-4xl lg:text-5xl font-philosopher font-normal leading-tight text-white text-glow tracking-wide flex items-center justify-center">
+<span>Shauna</span>
+<svg class="inline-block h-[0.9em] w-[0.9em] align-middle mx-3 text-amber-300/90 fill-current drop-shadow-md" viewbox="0 0 1000.1 1003.46">
+<path d="M473.49,976.25c-2.83,0-5.71-.66-8.4-2.06-68.31-35.48-121.68-106.84-132.8-177.57-11.32-71.95-13.29-150.25,48.37-235.27,5.92-8.15,17.33-9.97,25.49-4.06,8.16,5.92,9.98,17.34,4.06,25.5-50.88,70.15-53.54,133.95-41.86,208.16,9.41,59.83,55.05,120.45,113.57,150.85,8.94,4.64,12.43,15.67,7.78,24.61-3.25,6.26-9.62,9.84-16.22,9.84Z"></path>
+<path d="M486.76,610.71c-5.5,0-10.94-2.47-14.53-7.19-28.96-37.98-35.98-86.24-37.56-136.08-15.01,15.04-31.29,30.77-49.43,48.32l-2.83,2.73c-18.78,18.22-62.77,60.85-116.71,40.2-20.2-7.74-36.2-24.04-46.29-47.15-22.36-51.26-12.74-123.05,6.71-171.45,24.43-60.78,86.06-143.45,146.45-137.07,49.04,5.19,77.84,50.09,88.43,90.38,6.64,25.27,8.86,52.74,9.55,80.58,26.99-33.54,52.15-71.85,83-127.87,4.86-8.85,15.95-12.05,24.8-7.19,8.83,4.87,12.05,15.97,7.19,24.79-42.31,76.87-75.25,122.53-114.78,166.06-.13,58.72,1.44,113.52,30.5,151.63,6.11,8.02,4.57,19.47-3.45,25.59-3.3,2.52-7.2,3.74-11.06,3.74ZM365.87,239.17c-33.91,0-84.04,60.23-105.86,114.53-19.34,48.13-22.34,108.37-7.12,143.24,6.17,14.13,14.88,23.44,25.88,27.65,32.2,12.33,62.15-16.71,78.24-32.31l2.86-2.77c29.19-28.22,53.1-51.34,74.44-74.05.17-40.88.15-79.49-8.6-112.78-7.15-27.2-26.36-60.12-56.97-63.36-.94-.1-1.9-.14-2.86-.14Z"></path>
+<path d="M496.02,712.48c-29.18,0-56.16-9.38-78.37-27.92-7.74-6.46-8.78-17.97-2.31-25.71,6.46-7.74,17.98-8.77,25.71-2.31,37.59,31.38,83.27,18,107.15,7.23,65.11-29.36,135.8-114.3,138.57-213.87.75-27.04-7.21-49.37-15.34-59.53-13.82,14.61-27.47,26.55-40.14,34.85-23.46,15.36-46.6,20.55-63.51,14.25-10.02-3.74-17.09-11.25-19.91-21.17-3.94-15.33,1.03-30.07,13.86-41.96,22.25-20.62,68.61-31.65,99.21-29.07,52.45-63.57,103.56-165.28,95.31-231.38-3.76-30.1-19.46-49.52-47.98-59.34-28.88-9.93-61.09,6.63-83.04,22.29-61.67,43.99-112.69,128.65-112.69,153.28,0,10.08-8.17,18.26-18.26,18.26s-18.26-8.18-18.26-18.26c0-40.43,60.27-134.69,128.01-183.01,41.49-29.59,81.65-38.97,116.12-27.09,41.82,14.39,66.83,45.29,72.33,89.34,9.39,75.19-41.28,180.58-97.07,251.16,19.43,19.67,28.77,55.92,27.87,88.38-3.22,115.66-82.96,211.38-160.06,246.14-22.89,10.33-45.64,15.44-67.19,15.44ZM621.58,387.16c-13.87,3.37-27.34,8.81-35.05,15.95-.77.71-1.58,1.54-2.23,2.39,4.95-.31,14.27-2.51,26.98-10.84,3.35-2.2,6.79-4.7,10.3-7.5Z"></path>
+</svg>
+<span>Antoine</span>
+</h1>
+</div>
+<!-- Desktop Navigation Dots: 9 total slides, aligned to the BOTTOM, no glass background, subtle orange left delimiter line -->
+<div class="opacity-0 pointer-events-none transition-opacity duration-500 absolute right-6 bottom-10 flex flex-col space-y-3 z-30 border-l-2 border-[#fea200]/80 pl-3 py-1" id="desktopNavDotsContainer">
+<button aria-label="Slide 1 - Invitation" class="nav-dot w-2.5 h-2.5 rounded-full bg-white/40 hover:bg-white/90 transition-all duration-200" onclick="scrollToSlide(0)"></button>
+<button aria-label="Slide 2 - Notre Histoire" class="nav-dot w-2.5 h-2.5 rounded-full bg-white/40 hover:bg-white/90 transition-all duration-200" onclick="scrollToSlide(1)"></button>
+<button aria-label="Slide 3 - Le Domaine" class="nav-dot w-2.5 h-2.5 rounded-full bg-white/40 hover:bg-white/90 transition-all duration-200" onclick="scrollToSlide(2)"></button>
+<button aria-label="Slide 4 - Déroulement" class="nav-dot w-2.5 h-2.5 rounded-full bg-white/40 hover:bg-white/90 transition-all duration-200" onclick="scrollToSlide(3)"></button>
+<button aria-label="Slide 5 - Tu es invité !" class="nav-dot w-2.5 h-2.5 rounded-full bg-white/40 hover:bg-white/90 transition-all duration-200" onclick="scrollToSlide(4)"></button>
+<button aria-label="Slide 6 - RSVP" class="nav-dot w-2.5 h-2.5 rounded-full bg-white/40 hover:bg-white/90 transition-all duration-200" onclick="scrollToSlide(5)"></button>
+<button aria-label="Slide 7 - Hébergement" class="nav-dot w-2.5 h-2.5 rounded-full bg-white/40 hover:bg-white/90 transition-all duration-200" onclick="scrollToSlide(6)"></button>
+<button aria-label="Slide 8 - Le Brunch" class="nav-dot w-2.5 h-2.5 rounded-full bg-white/40 hover:bg-white/90 transition-all duration-200" onclick="scrollToSlide(7)"></button>
+<button aria-label="Slide 9 - Compte à rebours" class="nav-dot w-2.5 h-2.5 rounded-full bg-white/40 hover:bg-white/90 transition-all duration-200" onclick="scrollToSlide(8)"></button>
+</div>
+</div>
+<!-- ==========================================
+       2. MAIN SLIDER CONTAINER
+       ========================================== -->
+<div class="w-full md:w-1/2 lg:w-5/12 h-[100dvh] max-h-[100dvh] overflow-y-scroll snap-container scroll-smooth relative z-20 border-l border-white/10 shadow-2xl bg-stone-950" id="sliderWrapper">
+<!-- ==========================================
+     SLIDE 1: INVITATION / ACCUEIL
+     ========================================== -->
+<section class="snap-slide relative w-full h-[100dvh] min-h-[100dvh] max-h-[100dvh] flex flex-col justify-between p-6 sm:p-8 pb-24 md:pb-8 text-center overflow-hidden snap-start snap-always" data-index="0" data-name="Invitation">
+<div class="absolute inset-0 w-full h-full pointer-events-none overflow-hidden" id="slide1Carousel">
+<img alt="Couple 1" class="hero-bg-slide absolute inset-0 w-full h-full object-cover object-center filter contrast-105 transition-opacity duration-1000 ease-in-out opacity-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_W60DGedjNsdM3wvDAX26WmLsA0rvDb2I9ML2WjxUC9ituydLu1YOJodAboDOcpXjeFXpeOXOpjXVa8A-f9NnBA1JoS-YatgQ7qd5B2qK0ZsUUOBoBl-Rim7PVQHoxZG2MgG535B4gHtIEnyYzl77hQCvzbvatFOknT-Aq9-z0DdFxiok5WR9WpJttPxjCxep_2c-AtuRrvGbjkcZ0dnNUTD5-Hj2vh1mEhdMwgFh0-ZS13vE1Hl7RtKfm3B6m1RQjA"/>
+<img alt="Couple 2" class="hero-bg-slide absolute inset-0 w-full h-full object-cover object-center filter contrast-105 transition-opacity duration-1000 ease-in-out opacity-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFCH6fIwvuHPyze-7eQIDVf22O9imftu_9tPK748yUkI27hZ62jf6QbDmTfyV54SfuilAU5r7Kb_8KuIAwp2iKB50ES1UV_zqkO26vkxdSIv_GB8ZTIm7XcX2qS5unhAntesCxmHx8w2tj5XRAxEhZZGPQYepfJDfcAH9p8zhns85mPKszbGRd5k32jhzSRG5WywrQITQygC5qHx5opZtSH9CCpGkV0kCnGA-RyIKj7KrmPSj3hTnVwnfQ3VJebyd-HA"/>
+<img alt="Couple 3" class="hero-bg-slide absolute inset-0 w-full h-full object-cover object-center filter contrast-105 transition-opacity duration-1000 ease-in-out opacity-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAD5PbFuzpNVpbudYxqvSSur4qtCkzdRjzfGJNH0MsrTMOjg-vjsf2wSc3BgWzZYFur30B5VF8eUq4xBnkH4Wm1nO1G77XSxnChZ5DtgUd1KeJWOnEnBvbO82pOBRr52IUhAyEg8hbAfAV6FeUKYLRskyIU9_lSdlHD10xrN6LpSxoQVR9MS3GaOxdsiWbtb0yNOZSjjUdpy1jkIz20ucjnk886a1NzyQel4Bk_E_Hi2a3DmqxldI7f3PiW0oU44RuWIg"/>
+<img alt="Couple 4" class="hero-bg-slide absolute inset-0 w-full h-full object-cover object-center filter contrast-105 transition-opacity duration-1000 ease-in-out opacity-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDIakP1JPmoiSW3KAHopnTpbwjB8C-3iNHt3h50qoCIl0Khmp0VRgQfVDJsw2iND5F9TDvuHTW9D_TmTP0KvdKqq5NFVIuidwjOqG9RcsWbd6fzR_WgiqVUwIcNz9DvM5s1rDZRYDWycDouKRR-eeCxJx2ZofRdeHK6EJIgnBz1lEudtcxVrCf1f5ZxRmu86WAZUUFLit-IbKQgd6g5_3vLEfk9nXx6gFk9s33zaM_SWzq0nSluGli69ZOIPtTTHcfuQ"/>
+<img alt="Couple 5" class="hero-bg-slide absolute inset-0 w-full h-full object-cover object-center filter contrast-105 transition-opacity duration-1000 ease-in-out opacity-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBF12sx1eE69TAWy9k3yX8qk8vZN15vkiu8tuJy3GBZZGkRVVxzrIUAwDWa3mqX8hwtpLb8oDmB9PB5d1haM7wwmQMpgATJ1l6mN2mvdIgJU1y-RDvHly-QIY7MBxy_XQdQrm35p0Xr4Pjx-r-r4qh_F7TMu2WoSZVUEfUR7GfHeCita8jGVOWeXTkyJQmDsv8MHNrXkp44ezIKP13490SzxYdL78Pju_rxgI4Y77GPA3TA9PDb9PGDpYBty_9_kK0JYA"/>
+<img alt="Couple 6" class="hero-bg-slide absolute inset-0 w-full h-full object-cover object-center filter contrast-105 transition-opacity duration-1000 ease-in-out opacity-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKIGP9ATAqmJLMjjmmUjkw5Oy-pSOgq7mi1BF2ph1erjKkitYT945vt7a546liAolVCOHdagavJ85SGr_No11wWhcabtABT2ep5CNwF4jtdSBYRxi-PuL83L-AwLn-ydvRk_zcIMGVwZy1vo06PChAGOabHA-wjA6TjYR4EwhGNhfRUHkMGz9Rt-_OOXje5r9KOgeDk1bGTXuWtCjp-i7BOXvjg_4ZSPZPf9Jl9tb0rehXzKLW1KMpCwJlU270uiuuSQ"/>
+</div>
+<!-- Center Elements -->
+<div class="relative z-10 my-auto flex flex-col items-center justify-center py-4">
+<div class="w-32 h-32 sm:w-36 sm:h-36 text-white drop-shadow-2xl mb-2 transition-transform duration-300 hover:scale-105">
+<svg class="w-full h-full fill-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.85)]" viewbox="0 0 1000.1 1003.46">
+<path d="M473.49,976.25c-2.83,0-5.71-.66-8.4-2.06-68.31-35.48-121.68-106.84-132.8-177.57-11.32-71.95-13.29-150.25,48.37-235.27,5.92-8.15,17.33-9.97,25.49-4.06,8.16,5.92,9.98,17.34,4.06,25.5-50.88,70.15-53.54,133.95-41.86,208.16,9.41,59.83,55.05,120.45,113.57,150.85,8.94,4.64,12.43,15.67,7.78,24.61-3.25,6.26-9.62,9.84-16.22,9.84Z"></path>
+<path d="M486.76,610.71c-5.5,0-10.94-2.47-14.53-7.19-28.96-37.98-35.98-86.24-37.56-136.08-15.01,15.04-31.29,30.77-49.43,48.32l-2.83,2.73c-18.78,18.22-62.77,60.85-116.71,40.2-20.2-7.74-36.2-24.04-46.29-47.15-22.36-51.26-12.74-123.05,6.71-171.45,24.43-60.78,86.06-143.45,146.45-137.07,49.04,5.19,77.84,50.09,88.43,90.38,6.64,25.27,8.86,52.74,9.55,80.58,26.99-33.54,52.15-71.85,83-127.87,4.86-8.85,15.95-12.05,24.8-7.19,8.83,4.87,12.05,15.97,7.19,24.79-42.31,76.87-75.25,122.53-114.78,166.06-.13,58.72,1.44,113.52,30.5,151.63,6.11,8.02,4.57,19.47-3.45,25.59-3.3,2.52-7.2,3.74-11.06,3.74ZM365.87,239.17c-33.91,0-84.04,60.23-105.86,114.53-19.34,48.13-22.34,108.37-7.12,143.24,6.17,14.13,14.88,23.44,25.88,27.65,32.2,12.33,62.15-16.71,78.24-32.31l2.86-2.77c29.19-28.22,53.1-51.34,74.44-74.05.17-40.88.15-79.49-8.6-112.78-7.15-27.2-26.36-60.12-56.97-63.36-.94-.1-1.9-.14-2.86-.14Z"></path>
+<path d="M496.02,712.48c-29.18,0-56.16-9.38-78.37-27.92-7.74-6.46-8.78-17.97-2.31-25.71,6.46-7.74,17.98-8.77,25.71-2.31,37.59,31.38,83.27,18,107.15,7.23,65.11-29.36,135.8-114.3,138.57-213.87.75-27.04-7.21-49.37-15.34-59.53-13.82,14.61-27.47,26.55-40.14,34.85-23.46,15.36-46.6,20.55-63.51,14.25-10.02-3.74-17.09-11.25-19.91-21.17-3.94-15.33,1.03-30.07,13.86-41.96,22.25-20.62,68.61-31.65,99.21-29.07,52.45-63.57,103.56-165.28,95.31-231.38-3.76-30.1-19.46-49.52-47.98-59.34-28.88-9.93-61.09,6.63-83.04,22.29-61.67,43.99-112.69,128.65-112.69,153.28,0,10.08-8.17,18.26-18.26,18.26s-18.26-8.18-18.26-18.26c0-40.43,60.27-134.69,128.01-183.01,41.49-29.59,81.65-38.97,116.12-27.09,41.82,14.39,66.83,45.29,72.33,89.34,9.39,75.19-41.28,180.58-97.07,251.16,19.43,19.67,28.77,55.92,27.87,88.38-3.22,115.66-82.96,211.38-160.06,246.14-22.89,10.33-45.64,15.44-67.19,15.44ZM621.58,387.16c-13.87,3.37-27.34,8.81-35.05,15.95-.77.71-1.58,1.54-2.23,2.39,4.95-.31,14.27-2.51,26.98-10.84,3.35-2.2,6.79-4.7,10.3-7.5Z"></path>
+</svg>
+</div>
+<div class="mt-4 mb-4">
+<button class="animate-badge-jump inline-flex items-center px-5 py-2 rounded-full border border-amberaccent bg-black/60 backdrop-blur-md text-amberaccent font-sans text-xs tracking-[0.2em] uppercase font-semibold hover:bg-amberaccent hover:text-stone-950 transition-all shadow-xl cursor-pointer" onclick="scrollToSlide(1)">
+      Invitation au Mariage
+    </button>
+</div>
+<h2 class="text-4xl sm:text-5xl font-philosopher font-normal text-white text-glow mb-2">
+    Shauna &amp; Antoine
+  </h2>
+<div class="w-16 h-px bg-amberaccent/70 mx-auto my-3"></div>
+<p class="text-sm sm:text-base font-philosopher italic tracking-wider text-champagne text-glow-subtle">
+    15 Mai 2027 • 15-05-2027
+  </p>
+</div>
+<!-- Bottom Mouse Scroll Icon -->
+<div class="relative z-10 pb-6 flex flex-col items-center">
+<p class="text-[10px] tracking-[0.25em] uppercase text-white font-medium text-glow-subtle mb-2">Découvrir • Scroll</p>
+<button aria-label="Faire défiler" class="w-7 h-11 rounded-full border border-white/60 bg-black/30 backdrop-blur-sm flex items-start justify-center p-1.5 hover:border-amberaccent transition-colors" onclick="scrollToSlide(1)">
+<span class="w-1.5 h-2.5 rounded-full bg-amberaccent animate-bounce"></span>
+</button>
+</div>
+</section>
+<!-- ==========================================
+     SLIDE 2: NOTRE HISTOIRE (Diagram Ligne de vie)
+     - Angular / sharp zigzagging broken path from Anywhere (730, 50)
+     - Clean heart top: Dreux and Anywhere meet cleanly at a single apex (500, 195) above Créapôle, then descend together to Créapôle (500, 240)
+     - Generously widened heart lobes passing through Shanghai (170, 420) and Paris (830, 420), converging down to Lille (500, 600)
+     - All pills perfectly centered on their respective vector nodes
+     ========================================== -->
+<section class="snap-slide relative w-full h-[100dvh] min-h-[100dvh] max-h-[100dvh] flex flex-col justify-between p-4 sm:p-6 pb-24 md:pb-6 bg-stone-900 overflow-hidden snap-start snap-always" data-index="1" data-name="Histoire">
+<img alt="Notre histoire" class="absolute inset-0 w-full h-full object-cover object-center filter contrast-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAObgr0x-mvUjC6_ooyyCiDaFFBYyItRYgQtkHteHsN3M1efaGdTxgWV-uE7qPZBgscCY6-fTA7FP9FxMEP2INVfNOHGrtd9K46bJEhV-Co8Uis4PwYWvvKzH0xeH3WicmOmgKUugH48zFtf-59q5cadQQnUW_88-WKyw2z1YZylEoGnrySEIlm5NfnhYElRK_y1Ehvyv2G7IsLoBb0H0RcD8nfJ2zRLwj8PL7wNZ03L4CajDyR3H6tr61133L1_iiThA"/>
+<div class="relative z-10 w-full h-full flex flex-col items-center justify-between py-2">
+<div class="relative w-full h-full max-w-[360px] mx-auto"><svg class="absolute inset-0 w-full h-full pointer-events-none drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]" fill="none" preserveaspectratio="none" viewbox="0 0 1000 1590">
+<!-- Dreux path (smooth left vertical curve into apex) -->
+<path d="M 270 50 L 270 180 C 270 280 430 360 500 390" stroke="rgba(255,255,255,0.95)" stroke-linecap="round" stroke-linejoin="round" stroke-width="4.5"></path>
+<!-- Anywhere path (characteristic angular zigzag path from top right) -->
+<path d="M 730 50 L 805 95 L 715 145 L 815 195 L 705 245 L 805 295 L 725 345 L 500 390" stroke="rgba(255,255,255,0.95)" stroke-linecap="round" stroke-linejoin="round" stroke-width="4.5"></path>
+<!-- Meeting joint leading down to Créapôle -->
+<path d="M 500 390 L 500 405" stroke="rgba(255,255,255,0.95)" stroke-linecap="round" stroke-width="4.5"></path>
+<!-- Balanced life loop departing Créapôle (500, 405), swinging through Shanghai (270, 715) and Paris (730, 715), reuniting at Lille (500, 1020) -->
+<!-- Left branch through Shanghai -->
+<path d="M 500 405 C 330 405 270 520 270 715 C 270 910 390 1020 500 1020" stroke="rgba(255,255,255,0.95)" stroke-linecap="round" stroke-width="4.5"></path>
+<!-- Right branch through Paris -->
+<path d="M 500 405 C 670 405 730 520 730 715 C 730 910 610 1020 500 1020" stroke="rgba(255,255,255,0.95)" stroke-linecap="round" stroke-width="4.5"></path>
+<!-- Line Lille to Viroflay -->
+<path d="M 500 1020 L 500 1145" stroke="rgba(255,255,255,0.95)" stroke-linecap="round" stroke-width="4.5"></path>
+<!-- Dotted continuation line from Viroflay down to edge -->
+<path d="M 500 1145 L 500 1590" stroke="rgba(255,255,255,0.95)" stroke-dasharray="10 10" stroke-linecap="round" stroke-width="4.5"></path>
+<!-- Markers -->
+<circle cx="270" cy="50" fill="#e59b34" r="5.5"></circle>
+<circle cx="730" cy="50" fill="#e59b34" r="5.5"></circle>
+<circle cx="500" cy="405" fill="#e59b34" r="7.5"></circle>
+<circle cx="270" cy="715" fill="#e59b34" r="5.5"></circle>
+<circle cx="730" cy="715" fill="#e59b34" r="5.5"></circle>
+<circle cx="500" cy="1020" fill="#e59b34" r="7.5"></circle>
+<circle cx="500" cy="1145" fill="#e59b34" r="7.5"></circle>
+</svg>
+<!-- Badges precisely matching the geometry and authentic labels -->
+<div class="absolute left-[27%] top-[3.1%] -translate-x-1/2 -translate-y-1/2 pointer-events-none">
+<span class="inline-block px-4 py-1 rounded-full pill-badge text-xs font-philosopher italic font-bold text-white shadow-xl pointer-events-auto">
+    Dreux
+  </span>
+</div>
+<div class="absolute left-[73%] top-[3.1%] -translate-x-1/2 -translate-y-1/2 pointer-events-none">
+<span class="inline-block px-4 py-1 rounded-full pill-badge text-xs font-philosopher italic font-bold text-white shadow-xl pointer-events-auto">
+    Anywhere
+  </span>
+</div>
+<div class="absolute left-[50%] top-[25.5%] -translate-x-1/2 -translate-y-1/2 pointer-events-none">
+<span class="inline-block px-4 py-1.5 rounded-full pill-badge border-amberaccent text-sm font-philosopher font-bold text-amberaccent shadow-xl bg-black/75 pointer-events-auto">
+    Créapôle
+  </span>
+</div>
+<div class="absolute left-[27%] top-[45%] -translate-x-1/2 -translate-y-1/2 pointer-events-none">
+<span class="inline-block px-4 py-1 rounded-full pill-badge text-xs font-philosopher italic font-medium text-white shadow-xl bg-black/75 pointer-events-auto">
+    Shanghai
+  </span>
+</div>
+<div class="absolute left-[73%] top-[45%] -translate-x-1/2 -translate-y-1/2 pointer-events-none">
+<span class="inline-block px-4 py-1 rounded-full pill-badge text-xs font-philosopher italic font-medium text-white shadow-xl bg-black/75 pointer-events-auto">
+    Paris
+  </span>
+</div>
+<div class="absolute left-[50%] top-[64.1%] -translate-x-1/2 -translate-y-1/2 pointer-events-none">
+<span class="inline-block px-4 py-1.5 rounded-full pill-badge border-amberaccent text-sm font-philosopher font-bold text-amberaccent shadow-xl bg-black/75 pointer-events-auto">
+    Lille
+  </span>
+</div>
+<div class="absolute left-[50%] top-[72%] -translate-x-1/2 -translate-y-1/2 pointer-events-none">
+<span class="inline-block px-4 py-1.5 rounded-full pill-badge text-sm font-philosopher font-bold text-white shadow-xl bg-black/75 pointer-events-auto">
+    Viroflay
+  </span>
+</div></div>
+</div>
+</section>
+<!-- ==========================================
+     SLIDE 3: LE DOMAINE / LE LIEU
+     - Shimmer overlay triggered when slide 3 becomes active
+     ========================================== -->
+<section class="snap-slide relative w-full h-[100dvh] min-h-[100dvh] max-h-[100dvh] flex flex-col justify-between p-6 sm:p-8 pb-24 md:pb-8 bg-stone-900 overflow-hidden snap-start snap-always" data-index="2" data-name="Lieu" id="slide3Domaine">
+<img alt="Domaine de Coulonge" class="absolute inset-0 w-full h-full object-cover object-center filter contrast-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcKPBKt3RJQjAyVzcbucNj8KkZYlCtt7f5F5JAmN36tsDjt3Q4Y5yGKulXZuEHKm-QwlfIRzIpMdEFtjW0mvCGMRHs-KqH6rF4Glaa_5eju4W9acoycJcUopslfOulo_PMhIB0VqtvtZ4ESqHQRed63QVMiXcZZ1RpJURVnzvOehG7Oh9u4jlfqDO-c-p6SrplNAz3vJrbsBMMXfUL79f0KTNK1eKA0YZhJdyEw6XoX0oZuYfNJOQwlssArNhO-tvbDg"/>
+<!-- Shimmer overlay container -->
+<div class="absolute inset-0 pointer-events-none overflow-hidden z-[5]">
+<div class="absolute inset-y-0 -left-full w-full h-full pointer-events-none opacity-0 mix-blend-screen" id="domaineShimmer" style="background: linear-gradient(90deg, transparent 25%, rgba(255, 255, 255, 0.18) 50%, transparent 75%);"></div>
+</div>
+<!-- Top Incoming Arrow continuing seamlessly from slide 2 bottom edge -->
+<div class="relative z-10 -mt-6 sm:-mt-8 flex flex-col items-center text-center">
+<svg class="w-8 h-12 text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)] mb-1" fill="none" stroke="currentColor" viewbox="0 0 32 48">
+<line stroke-dasharray="4 4" stroke-linecap="round" stroke-width="2.5" x1="16" x2="16" y1="0" y2="34"></line>
+<polyline points="8,26 16,36 24,26" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></polyline>
+</svg>
+<span class="text-[11px] tracking-[0.28em] uppercase text-amberaccent font-semibold block text-glow">Le Domaine • Lieu</span>
+<h3 class="text-3xl md:text-5xl font-philosopher text-white text-glow mt-1 font-normal">Domaine de Coulonge</h3>
+<div class="w-16 h-0.5 bg-amberaccent/80 mx-auto my-2.5 shadow-md"></div>
+</div>
+<!-- Re-elevated content card: shifted up by 15% -->
+<div class="relative z-10 max-w-sm mx-auto w-full mb-32 md:mb-28 -translate-y-6">
+<div class="p-5 text-center">
+<p class="text-xs sm:text-sm font-light text-white leading-relaxed text-glow mb-4">
+      2 route de Damville<br/>
+<span class="font-medium text-white">27240 Sylvains-les-Moulins</span><br/>
+<span class="text-xs text-champagne">Normandie, France</span>
+</p>
+<a class="inline-flex items-center justify-center px-6 py-2.5 rounded-full bg-amberaccent hover:bg-amberwarm text-stone-950 font-bold text-xs tracking-wider uppercase transition shadow-xl hover:scale-105" href="https://maps.google.com/?q=Domaine+de+Coulonge+2+route+de+Damville+27240+Sylvains-les-Moulins" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-base mr-1.5">navigation</span>
+      Itinéraire • Google Maps
+    </a>
+</div>
+</div>
+</section>
+<!-- ==========================================
+     SLIDE 4: DÉROULEMENT / TIMELINE
+     - No space before "pm" in English times (e.g. 2pm, 2:30pm, 3pm, 4pm, 6pm, 8:30pm)
+     ========================================== -->
+<section class="snap-slide relative w-full h-[100dvh] min-h-[100dvh] max-h-[100dvh] flex flex-col justify-between p-5 sm:p-7 pb-24 md:pb-6 bg-stone-900 overflow-hidden snap-start snap-always" data-index="3" data-name="Planning">
+<img alt="Déroulement" class="absolute inset-0 w-full h-full object-cover object-center filter contrast-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFCH6fIwvuHPyze-7eQIDVf22O9imftu_9tPK748yUkI27hZ62jf6QbDmTfyV54SfuilAU5r7Kb_8KuIAwp2iKB50ES1UV_zqkO26vkxdSIv_GB8ZTIm7XcX2qS5unhAntesCxmHx8w2tj5XRAxEhZZGPQYepfJDfcAH9p8zhns85mPKszbGRd5k32jhzSRG5WywrQITQygC5qHx5opZtSH9CCpGkV0kCnGA-RyIKj7KrmPSj3hTnVwnfQ3VJebyd-HA"/>
+<!-- Header -->
+<div class="relative z-10 pt-2 text-center">
+<span class="text-[10px] tracking-[0.3em] uppercase text-amberaccent font-semibold block text-glow">Planning de Célébration</span>
+<h3 class="text-3xl font-philosopher text-white text-glow mt-0.5">Déroulement</h3>
+<!-- English subtext -->
+<p class="text-sm font-philosopher italic text-champagne text-glow-subtle mt-0.5">Timeline of the day</p>
+</div>
+<!-- Airy Timeline taking ~62% height -->
+<div class="relative z-10 my-auto h-[62%] flex flex-col justify-between max-w-sm mx-auto w-full px-2">
+<div class="relative pl-10 h-full flex flex-col justify-between">
+<!-- Vertical connector -->
+<div class="absolute left-4 top-3 bottom-3 w-0.5 bg-gradient-to-b from-amberaccent via-white/40 to-amberaccent"></div>
+<!-- Step 1: 14h / 2pm -->
+<div class="relative flex items-center">
+<div class="absolute -left-10 w-8 h-8 rounded-full bg-stone-900/95 border border-white/35 flex items-center justify-center text-center shadow-lg">
+<span class="material-symbols-outlined text-[16px] text-amberaccent">directions_car</span>
+</div>
+<div class="flex items-center pl-2 w-full">
+<div class="w-16 flex-shrink-0 text-left pr-2">
+<span class="text-[13px] font-bold text-white block leading-none text-glow">14h</span>
+<span class="text-[11.5px] font-mono text-champagne block leading-tight text-glow-subtle">2pm</span>
+</div>
+<div>
+<h4 class="text-xs sm:text-sm font-semibold text-white text-glow leading-tight">Arrivée des invités</h4>
+<p class="text-[11.5px] font-philosopher italic text-champagne/95 leading-tight text-glow-subtle">Welcome &amp; Arrival</p>
+</div>
+</div>
+</div>
+<!-- Step 2: 14h30 / 2:30pm -->
+<div class="relative flex items-center">
+<div class="absolute -left-10 w-8 h-8 rounded-full bg-stone-900/95 border border-white/35 flex items-center justify-center text-center shadow-lg">
+<span class="material-symbols-outlined text-[16px] text-amberaccent">meeting_room</span>
+</div>
+<div class="flex items-center pl-2 w-full">
+<div class="w-16 flex-shrink-0 text-left pr-2">
+<span class="text-[13px] font-bold text-white block leading-none text-glow">14h30</span>
+<span class="text-[11.5px] font-mono text-champagne block leading-tight text-glow-subtle">2:30pm</span>
+</div>
+<div>
+<h4 class="text-xs sm:text-sm font-semibold text-white text-glow leading-tight">Entrée des mariés</h4>
+<p class="text-[11.5px] font-philosopher italic text-champagne/95 leading-tight text-glow-subtle">Couple's Grand Entrance</p>
+</div>
+</div>
+</div>
+<!-- Step 3: 15h / 3pm -->
+<div class="relative flex items-center">
+<div class="absolute -left-10 w-8 h-8 rounded-full bg-amberaccent border border-amberaccent flex items-center justify-center text-center shadow-lg">
+<span class="material-symbols-outlined text-[16px] text-stone-950 font-bold">favorite</span>
+</div>
+<div class="flex items-center pl-2 w-full">
+<div class="w-16 flex-shrink-0 text-left pr-2">
+<span class="text-[13px] font-bold text-amberaccent block leading-none text-glow">15h</span>
+<span class="text-[11.5px] font-mono text-amberaccent block leading-tight font-semibold text-glow-subtle">3pm</span>
+</div>
+<div>
+<h4 class="text-xs sm:text-sm font-bold text-white text-glow leading-tight">Cérémonie Laïque</h4>
+<p class="text-[11.5px] font-philosopher italic text-champagne leading-tight text-glow-subtle">Wedding Ceremony &amp; Vows</p>
+</div>
+</div>
+</div>
+<!-- Step 4: 16h / 4pm -->
+<div class="relative flex items-center">
+<div class="absolute -left-10 w-8 h-8 rounded-full bg-stone-900/95 border border-white/35 flex items-center justify-center text-center shadow-lg">
+<span class="material-symbols-outlined text-[16px] text-amberaccent">photo_camera</span>
+</div>
+<div class="flex items-center pl-2 w-full">
+<div class="w-16 flex-shrink-0 text-left pr-2">
+<span class="text-[13px] font-bold text-white block leading-none text-glow">16h</span>
+<span class="text-[11.5px] font-mono text-champagne block leading-tight text-glow-subtle">4pm</span>
+</div>
+<div>
+<h4 class="text-xs sm:text-sm font-semibold text-white text-glow leading-tight">Photos &amp; Rafraîchissements</h4>
+<p class="text-[11.5px] font-philosopher italic text-champagne/95 leading-tight text-glow-subtle">Photos &amp; Refreshments</p>
+</div>
+</div>
+</div>
+<!-- Step 5: 18h / 6pm -->
+<div class="relative flex items-center">
+<div class="absolute -left-10 w-8 h-8 rounded-full bg-stone-900/95 border border-white/35 flex items-center justify-center text-center shadow-lg">
+<span class="material-symbols-outlined text-[16px] text-amberaccent">liquor</span>
+</div>
+<div class="flex items-center pl-2 w-full">
+<div class="w-16 flex-shrink-0 text-left pr-2">
+<span class="text-[13px] font-bold text-white block leading-none text-glow">18h</span>
+<span class="text-[11.5px] font-mono text-champagne block leading-tight text-glow-subtle">6pm</span>
+</div>
+<div>
+<h4 class="text-xs sm:text-sm font-semibold text-white text-glow leading-tight">Vin d'honneur</h4>
+<p class="text-[11.5px] font-philosopher italic text-champagne/95 leading-tight text-glow-subtle">Reception Cocktail &amp; Canapés</p>
+</div>
+</div>
+</div>
+<!-- Step 6: 20h30 / 8:30pm -->
+<div class="relative flex items-center">
+<div class="absolute -left-10 w-8 h-8 rounded-full bg-amberaccent border border-amberaccent flex items-center justify-center text-center shadow-lg">
+<span class="material-symbols-outlined text-[16px] text-stone-950 font-bold">celebration</span>
+</div>
+<div class="flex items-center pl-2 w-full">
+<div class="w-16 flex-shrink-0 text-left pr-2">
+<span class="text-[13px] font-bold text-white block leading-none text-glow">20h30</span>
+<span class="text-[11.5px] font-mono text-champagne block leading-tight text-glow-subtle">8:30pm</span>
+</div>
+<div>
+<h4 class="text-xs sm:text-sm font-semibold text-white text-glow leading-tight">Dîner &amp; Soirée</h4>
+<p class="text-[11.5px] font-philosopher italic text-champagne/95 leading-tight text-glow-subtle">Dinner &amp; Dancing</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="relative z-10 text-center pb-4">
+<button class="inline-flex items-center px-4 py-1.5 rounded-full border border-white/40 bg-black/40 backdrop-blur-sm text-white hover:text-amberaccent text-[11px] font-medium transition" onclick="scrollToSlide(4)">
+    Tu es invité ! ↓
+  </button>
+</div>
+</section>
+<!-- ==========================================
+     SLIDE 5: TU ES INVITÉ !
+     - Aligned font sizes for "Tu es invité !" and "You are warmly invited" (same impact and harmony)
+     ========================================== -->
+<section class="snap-slide relative w-full h-[100dvh] min-h-[100dvh] max-h-[100dvh] flex flex-col justify-between p-6 sm:p-8 pb-24 md:pb-8 bg-stone-900 overflow-hidden snap-start snap-always" data-index="4" data-name="Invité !">
+<img alt="Tu es invité !" class="absolute inset-0 w-full h-full object-cover object-center filter contrast-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAD5PbFuzpNVpbudYxqvSSur4qtCkzdRjzfGJNH0MsrTMOjg-vjsf2wSc3BgWzZYFur30B5VF8eUq4xBnkH4Wm1nO1G77XSxnChZ5DtgUd1KeJWOnEnBvbO82pOBRr52IUhAyEg8hbAfAV6FeUKYLRskyIU9_lSdlHD10xrN6LpSxoQVR9MS3GaOxdsiWbtb0yNOZSjjUdpy1jkIz20ucjnk886a1NzyQel4Bk_E_Hi2a3DmqxldI7f3PiW0oU44RuWIg"/>
+<!-- Confetti shower container positioned at the top -->
+<div class="absolute inset-0 pointer-events-none overflow-hidden z-30" id="cannonContainer">
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-0 h-0" id="cannonOrigin"></div>
+</div>
+<!-- Header with harmonized equal text sizes -->
+<div class="relative z-20 pt-6 text-center" id="slide5Header">
+<span class="text-[11px] tracking-[0.35em] uppercase text-amberaccent font-semibold block text-glow">Célébration</span>
+<h3 class="text-3xl sm:text-4xl font-philosopher text-white text-glow mt-1">Tu es invité !</h3>
+<p class="text-3xl sm:text-4xl font-philosopher italic text-champagne text-glow mt-1">You are warmly invited</p>
+</div>
+<div class="relative z-10 my-auto"></div>
+<div class="relative z-20 text-center pb-6">
+<button class="inline-flex items-center px-6 py-2.5 rounded-full bg-amberaccent hover:bg-amberwarm text-stone-950 font-bold text-xs uppercase tracking-wider transition shadow-2xl hover:scale-105" onclick="scrollToSlide(5)">
+    Confirmer ma venue (RSVP) ↓
+  </button>
+</div>
+</section>
+<!-- ==========================================
+     SLIDE 6: RSVP / LA RÉPONSE
+     - Presence selector pills directly at the very top of the form (no presence field label)
+     - No asterisks (*) on labels
+     - Dietary badges in the final "Bon à savoir / Good to know" section right above textarea
+     ========================================== -->
+<section class="snap-slide relative w-full h-[100dvh] min-h-[100dvh] max-h-[100dvh] flex flex-col justify-start p-4 sm:p-6 pb-24 md:pb-6 bg-stone-900 overflow-hidden snap-start snap-always" data-index="5" data-name="RSVP">
+<img alt="RSVP" class="absolute inset-0 w-full h-full object-cover object-center filter contrast-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDIakP1JPmoiSW3KAHopnTpbwjB8C-3iNHt3h50qoCIl0Khmp0VRgQfVDJsw2iND5F9TDvuHTW9D_TmTP0KvdKqq5NFVIuidwjOqG9RcsWbd6fzR_WgiqVUwIcNz9DvM5s1rDZRYDWycDouKRR-eeCxJx2ZofRdeHK6EJIgnBz1lEudtcxVrCf1f5ZxRmu86WAZUUFLit-IbKQgd6g5_3vLEfk9nXx6gFk9s33zaM_SWzq0nSluGli69ZOIPtTTHcfuQ"/>
+<!-- Header Aligned to Top -->
+<div class="relative z-10 pt-2 text-center mb-2">
+<span class="text-[10px] tracking-[0.3em] uppercase text-amberaccent font-semibold block text-glow">RSVP</span>
+<h3 class="text-2xl sm:text-3xl font-philosopher text-white text-glow">La Réponse</h3>
+</div>
+<!-- Clean Form at TOP -->
+<div class="relative z-10 w-full max-w-sm mx-auto">
+<div class="p-4 sm:p-5 rounded-3xl">
+<form class="space-y-2.5" id="weddingRsvpForm" onsubmit="handleRsvpSubmit(event)">
+<!-- 1. Presence selector pills directly at top without label -->
+<div class="grid grid-cols-2 gap-2">
+<label class="flex items-center justify-center p-2 rounded-xl bg-black/60 border border-white/30 cursor-pointer hover:border-amberaccent transition text-center">
+<input checked="" class="accent-[#e59b34] text-amberaccent focus:ring-0 mr-1.5 w-3.5 h-3.5" name="attending" type="radio" value="yes"/>
+<span class="text-[11px] text-white font-medium">Oui, avec joie / Yes</span>
+</label>
+<label class="flex items-center justify-center p-2 rounded-xl bg-black/60 border border-white/30 cursor-pointer hover:border-amberaccent transition text-center">
+<input class="accent-[#e59b34] text-amberaccent focus:ring-0 mr-1.5 w-3.5 h-3.5" name="attending" type="radio" value="no"/>
+<span class="text-[11px] text-white/80">Malheureusement non / Sorry</span>
+</label>
+</div>
+<!-- 2. Name (no asterisk) -->
+<div>
+<label class="block text-[10px] uppercase tracking-wider text-amberaccent font-medium mb-1 text-glow">Nom(s) &amp; Prénom(s)</label>
+<input class="w-full px-3 py-1.5 rounded-xl bg-black/60 border border-white/30 text-xs text-white placeholder-white/50 focus:border-amberaccent focus:ring-0" placeholder="Ex: Camille &amp; Julien" required="" type="text"/>
+</div>
+<!-- 3. Adult & Child Counters -->
+<div class="grid grid-cols-2 gap-2">
+<div>
+<label class="block text-[10px] uppercase tracking-wider text-amberaccent font-medium mb-1 text-glow">Adultes</label>
+<select class="w-full px-2.5 py-1 rounded-xl bg-black/60 border border-white/30 text-xs text-white focus:border-amberaccent focus:ring-0">
+<option value="1">1 Adulte</option>
+<option selected="" value="2">2 Adultes</option>
+<option value="3">3 Adultes</option>
+<option value="4">4 Adultes</option>
+</select>
+</div>
+<div>
+<label class="block text-[10px] uppercase tracking-wider text-amberaccent font-medium mb-1 text-glow">Enfants</label>
+<select class="w-full px-2.5 py-1 rounded-xl bg-black/60 border border-white/30 text-xs text-white focus:border-amberaccent focus:ring-0">
+<option selected="" value="0">0 Enfant</option>
+<option value="1">1 Enfant</option>
+<option value="2">2 Enfants</option>
+<option value="3">3 Enfants</option>
+</select>
+</div>
+</div>
+<!-- 4. "Bon à savoir / Good to know" section containing dietary badges and textarea -->
+<div>
+<label class="block text-[10px] uppercase tracking-wider text-amberaccent font-medium mb-1 text-glow">Bon à savoir / Good to know</label>
+<div class="flex flex-wrap gap-1 mb-1.5" id="dietaryBadges">
+<button class="px-2 py-0.5 rounded-full text-[10px] bg-black/50 border border-white/30 text-white hover:text-amberaccent transition" onclick="toggleDietBadge(this)" type="button">Végétarien</button>
+<button class="px-2 py-0.5 rounded-full text-[10px] bg-black/50 border border-white/30 text-white hover:text-amberaccent transition" onclick="toggleDietBadge(this)" type="button">Vegan</button>
+<button class="px-2 py-0.5 rounded-full text-[10px] bg-black/50 border border-white/30 text-white hover:text-amberaccent transition" onclick="toggleDietBadge(this)" type="button">Sans gluten</button>
+<button class="px-2 py-0.5 rounded-full text-[10px] bg-black/50 border border-white/30 text-white hover:text-amberaccent transition" onclick="toggleDietBadge(this)" type="button">Sans porc</button>
+<button class="px-2 py-0.5 rounded-full text-[10px] bg-black/50 border border-white/30 text-white hover:text-amberaccent transition" onclick="toggleDietBadge(this)" type="button">Aucun</button>
+</div>
+<textarea class="w-full px-3 py-1.5 rounded-xl bg-black/60 border border-white/30 text-xs text-white placeholder-white/50 focus:border-amberaccent focus:ring-0" placeholder="Allergies précises, chansons ou un mot doux..." rows="2"></textarea>
+</div>
+<!-- Submit -->
+<button class="w-full py-2.5 rounded-xl bg-amberaccent hover:bg-amberwarm text-stone-950 font-philosopher font-bold text-xs tracking-widest uppercase transition shadow-lg mt-1" type="submit">
+        Confirmer ma réponse
+      </button>
+</form>
+</div>
+</div>
+</section>
+<!-- ==========================================
+     SLIDE 7: HÉBERGEMENT (Photo 08: IMAGE_21)
+     ========================================== -->
+<section class="snap-slide relative w-full h-[100dvh] min-h-[100dvh] max-h-[100dvh] flex flex-col justify-start p-6 sm:p-8 pb-24 md:pb-8 bg-stone-900 overflow-hidden snap-start snap-always" data-index="6" data-name="Hôtel">
+<img alt="Hébergement" class="absolute inset-0 w-full h-full object-cover object-center filter contrast-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1vNZHysT13NkV0wc8RDb1GB3HPx-uiaUVowMvCkOJdWeE48-wiC_bAyWBYuYpzcoz3Stt-z6iz7wsihLg_BTQvbojnCRGzqr89X4C5WQZMCvv2Ju_zCU8gIbTeEKgnm6KCqaQXcBBGHAZMj8Y--r-faO57MIja_DD5fr93m3KOQQ7g-c8bogIyS_gQy_okQNVZA0rkgR2ujiGK_0ie4YzkUPZLl1UQhT6IrLOnKN_jSSnwhvLEw6Xe0kAnWoaCH7T7g"/>
+<!-- Header -->
+<div class="relative z-10 pt-2 text-center mb-4">
+<span class="text-[10px] tracking-[0.3em] uppercase text-amberaccent font-semibold block text-glow">Séjour • Lodging</span>
+<h3 class="text-3xl font-philosopher text-white text-glow mt-0.5">Hébergement</h3>
+</div>
+<!-- Card Aligned to TOP -->
+<div class="relative z-10 max-w-sm mx-auto w-full">
+<div class="p-3 sm:p-4 text-center">
+<h4 class="text-2xl font-philosopher font-bold text-amberaccent text-center mb-4 text-glow">
+      Hôtel Le confort
+    </h4>
+<div class="grid grid-cols-2 gap-4 text-xs font-sans text-left">
+<!-- Left Column: FR -->
+<div class="border-r border-white/20 pr-3 space-y-2 text-white text-[11px] leading-relaxed">
+<p class="font-bold text-white text-[13px] tracking-wide text-glow"><a class="hover:text-amberaccent transition" href="tel:+337859526">+337859526</a></p>
+<p class="text-champagne font-medium text-glow-subtle">Code à annoncer : <span class="font-mono text-amberaccent font-bold">MARIAGE2027</span></p>
+<p class="text-white text-glow-subtle">15/18 min en voiture.</p>
+<p class="text-white/90 text-glow-subtle">Paiement directement sur place.</p>
+<p class="text-champagne/80 text-[10px] italic text-glow-subtle">Si besoin d'aide pour réserver, contactez-nous directement.</p>
+</div>
+<!-- Right Column: EN -->
+<div class="pl-1 space-y-2 text-white leading-relaxed">
+<p class="font-bold text-white text-[10.4px] tracking-wide text-glow"><a class="hover:text-amberaccent transition" href="tel:+337859526">+337859526</a></p>
+<p class="text-champagne font-medium text-[8.8px] text-glow-subtle">Booking code: <span class="font-mono text-amberaccent font-bold">MARIAGE2027</span></p>
+<p class="text-white text-[8.8px] text-glow-subtle">15/18 min by car.</p>
+<p class="text-white/90 text-[8.8px] text-glow-subtle">Pay upon arrival on site.</p>
+<p class="text-champagne/80 text-[8px] italic text-glow-subtle">If you cannot call France, let us know, we will do it for you.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ==========================================
+     SLIDE 8: LE BRUNCH (Photo 07: IMAGE_20)
+     ========================================== -->
+<section class="snap-slide relative w-full h-[100dvh] min-h-[100dvh] max-h-[100dvh] flex flex-col justify-start p-6 sm:p-8 pb-24 md:pb-8 bg-stone-900 overflow-hidden snap-start snap-always" data-index="7" data-name="Brunch">
+<img alt="Le Brunch" class="absolute inset-0 w-full h-full object-cover object-center filter contrast-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDj34SbG4dYpYcrql77djHBaYGv8uCe_Wmt8mjOR2s51RAL_7AlEr_duRiYTSQPvvHi0Xt5oxaDUykLgVKMC7L8Hf0bvsYpQSXHS4KXcfw1bfVyfa6r4r_RdwbaFWiqEItilLoEAwECruzBXoZP3BnSIOKPj22H8h-ZY95wxTQsh4s7szJrTk0rPCTwKBvRovtocImpwQyH5s_n2bZbNmktNg8BMfak2bTvdzc_Jn82xvBTgf7bcQqlICcVRLEZNzmGRQ"/>
+<!-- Card Aligned to TOP -->
+<div class="relative z-10 pt-4 max-w-sm mx-auto w-full">
+<div class="p-6 text-center">
+<span class="inline-block px-4 py-1.5 rounded-full border border-amberaccent text-amberaccent text-[11px] font-semibold uppercase tracking-wider mb-3 text-glow shadow-md">
+      Dimanche 16 Mai 2027
+    </span>
+<h4 class="text-3xl font-philosopher text-white mb-2 text-glow">
+      Le Brunch
+    </h4>
+<p class="text-xs sm:text-sm font-light text-white leading-relaxed text-glow">
+      Ne manquez pas le brunch du lendemain • 16-05-2027 dans le parc du domaine
+    </p>
+</div>
+</div>
+</section>
+<!-- ==========================================
+     SLIDE 9: COMPTE À REBOURS / COUNTDOWN
+     - Cute distinct CAT face icon and lively cute DOG face icon interactive bubbles
+     ========================================== -->
+<section class="snap-slide relative w-full h-[100dvh] min-h-[100dvh] max-h-[100dvh] flex flex-col justify-end p-5 sm:p-7 pb-24 md:pb-8 bg-stone-900 overflow-hidden snap-start snap-always" data-index="8" data-name="Compte à rebours">
+<img alt="Shauna &amp; Antoine Countdown" class="absolute inset-0 w-full h-full object-cover object-center filter contrast-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKcFhla3lNSel4tJda0zUTjfcieC0HT9vtX1bmQWtMNZnhdE8WG6gslzrcapJNjIQPtCG_sx1R7wSE2kD5JAZKFlLbdV3XfdDBbXiK_peRSOZdOi30IZEnA2ry9WCbHdscCtDcVDvVwvRYnegs3tdCJhzAnKGCg6vvQS8pkJTMgWbHKe2XfBoSctCN0zr9-782hKTbKps_6KSmuve6lMqFawx0I_STFy7lE-a8t_fpvy4AzbL-_jZZ73tBRGqfJmI-1Q"/>
+<!-- Countdown Card Aligned to BOTTOM -->
+<div class="relative z-10 max-w-sm mx-auto w-full mb-2 sm:mb-4">
+<div class="p-5 sm:p-6 rounded-3xl text-center">
+<h3 class="text-2xl sm:text-3xl font-philosopher text-white text-glow mb-3">
+      Le Grand Jour Approche
+    </h3>
+<div class="grid grid-cols-4 gap-2 mb-4">
+<div class="p-2.5 rounded-2xl bg-black/60 border border-white/20">
+<span class="text-2xl sm:text-3xl font-bold font-philosopher text-white block text-glow" id="countdownDays">--</span>
+<span class="text-[9px] uppercase tracking-wider text-white/80">Jours</span>
+</div>
+<div class="p-2.5 rounded-2xl bg-black/60 border border-white/20">
+<span class="text-2xl sm:text-3xl font-bold font-philosopher text-white block text-glow" id="countdownHours">--</span>
+<span class="text-[9px] uppercase tracking-wider text-white/80">Heures</span>
+</div>
+<div class="p-2.5 rounded-2xl bg-black/60 border border-white/20">
+<span class="text-2xl sm:text-3xl font-bold font-philosopher text-white block text-glow" id="countdownMinutes">--</span>
+<span class="text-[9px] uppercase tracking-wider text-white/80">Minutes</span>
+</div>
+<div class="p-2.5 rounded-2xl bg-black/60 border border-white/20">
+<span class="text-2xl sm:text-3xl font-bold font-philosopher text-amberaccent block text-glow" id="countdownSeconds">--</span>
+<span class="text-[9px] uppercase tracking-wider text-white/80">Secondes</span>
+</div>
+</div>
+<!-- "We're so excited" Romantic Stylized Heading -->
+<div class="pt-1 border-t border-white/20">
+<p class="font-philosopher italic text-2xl sm:text-3xl text-champagne text-glow tracking-wide mb-2.5">
+  We're so excited
+</p>
+<!-- Interactive Easter Egg Buttons: Cute Cat & Cute Dog -->
+<div class="flex items-center justify-center space-x-3">
+<!-- Cute Cat Icon Button: Pointy ears & whiskers -->
+<button aria-label="Cute Cat" class="group relative w-10 h-10 rounded-full bg-black/60 border border-amberaccent/50 hover:border-amberaccent flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-[0_0_15px_rgba(229,155,52,0.45)] cursor-pointer" onclick="handlePawClick('chat')">
+<svg class="w-5 h-5 text-champagne group-hover:text-amberaccent transition-colors" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24">
+<!-- Cat Face Outline with pointy ears -->
+<path d="M4 11a8 8 0 0 0 16 0c0-2-1-3.5-1-6l-3.5 2.5C14 7 13 7 12 7s-2 0-3.5.5L5 5c0 2.5-1 4-1 6z"></path>
+<!-- Eyes -->
+<circle cx="9" cy="12" fill="currentColor" r="0.9" stroke="none"></circle>
+<circle cx="15" cy="12" fill="currentColor" r="0.9" stroke="none"></circle>
+<!-- Tiny nose -->
+<path d="M11.5 14.2h1l-.5.7z" fill="currentColor"></path>
+<!-- Whiskers -->
+<path d="M7 13.5L4.5 13"></path>
+<path d="M7 15L4.5 16"></path>
+<path d="M17 13.5L19.5 13"></path>
+<path d="M17 15L19.5 16"></path>
+</svg>
+</button>
+<!-- Cute Dog Icon Button: expressive puppy with natural floppy ears, warm muzzle, nose and happy mouth -->
+<button aria-label="Cute Dog" class="group relative w-10 h-10 rounded-full bg-black/60 border border-amberaccent/50 hover:border-amberaccent flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-[0_0_15px_rgba(229,155,52,0.45)] cursor-pointer" onclick="handlePawClick('chien')">
+<svg class="w-5 h-5 text-champagne group-hover:text-amberaccent transition-colors" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewbox="0 0 24 24">
+<!-- Left Floppy Ear (curving naturally down) -->
+<path d="M7 7.5 C4.5 8 3 11 3.5 14 C3.8 15.5 5 16 6 14.5 C6.8 13.2 7 11 7.2 9.5"></path>
+<!-- Right Floppy Ear (curving naturally down) -->
+<path d="M17 7.5 C19.5 8 21 11 20.5 14 C20.2 15.5 19 16 18 14.5 C17.2 13.2 17 11 16.8 9.5"></path>
+<!-- Crown & Cheeks / Head Silhouette -->
+<path d="M7 8 C8.5 6 15.5 6 17 8 C18.5 10 18.5 14 17.5 16.5 C16 20 8 20 6.5 16.5 C5.5 14 5.5 10 7 8 Z"></path>
+<!-- Eyes with life/sparkle -->
+<circle cx="9.2" cy="11.5" fill="currentColor" r="0.9" stroke="none"></circle>
+<circle cx="14.8" cy="11.5" fill="currentColor" r="0.9" stroke="none"></circle>
+<!-- Cute Dog Truffle / Nose -->
+<path d="M10.7 14 C11 13.6 13 13.6 13.3 14 C13.6 14.5 12.8 15.3 12 15.3 C11.2 15.3 10.4 14.5 10.7 14 Z" fill="currentColor" stroke="none"></path>
+<!-- Expressive Muzzle / Smile Lines -->
+<path d="M12 15.3 V16.2"></path>
+<path d="M10.2 16.2 C11 17 12 16.8 12 16.2 C12 16.8 13 17 13.8 16.2"></path>
+</svg>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- ========================================================
+       3. MOBILE BOTTOM NAVIGATION TRACKER
+       ======================================================== -->
+<div class="md:hidden fixed bottom-3 left-3 right-3 z-40 flex items-center justify-between px-3 py-1.5 rounded-full bg-black/75 border border-white/25 backdrop-blur-md shadow-2xl h-11" id="mobileNavTracker">
+<div class="flex items-center space-x-1 w-16 justify-start overflow-hidden" id="mobileLeftDots"></div>
+<div class="flex items-center justify-center space-x-1 w-[200px] flex-shrink-0 mx-auto">
+<button class="px-2 py-0.5 rounded-full text-[10px] text-white/60 hover:text-white transition truncate max-w-[64px]" id="mobilePrevBtn" onclick="navigateStep(-1)">-</button>
+<button class="px-2.5 py-1 rounded-full bg-amberaccent text-stone-950 font-bold text-[10px] uppercase tracking-wider shadow-sm truncate max-w-[96px] text-center" id="mobileCurrentBtn">Invitation</button>
+<button class="px-2 py-0.5 rounded-full text-[10px] text-white/60 hover:text-white transition truncate max-w-[64px]" id="mobileNextBtn" onclick="navigateStep(1)">-</button>
+</div>
+<div class="flex items-center space-x-1 w-16 justify-end overflow-hidden" id="mobileRightDots"></div>
+</div>
+</div>
+<script>
+  const slideNames = [
+    "Invitation",
+    "Histoire",
+    "Lieu",
+    "Planning",
+    "Invité !",
+    "RSVP",
+    "Hôtel",
+    "Brunch",
+    "Compte à rebours"
+  ];
+  let currentActiveIndex = 0;
+
+  function scrollToSlide(index) {
+    const container = document.getElementById('sliderWrapper');
+    const slides = container.querySelectorAll('.snap-slide');
+    if (slides[index]) {
+      slides[index].scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
+  function navigateStep(offset) {
+    const newIdx = Math.max(0, Math.min(slideNames.length - 1, currentActiveIndex + offset));
+    scrollToSlide(newIdx);
+  }
+
+  // Slide 1 Carousel Crossfade
+  const slide1Images = document.querySelectorAll('#slide1Carousel .hero-bg-slide');
+  let currentHeroIdx = 0;
+  if (slide1Images.length > 0) {
+    setInterval(() => {
+      slide1Images[currentHeroIdx].classList.remove('opacity-100');
+      slide1Images[currentHeroIdx].classList.add('opacity-0');
+      currentHeroIdx = (currentHeroIdx + 1) % slide1Images.length;
+      slide1Images[currentHeroIdx].classList.remove('opacity-0');
+      slide1Images[currentHeroIdx].classList.add('opacity-100');
+    }, 3800);
+  }
+
+  // Quick punchy confetti shower
+  let cannonHasFired = false;
+  function triggerCannon() {
+    const origin = document.getElementById('cannonOrigin');
+    const container = document.getElementById('cannonContainer');
+    if (!origin || !container) return;
+    
+    origin.innerHTML = '';
+    const colors = ['#e59b34', '#f3e6d3', '#ffffff', '#b58a57', '#d97706', '#ffd700'];
+    const count = 90;
+
+    for (let i = 0; i < count; i++) {
+      const p = document.createElement('span');
+      p.className = 'cannon-particle absolute block pointer-events-none';
+      const angle = (Math.PI * 0.1) + (Math.random() * Math.PI * 0.8); 
+      const distance = 380 + Math.random() * 460;
+      const tx = (Math.random() - 0.5) * 440;
+      const ty = Math.sin(angle) * distance; 
+      const rot = (Math.random() * 1080 - 540) + 'deg';
+      const color = colors[Math.floor(Math.random() * colors.length)];
+      const w = 6 + Math.random() * 8;
+      const h = 8 + Math.random() * 12;
+      
+      p.style.width = w + 'px';
+      p.style.height = h + 'px';
+      p.style.backgroundColor = color;
+      p.style.borderRadius = Math.random() > 0.4 ? '2px' : '9999px';
+      p.style.setProperty('--tx', tx + 'px');
+      p.style.setProperty('--ty', ty + 'px');
+      p.style.setProperty('--rot', rot);
+      origin.appendChild(p);
+    }
+
+    container.classList.remove('cannon-burst-active');
+    void container.offsetWidth;
+    container.classList.add('cannon-burst-active');
+  }
+
+  // Shimmer effect trigger for Slide 3 (Le Domaine)
+  function triggerDomaineShimmer() {
+    const shimmer = document.getElementById('domaineShimmer');
+    if (!shimmer) return;
+    shimmer.classList.remove('shimmer-active');
+    void shimmer.offsetWidth; // retrigger reflow
+    shimmer.classList.add('shimmer-active');
+  }
+
+  // Easter egg paws
+  function handlePawClick(type) {
+    if (type === 'chat') {
+      alert("🐱 Miaou ! Un doux ronronnement pour le mariage de Shauna & Antoine !");
+    } else {
+      alert("🐶 Ouaf ! Un joyeux wouf d'excitation pour le 15 Mai 2027 !");
+    }
+  }
+
+  // Navigation Trackers
+  const slider = document.getElementById('sliderWrapper');
+  const desktopDotsContainer = document.getElementById('desktopNavDotsContainer');
+  const desktopDots = document.querySelectorAll('.nav-dot');
+
+  const mobileLeftDots = document.getElementById('mobileLeftDots');
+  const mobileRightDots = document.getElementById('mobileRightDots');
+  const mobilePrevBtn = document.getElementById('mobilePrevBtn');
+  const mobileCurrentBtn = document.getElementById('mobileCurrentBtn');
+  const mobileNextBtn = document.getElementById('mobileNextBtn');
+
+  function updateNav(activeIndex) {
+    const previousIndex = currentActiveIndex;
+    currentActiveIndex = activeIndex;
+
+    desktopDots.forEach((dot, idx) => {
+      if (idx === activeIndex) {
+        dot.classList.add('bg-amberaccent', 'scale-125');
+        dot.classList.remove('bg-white/40');
+      } else {
+        dot.classList.remove('bg-amberaccent', 'scale-125');
+        dot.classList.add('bg-white/40');
+      }
+    });
+
+    if (mobileLeftDots && mobileRightDots) {
+      mobileLeftDots.innerHTML = '';
+      for (let i = 0; i < activeIndex; i++) {
+        const dot = document.createElement('button');
+        dot.className = 'w-1.5 h-1.5 rounded-full bg-white/40 flex-shrink-0';
+        dot.onclick = () => scrollToSlide(i);
+        mobileLeftDots.appendChild(dot);
+      }
+
+      mobileRightDots.innerHTML = '';
+      for (let i = activeIndex + 1; i < slideNames.length; i++) {
+        const dot = document.createElement('button');
+        dot.className = 'w-1.5 h-1.5 rounded-full bg-white/40 flex-shrink-0';
+        dot.onclick = () => scrollToSlide(i);
+        mobileRightDots.appendChild(dot);
+      }
+
+      mobileCurrentBtn.innerText = slideNames[activeIndex];
+      if (activeIndex > 0) {
+        mobilePrevBtn.innerText = slideNames[activeIndex - 1];
+        mobilePrevBtn.style.visibility = 'visible';
+      } else {
+        mobilePrevBtn.innerText = '';
+        mobilePrevBtn.style.visibility = 'hidden';
+      }
+
+      if (activeIndex < slideNames.length - 1) {
+        mobileNextBtn.innerText = slideNames[activeIndex + 1];
+        mobileNextBtn.style.visibility = 'visible';
+      } else {
+        mobileNextBtn.innerText = '';
+        mobileNextBtn.style.visibility = 'hidden';
+      }
+    }
+
+    // Trigger Slide 3 shimmer on entry
+    if (activeIndex === 2 && previousIndex !== 2) {
+      triggerDomaineShimmer();
+    }
+
+    if (activeIndex === 4 && !cannonHasFired) {
+      triggerCannon();
+      cannonHasFired = true;
+    } else if (activeIndex !== 4) {
+      cannonHasFired = false;
+    }
+  }
+
+  slider.addEventListener('scroll', () => {
+    const scrollPos = slider.scrollTop;
+    const height = slider.clientHeight;
+    const activeIndex = Math.min(Math.round(scrollPos / height), slideNames.length - 1);
+
+    if (scrollPos > height * 0.45) {
+      desktopDotsContainer.classList.remove('opacity-0', 'pointer-events-none');
+      desktopDotsContainer.classList.add('opacity-100', 'pointer-events-auto');
+    } else {
+      desktopDotsContainer.classList.add('opacity-0', 'pointer-events-none');
+      desktopDotsContainer.classList.remove('opacity-100', 'pointer-events-auto');
+    }
+
+    if (activeIndex !== currentActiveIndex) {
+      updateNav(activeIndex);
+    }
+  });
+
+  updateNav(0);
+
+  function toggleDietBadge(btn) {
+    const isSelected = btn.classList.contains('bg-amberaccent');
+    if (isSelected) {
+      btn.classList.remove('bg-amberaccent', 'text-stone-950', 'border-amberaccent', 'font-bold');
+      btn.classList.add('bg-black/50', 'border-white/30', 'text-white');
+    } else {
+      btn.classList.remove('bg-black/50', 'border-white/30', 'text-white');
+      btn.classList.add('bg-amberaccent', 'text-stone-950', 'border-amberaccent', 'font-bold');
+    }
+  }
+
+  function handleRsvpSubmit(e) {
+    e.preventDefault();
+    alert("Merci infiniment pour votre confirmation ! Nous avons hâte de célébrer le 15 Mai 2027 à vos côtés.");
+  }
+
+  const weddingTarget = new Date('2027-05-15T14:00:00').getTime();
+
+  function updateCountdown() {
+    const now = new Date().getTime();
+    const diff = weddingTarget - now;
+
+    if (diff > 0) {
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % 1000) / 1000);
+
+      const dEl = document.getElementById('countdownDays');
+      const hEl = document.getElementById('countdownHours');
+      const mEl = document.getElementById('countdownMinutes');
+      const sEl = document.getElementById('countdownSeconds');
+
+      if (dEl) dEl.innerText = days;
+      if (hEl) hEl.innerText = hours;
+      if (mEl) mEl.innerText = minutes;
+      if (sEl) sEl.innerText = Math.floor((diff / 1000) % 60);
+    }
+  }
+  setInterval(updateCountdown, 1000);
+  updateCountdown();
+</script>
+</body></html>
