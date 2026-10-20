@@ -59,7 +59,7 @@ export default function Invitation() {
   };
 
   return (
-    <div className="relative w-full h-full flex flex-col md:flex-row overflow-hidden">
+    <div className="invitation">
       <DesktopHero
         dots={
           <DesktopNavDots
@@ -73,7 +73,7 @@ export default function Invitation() {
       <div
         ref={sliderRef}
         onScroll={handleScroll}
-        className="w-full md:w-1/2 lg:w-5/12 h-[100dvh] max-h-[100dvh] overflow-y-scroll snap-container scroll-smooth relative z-20 border-l border-white/10 shadow-2xl bg-stone-950"
+        className="invitation__slides"
       >
         <InvitationSlide onNext={openInvitation} />
         <StorySlide />

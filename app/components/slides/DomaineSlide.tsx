@@ -5,18 +5,18 @@ import Slide from "./Slide";
 type DomaineSlideProps = { shimmerKey: number };
 
 export default function DomaineSlide({ shimmerKey }: DomaineSlideProps) {
-  const d = config.slides.domaine;
+  const { common, domaine: d } = config.slides.domaine;
 
   return (
     <Slide
       image={d.image}
-      alt={d.alt}
-      className="justify-between p-6 sm:p-8 pb-24 md:pb-8 bg-stone-900"
+      alt={common.title ?? "Domaine"}
+      className="slide--domaine"
     >
-      <div className="absolute inset-0 pointer-events-none overflow-hidden z-[5]">
+      <div className="domaine-slide__shimmer">
         <div
           key={shimmerKey}
-          className={`absolute inset-y-0 -left-full w-full h-full pointer-events-none opacity-0 mix-blend-screen ${
+          className={`domaine-slide__shimmer-sweep ${
             shimmerKey > 0 ? "shimmer-active" : ""
           }`}
           style={{
@@ -26,41 +26,42 @@ export default function DomaineSlide({ shimmerKey }: DomaineSlideProps) {
         />
       </div>
 
-      <div className="relative z-10 -mt-6 sm:-mt-8 flex flex-col items-center text-center">
+      <div className="domaine-slide__heading">
         <svg
-          className="w-8 h-12 text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)] mb-1"
+          aria-hidden="true"
+          className="domaine-slide__arrow"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 32 48"
         >
-          <line strokeDasharray="4 4" strokeLinecap="round" strokeWidth="2.5" x1="16" x2="16" y1="0" y2="34" />
+          <line  x1="16" x2="16" y1="0" y2="34" />
           <polyline points="8,26 16,36 24,26" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" />
         </svg>
-        <span className="text-[11px] tracking-[0.28em] uppercase text-amberaccent font-semibold block text-glow">
-          {d.eyebrow}
+        <span className="domaine-slide__eyebrow">
+          {common.eyebrow}
         </span>
-        <h3 className="text-3xl md:text-5xl font-philosopher text-white text-glow mt-1 font-normal">
-          {d.title}
+        <h3 className="domaine-slide__title">
+          {common.title}
         </h3>
-        <div className="w-16 h-0.5 bg-amberaccent/80 mx-auto my-2.5 shadow-md" />
+        <div className="domaine-slide__divider" />
       </div>
 
-      <div className="relative z-10 max-w-sm mx-auto w-full mb-32 md:mb-28 -translate-y-6">
-        <div className="p-5 text-center">
-          <p className="text-xs sm:text-sm font-light text-white leading-relaxed text-glow mb-4">
-            {d.addressLine1}
+      <div className="domaine-slide__details">
+        <div className="domaine-slide__details-content">
+          <p className="domaine-slide__address">
+            <span className="domaine-slide__address-strong">{d.addressLine1}</span>
             <br />
-            <span className="font-medium text-white">{d.addressLine2}</span>
+            <span className="domaine-slide__address-strong">{d.addressLine2}</span>
             <br />
-            <span className="text-xs text-champagne">{d.addressLine3}</span>
+            <span className="domaine-slide__address-muted">{d.addressLine3}</span>
           </p>
           <a
-            className="inline-flex items-center justify-center px-6 py-2.5 rounded-full bg-amberaccent hover:bg-amberwarm text-stone-950 font-bold text-xs tracking-wider uppercase transition shadow-xl hover:scale-105"
+            className="domaine-slide__maps-link"
             href={d.mapsUrl}
             rel="noopener noreferrer"
             target="_blank"
           >
-            <MdOutlineNavigation className="text-base mr-1.5" />
+            <MdOutlineNavigation className="domaine-slide__maps-icon" />
             {d.mapsLabel}
           </a>
         </div>

@@ -1,5 +1,11 @@
 export type Bilingual = { fr: string; en: string };
 
+export type SlideCommon = {
+  eyebrow?: string;
+  title?: string;
+  subtitle?: string;
+};
+
 export type TimelineIcon =
   | "car"
   | "door"
@@ -8,7 +14,7 @@ export type TimelineIcon =
   | "drink"
   | "party";
 
-type TimelineEvent = {
+export type TimelineEvent = {
   icon: TimelineIcon;
   time: Bilingual;
   title: Bilingual;
@@ -61,7 +67,7 @@ export const config = {
     description: "Invitation au mariage de Shauna & Antoine — 15 Mai 2027",
   },
 
-  couple: { first: "Shauna", second: "Antoine" },
+  couple: { bride: "Shauna", groom: "Antoine" },
 
   event: {
     countdownTarget: "2027-05-15T15:00:00",
@@ -71,165 +77,205 @@ export const config = {
 
   music: { src: "/music/wedding_song.mp3" },
 
-  // Desktop left column photo
-  desktopHero: { image: "/images/01b.jpg", objectPosition: "55% 25%" },
+  desktopHero: { image: "/photos/slides/01.jpg" },
 
   // One entry per slide, in display order (labels feed the dots and the mobile bar)
   nav: [
-    { label: "Invitation", ariaLabel: "Slide 1 - Invitation" },
-    { label: "Histoire", ariaLabel: "Slide 2 - Notre Histoire" },
-    { label: "Lieu", ariaLabel: "Slide 3 - Le Domaine" },
-    { label: "Planning", ariaLabel: "Slide 4 - Déroulement" },
-    { label: "Invité !", ariaLabel: "Slide 5 - Tu es invité !" },
-    { label: "RSVP", ariaLabel: "Slide 6 - RSVP" },
-    { label: "Hôtel", ariaLabel: "Slide 7 - Hébergement" },
-    { label: "Brunch", ariaLabel: "Slide 8 - Le Brunch" },
-    { label: "Compte à rebours", ariaLabel: "Slide 9 - Compte à rebours" },
+    { label: "Bienvenue" },
+    { label: "Histoire" },
+    { label: "Lieu" },
+    { label: "Planning" },
+    { label: "Invite" },
+    { label: "RSVP" },
+    { label: "Hotel" },
+    { label: "Brunch" },
+    { label: "Countdown" },
   ],
 
   slides: {
     invitation: {
-      // Crossfading backgrounds
-      images: [
-        "/images/02b.jpg",
-        "/images/04.jpg",
-        "/images/05.jpg",
-        "/images/06.jpg",
-        "/images/03b.jpg",
-        "/images/01.jpg",
-      ],
-      crossfadeMs: 3800,
-      badge: "Invitation au Mariage",
-      scrollLabel: "Découvrir • Scroll",
-      scrollAriaLabel: "Faire défiler",
+      common: {},
+      invitation: {
+        images: [
+          "/photos/slides/02.jpg",
+          "/photos/slides/05.jpg",
+          "/photos/slides/06.jpg",
+          "/photos/slides/07.jpg",
+          "/photos/slides/08.jpg",
+          "/photos/slides/09.jpg",
+          "/photos/slides/01.jpg",
+        ],
+        badge: "Invitation au Mariage",
+        scrollLabel: "Découvrir • Scroll",
+      },
     },
 
     story: {
-      image: "/images/02b.jpg",
-      alt: "Notre histoire",
-      places: {
-        dreux: "Dreux",
-        anywhere: "Anywhere",
-        creapole: "Créapôle",
-        shanghai: "Shanghai",
-        paris: "Paris",
-        lille: "Lille",
-        viroflay: "Viroflay",
+      common: {},
+      story: {
+        title: "NOTRE HISTOIRE",
+        image: "/photos/slides/02.jpg",
+        places: {
+          dreux: "Dreux",
+          anywhere: "Anywhere",
+          creapole: "Créapôle",
+          shanghai: "Shanghai",
+          paris: "Paris",
+          lille: "Lille",
+          viroflay: "Viroflay",
+        },
       },
     },
 
     domaine: {
-      image: "/images/03b.jpg",
-      alt: "Domaine de Coulonge",
-      eyebrow: "Le Domaine • Lieu",
-      title: "Domaine de Coulonge",
-      addressLine1: "2 route de Damville",
-      addressLine2: "27240 Sylvains-les-Moulins",
-      addressLine3: "Normandie, France",
-      mapsLabel: "Itinéraire • Google Maps",
-      mapsUrl:
-        "https://maps.google.com/?q=Domaine+de+Coulonge+2+route+de+Damville+27240+Sylvains-les-Moulins",
+      common: {
+        eyebrow: "Le Mariage • The Wedding",
+        title: "Domaine de Coulonge",
+      },
+      domaine: {
+        image: "/photos/slides/03.jpg",
+        addressLine1: "2 route de Damville",
+        addressLine2: "27240 Sylvains-les-Moulins",
+        addressLine3: "Normandie, France",
+        mapsLabel: "Itinéraire • Google Maps",
+        mapsUrl:
+          "https://maps.google.com/?q=Domaine+de+Coulonge+2+route+de+Damville+27240+Sylvains-les-Moulins",
+      },
     },
 
     timeline: {
-      image: "/images/04.jpg",
-      alt: "Déroulement",
-      eyebrow: "Planning de Célébration",
-      title: "Déroulement",
-      subtitle: "Timeline of the day",
-      nextLabel: "Tu es invité ! ↓",
-      events: timelineEvents,
+      common: {
+        eyebrow: "Le jour J",
+        title: "Timeline",
+      },
+      timeline: {
+        image: "/photos/slides/04.jpg",
+        nextLabel: "Tu es invité • You are invited ! ↓",
+        events: timelineEvents,
+      },
     },
 
     invited: {
-      image: "/images/05.jpg",
-      alt: "Tu es invité !",
-      eyebrow: "Célébration",
-      title: "Tu es invité !",
-      subtitle: "You are warmly invited",
-      nextLabel: "Confirmer ma venue (RSVP) ↓",
+      common: {
+        title: {
+          fr: "Tu es invité !",
+          en: "You are invited !",
+        } as Bilingual,
+        subtitle: "You are warmly invited",
+      },
+      invited: {
+        image: "/photos/slides/05.jpg",
+        nextLabel: "Ta réponse • Your answer ↓",
+      },
     },
 
     rsvp: {
-      image: "/images/06.jpg",
-      alt: "RSVP",
-      eyebrow: "RSVP",
-      title: "La Réponse",
-      form: { name: "wedding-rsvp", action: "/forms/wedding-rsvp.html" },
-      attending: {
-        yes: "Oui, avec joie / Yes",
-        no: "Malheureusement non / Sorry",
+      common: { eyebrow: "RSVP", title: "La Réponse" },
+      rsvp: {
+        image: "/photos/slides/06.jpg",
+        form: { name: "wedding-rsvp", action: "/forms/wedding-rsvp.html" },
+        attending: {
+          yes: "Oui, avec joie / Yes",
+          no: "Non 😢 / Nope",
+        },
+        nameLabel: "Toi/Vous/You ❤️ ",
+        namePlaceholder: "Ex: Camille & Julien",
+        adults: {
+          one: "Adulte",
+          many: "Adultes",
+          max: 4,
+          default: 2,
+        },
+        children: {
+          one: "Enfant",
+          many: "Enfants",
+          max: 4,
+          default: 0,
+          stop: "Stop making them",
+        },
+        goodToKnowLabel: "Good to savoir",
+        dietTags: [
+          "Végétarien",
+          "Vegan",
+          "Sans gluten",
+          "Sans lactose",
+          "Encore + casse pied",
+        ],
+        messagePlaceholder:
+          "Allergies précises, chansons ou un mot doux... \nAnything else intereseting ?",
+        submit: "Confirmer ma réponse",
+        sending: "Envoi...",
+        success:
+          "Merci infiniment pour votre confirmation ! Nous avons hâte de célébrer le 15 Mai 2027 à vos côtés.",
+        error: "Une erreur est survenue, merci de réessayer.",
       },
-      nameLabel: "Nom(s) & Prénom(s)",
-      namePlaceholder: "Ex: Camille & Julien",
-      adults: {
-        label: "Adultes",
-        one: "Adulte",
-        many: "Adultes",
-        max: 4,
-        default: 2,
-      },
-      children: {
-        label: "Enfants",
-        one: "Enfant",
-        many: "Enfants",
-        max: 3,
-        default: 0,
-      },
-      goodToKnowLabel: "Bon à savoir / Good to know",
-      dietTags: ["Végétarien", "Vegan", "Sans gluten", "Sans porc", "Aucun"],
-      messagePlaceholder: "Allergies précises, chansons ou un mot doux...",
-      submit: "Confirmer ma réponse",
-      sending: "Envoi...",
-      success:
-        "Merci infiniment pour votre confirmation ! Nous avons hâte de célébrer le 15 Mai 2027 à vos côtés.",
-      error: "Une erreur est survenue, merci de réessayer.",
     },
 
     hotel: {
-      image: "/images/07.jpg",
-      alt: "Hébergement",
-      eyebrow: "Séjour • Lodging",
-      title: "Hébergement",
-      name: "Hôtel Le confort",
-      phone: "+337859526",
-      code: "MARIAGE2027",
-      codeLabel: { fr: "Code à annoncer :", en: "Booking code:" } as Bilingual,
-      travel: {
-        fr: "15/18 min en voiture.",
-        en: "15/18 min by car.",
-      } as Bilingual,
-      payment: {
-        fr: "Paiement directement sur place.",
-        en: "Pay upon arrival on site.",
-      } as Bilingual,
-      help: {
-        fr: "Si besoin d'aide pour réserver, contactez-nous directement.",
-        en: "If you cannot call France, let us know, we will do it for you.",
-      } as Bilingual,
+      common: { eyebrow: "Séjour • Lodging", title: "Hôtel Le confort" },
+      hotel: {
+        image: "/photos/slides/07.jpg",
+        phone: "+337859526",
+        code: "MARIAGE2027",
+        codeLabel: {
+          fr: "Code à annoncer :",
+          en: "Booking code:",
+        } as Bilingual,
+        travel: {
+          fr: "15/18 min en voiture.",
+          en: "15/18 min by car.",
+        } as Bilingual,
+        payment: {
+          fr: "Paiement directement sur place.",
+          en: "Pay upon arrival on site.",
+        } as Bilingual,
+        help: {
+          fr: "Si besoin d'aide pour réserver, contactez-nous directement.",
+          en: "If you cannot call France, let us know, we will do it for you.",
+        } as Bilingual,
+        platforms: [
+          {
+            name: "Airbnb",
+            image: "/logos/airbnb.png",
+            url: "https://www.airbnb.com/",
+          },
+          {
+            name: "Booking.com",
+            image: "/logos/booking.png",
+            url: "https://www.booking.com/",
+          },
+          {
+            name: "Gîtes de France",
+            image: "/logos/gites.png",
+            url: "https://www.gites-de-france.com/",
+          },
+        ],
+      },
     },
 
     brunch: {
-      image: "/images/08.jpg",
-      alt: "Le Brunch",
-      dateLabel: "Dimanche 16 Mai 2027",
-      title: "Le Brunch",
-      text: "Ne manquez pas le brunch du lendemain • 16-05-2027 dans le parc du domaine",
+      common: { title: "Le Brunch" },
+      brunch: {
+        image: "/photos/slides/08.jpg",
+        dateLabel: "Dimanche 16 Mai 2027",
+        text: {
+          fr: "Ne manquez pas le brunch du lendemain !",
+          en: "Don't miss the next day's brunch !",
+        } as Bilingual,
+      },
     },
 
     countdown: {
-      image: "/images/09.jpg",
-      alt: "Shauna & Antoine Countdown",
-      title: "Le Grand Jour Approche",
-      units: {
-        days: "Jours",
-        hours: "Heures",
-        minutes: "Minutes",
-        seconds: "Secondes",
+      common: { title: "Le Grand Jour Approche" },
+      countdown: {
+        image: "/photos/slides/09.jpg",
+        units: {
+          days: "Jours",
+          hours: "Heures",
+          minutes: "Minutes",
+          seconds: "Secondes",
+        },
       },
-      tagline: "We're so excited",
-      catLabel: "Cute Cat",
-      dogLabel: "Cute Dog",
     },
   },
 };

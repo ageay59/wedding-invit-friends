@@ -25,7 +25,7 @@
 
 ## About
 
-This is a modern and fully customizable wedding invitation template built using **Next.js**, **TypeScript**, **TailwindCSS**, **react-type-animation**, and **react-intersection-observer**. It's designed to be user-friendly, allowing couples to personalize their wedding details easily.
+This is a modern and fully customizable wedding invitation template built using **Next.js**, **TypeScript**, **SCSS**, and **React**. It's designed to be user-friendly, allowing couples to personalize their wedding details easily.
 
 ## RSVP Feature with MongoDB
 
@@ -40,7 +40,7 @@ This project was inspired by the beautiful designs found on [Groove Public](http
 ## Features
 
 - **Next.js + TypeScript**: A modern framework for building fast and scalable web applications.
-- **TailwindCSS**: A utility-first CSS framework for rapid UI development.
+- **SCSS and BEM**: Component-oriented styling with explicit, maintainable class names.
 - **react-type-animation**: Animate typewriter-style text on your invitation.
 - **react-intersection-observer**: Enable smooth animations as the user scrolls.
 - **Dynamic Configuration**: Use environment variables to update wedding details like dates, locations, and Google Maps links.
@@ -61,36 +61,36 @@ This project was inspired by the beautiful designs found on [Groove Public](http
    cd wedding-invitation
    npm i
    ```
+
 2. **Set up environment variables: Create a .env.local file in your root directory and add the following in .env.example**
 3. **Create Database in MongoDB**:
    Create a new database in MongoDB and name it `wish`. Inside this database, create a collection named `wishes`.
 4. **Run The Project**
 
-    ```bash
-    npm install
-    npm run dev
-    ```
+   ```bash
+   npm install
+   npm run dev
+   ```
 
 5. **Deploy to Vercel**:
 
-    You can easily deploy your project to Vercel by following these steps:
+   You can easily deploy your project to Vercel by following these steps:
+   - If you don't have a Vercel account, sign up at [vercel.com](https://vercel.com/).
+   - Install the Vercel CLI:
 
-    - If you don't have a Vercel account, sign up at [vercel.com](https://vercel.com/).
-    - Install the Vercel CLI:
+     ```bash
+     npm install -g vercel
+     ```
 
-      ```bash
-      npm install -g vercel
-      ```
+   - Run the following command in your project directory:
 
-    - Run the following command in your project directory:
+     ```bash
+     vercel
+     ```
 
-      ```bash
-      vercel
-      ```
+   - Follow the prompts to link your project to your Vercel account and deploy it.
 
-    - Follow the prompts to link your project to your Vercel account and deploy it.
-
-    Your wedding invitation will be live and accessible via the URL provided by Vercel.
+   Your wedding invitation will be live and accessible via the URL provided by Vercel.
 
 ## Contributing
 
@@ -100,24 +100,24 @@ This project is open to contributions. Feel free to fork it, improve it, or subm
 
 You can customize the following via environment variables:
 
-* Wedding Name, Dates, Countdown
-* Your OWN RSVP
-* Music in `public\music\wedding_song.mp3`
-* Picture in the public folder
+- Wedding Name, Dates, Countdown
+- Your OWN RSVP
+- Music in `public\music\wedding_song.mp3`
+- Picture in the public folder
+  - `public/slide_1 to slide_9` for the slider images on each slide.
+  - `public/foto_1_samping` for the desktop view picture.
+  - `public/foto_1 to foto_4` for fade-in animations at the start of the page.
 
-  * `public/slide_1 to slide_9` for the slider images on each slide.
-  * `public/foto_1_samping` for the desktop view picture.
-  * `public/foto_1 to foto_4` for fade-in animations at the start of the page.
-* Event Details (Holy Matrimony & Wedding Reception)
-* Google Maps Links
-* Youtube Links For Streaming
-* YouTube Code Embed for Video : Embed YouTube videos using iframe code and take the foto like below
+- Event Details (Holy Matrimony & Wedding Reception)
+- Google Maps Links
+- Youtube Links For Streaming
+- YouTube Code Embed for Video : Embed YouTube videos using iframe code and take the foto like below
 
 <p align="center">
 <img src="public/remove_me/take_this.png" width="280" height="200" style="margin:auto" />
 </p>
 
-* Custom Guest Names: If you'd like to personalize guest names such as Dear Peter or to:John, set your url with "to:".
+- Custom Guest Names: If you'd like to personalize guest names such as Dear Peter or to:John, set your url with "to:".
   ex (`https://weddingly-free.vercel.app/to:Edward%20Tauran`)
 
 ## License

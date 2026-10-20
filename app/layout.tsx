@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { Montserrat } from "next/font/google";
-import "./globals.css";
+import "./globals.scss";
 import { config } from "@/config/config";
 
 const philosopher = localFont({
@@ -33,9 +33,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang={config.site.lang} className="h-full">
+    <html lang={config.site.lang}>
       <body
-        className={`${philosopher.variable} ${montserrat.variable} h-full bg-stone-950 text-white font-sans overflow-hidden antialiased selection:bg-amber-600 selection:text-white`}
+        className={`${philosopher.variable} ${montserrat.variable}`}
       >
         {children}
       </body>

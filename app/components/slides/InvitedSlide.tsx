@@ -33,22 +33,22 @@ function makeParticles(count = 90): Particle[] {
 type InvitedSlideProps = { onNext: () => void; cannonKey: number };
 
 export default function InvitedSlide({ onNext, cannonKey }: InvitedSlideProps) {
-  const s = config.slides.invited;
+  const { common, invited: s } = config.slides.invited;
   // Particles are random, so they are only generated after a burst is triggered on the client
   const particles = useMemo(() => (cannonKey > 0 ? makeParticles() : []), [cannonKey]);
 
   return (
     <Slide
       image={s.image}
-      alt={s.alt}
-      className="justify-between p-6 sm:p-8 pb-24 md:pb-8 bg-stone-900"
+      alt={common.title.fr}
+      className="slide--invited"
     >
-      <div className="absolute inset-0 pointer-events-none overflow-hidden z-30">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-0 h-0">
+      <div className="invited-slide__confetti">
+        <div className="invited-slide__confetti-source">
           {particles.map((p, i) => (
             <span
               key={`${cannonKey}-${i}`}
-              className="cannon-particle absolute block pointer-events-none"
+              className="invited-slide__particle"
               style={
                 {
                   width: p.width,
@@ -65,21 +65,18 @@ export default function InvitedSlide({ onNext, cannonKey }: InvitedSlideProps) {
         </div>
       </div>
 
-      <div className="relative z-20 pt-6 text-center">
-        <span className="text-[11px] tracking-[0.35em] uppercase text-amberaccent font-semibold block text-glow">
-          {s.eyebrow}
-        </span>
-        <h3 className="text-3xl sm:text-4xl font-philosopher text-white text-glow mt-1">{s.title}</h3>
-        <p className="text-3xl sm:text-4xl font-philosopher italic text-champagne text-glow mt-1">
-          {s.subtitle}
+      <div className="invited-slide__heading">
+        <h3 className="invited-slide__title">{common.title.fr}</h3>
+        <p className="invited-slide__subtitle">
+          {common.title.en}
         </p>
       </div>
 
-      <div className="relative z-10 my-auto" />
+      <div className="invited-slide__spacer" />
 
-      <div className="relative z-20 text-center pb-6">
+      <div className="invited-slide__next">
         <button
-          className="inline-flex items-center px-6 py-2.5 rounded-full bg-amberaccent hover:bg-amberwarm text-stone-950 font-bold text-xs uppercase tracking-wider transition shadow-2xl hover:scale-105"
+          className="invited-slide__next-button"
           onClick={onNext}
         >
           {s.nextLabel}

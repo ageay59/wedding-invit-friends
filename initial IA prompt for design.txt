@@ -157,10 +157,23 @@ last feedbacks, breadcrumbs are broken
 - Slide 8: Add english translation in italic with same size as french text like always 
 - Slide 9: find another icon this one is too squished / look like a potato
 
-- Slide 3: make castle adress text lines bigger 
-- Slide 7: number needs to be above a common to two language sides 
-- Slide 8: align content to bottom instead
+- Slide timeline: svg dotted line should touch bottom of page (overflow from container if needed if have margins)
+- Slide domain: svg dotted line should start from top of page (overflow from container if needed if have margins)
+- Slide domaine: make castle adress text lines bigger 
+- Slide domain: shimmer effect is too present, make it straight and vertical, and less visible (less halo effect / blur width)
+- Slide domain: adress google maps link should not be underligned
+- Slide hotel: make title as big as slide domaine One
+- Slide hotel: number needs to be above a common to two language sides 
+- Slide brunch: Date badge should be full / filled not transparent
+- Slide brunch: Add english translation in italic with same size as french text like always 
+- Slide brunch: align content to bottom instead
+- DesktopNavDots: breadcrumbs should be page centered vertically
+- DesktopNavDots: breadcrumbs left vertical delimiter / border should be removed
+- DesktopHero: monorgram should be slightly bigger and take primary website color
+- DesktopHero: background photo top should be aligne to top of the page (but still cover not fit)
 
+
+- Slide domaine: Make confetti animation wider and boxed to slide (so some reached borders and disappear behind)
 also on desktop put back breadcrumb where they where (left of slides and vertical, no glass background)
 
 
@@ -185,3 +198,29 @@ As a senior developer I need you to execute refactoring task in order for reposi
     - vocabulary should be adapter to business side (ex: couple should contain bride and groom rather than first and second)
     - file should be easily understandable and modifiable by a non technical person (ex: no need for dateLabel that can be extrapolated from date)
 Inspect all files as let me know all your implementation question before starting it
+
+Could oyu 
+
+
+- DesktopHero: remove bride and groom text, only keep monogram but make it 300% bigger (and thicker?) and move it to top left (with light margins)
+- Story slide: add a new text ("Notre histoire" in config) taking all height, starting from bottom right corner up to top right corner of slide, and with half opacity
+- Story slide: the timeline svg needs to be fixed there's a gap in the path between lille and viroflay anchors
+- Domaine slide: texts are too sparse, deport the heading down (15% ?) and make all adress lines bigger
+- Timeline slide: make all text 30% bigger 
+- Invited slide: deport title (both fr and en) section from top like domain slide
+- Form slide: space & gaps between form elements are a bit all over the place, please align it
+- Form slide: selector arrow are too stuck to right of box, please add margin / redesign correctly
+- Form slide: add two children options: 4 enfants and stop making them
+- Hotel slide: this content needs to be redesigned honestly, probably add glass effect (like the one used in countdown parts). Rather than having two sections make a single one with pictograms followed by text (phone, code, car, pay)
+- Hotel slide: at bottom of slide add two logos in public/logos, make them round and shadowed (coherent with app visual identity) and add a french text and english underneath ("Pour encore plus près, vous pouvez aussi regarder sur :" and "To get even closer, you can also look on :")
+- Brunch slide: make all texts bigger 
+
+New feedbacks to fix: 
+- Domain slide: arrow should still touch top despite title having been deported down
+- Domain slide: added "Notre histoire" text is WAY TOO SMALL, it should take all slide height and stick to slide right (negative margin to compensate slide margin)
+- Form slide: i liked the grid 50 50% format better for yes/no and adults/children parts, put it back (but keep current gap / spacing)
+- Form slide: add the "stop making them" last option for children selector
+- Hotel slide: make phone number bigger and main orange color
+- Hotel Slide: logos with texts must be at bottom, separated from top content and not within a card glass (therefore needs usual shadow)
+- Hotel Slide: you missed gites logo
+- Coundown slide: Make main text as big as previous slide (brunch) main text

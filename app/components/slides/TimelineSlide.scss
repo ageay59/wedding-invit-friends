@@ -1,0 +1,19 @@
+.timeline-slide {
+  &__heading { position: relative; z-index: 10; padding-top: 0.75rem; text-align: center; }
+  &__eyebrow { display: block; color: var(--color-accent); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.28em; text-transform: uppercase; text-shadow: var(--shadow-text); }
+  &__title { margin: 0.25rem 0 0; color: white; font-family: var(--font-philosopher), serif; font-size: clamp(2.45rem, 5.2vw, 3.9rem); text-shadow: var(--shadow-text); }
+  &__subtitle { margin: 0.125rem 0 0; color: var(--color-accent-light); font-family: var(--font-philosopher), serif; font-size: 1.17rem; font-style: italic; text-shadow: 0 1px 6px rgba(0, 0, 0, 0.7); }
+  &__events { position: relative; z-index: 10; width: 100%; max-width: 24rem; height: 62%; margin: auto; padding: 0 0.5rem; }
+  &__events-list { position: relative; display: flex; flex-direction: column; justify-content: space-between; height: 100%; padding-left: 2.5rem; }
+  &__line { position: absolute; top: -1.5rem; bottom: -2rem; left: 1rem; width: 2px; background: linear-gradient(to bottom, var(--color-accent), rgba(255, 255, 255, 0.4), var(--color-accent)); }
+  &__event { position: relative; display: flex; align-items: center; }
+  &__icon { position: absolute; left: -2.5rem; display: flex; align-items: center; justify-content: center; width: 2rem; height: 2rem; border: 1px solid rgba(255, 255, 255, 0.35); border-radius: 50%; background: rgba(27, 21, 18, 0.95); color: var(--color-accent); box-shadow: 0 6px 12px rgba(0, 0, 0, 0.35); &--highlight { border-color: var(--color-accent); background: var(--color-accent); color: var(--color-ink); } }
+  &__event-content { display: flex; align-items: center; width: 100%; padding-left: 0.5rem; }
+  &__time { flex: 0 0 4rem; padding-right: 0.5rem; text-align: left; }
+  &__time-fr { display: block; color: white; font-size: 1.04rem; font-weight: 700; line-height: 1; text-shadow: var(--shadow-text); }
+  &__time-en { display: block; color: var(--color-accent-light); font-family: monospace; font-size: 0.91rem; line-height: 1.25; text-shadow: 0 1px 6px rgba(0, 0, 0, 0.7); }
+  &__event-title { margin: 0; color: white; font-size: 1.014rem; line-height: 1.15; text-shadow: var(--shadow-text); }
+  &__event-subtitle { margin: 0; color: var(--color-accent-light); font-family: var(--font-philosopher), serif; font-size: 0.936rem; font-style: italic; line-height: 1.15; }
+  &__next { position: relative; z-index: 10; padding-bottom: 1rem; text-align: center; }
+  &__next-button { display: inline-flex; align-items: center; justify-content: center; padding: 0.65rem 1.5rem; border: 1px solid rgba(255, 255, 255, 0.4); border-radius: 999px; background: rgba(0, 0, 0, 0.4); color: white; font-size: 0.7rem; font-weight: 500; &:hover { color: var(--color-accent); } }
+}

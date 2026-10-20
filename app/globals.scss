@@ -1,0 +1,47 @@
+@use "./components/Countdown";
+@use "./components/EasterEgg";
+@use "./components/DesktopHero";
+@use "./components/DesktopNavDots";
+@use "./components/Form";
+@use "./components/Invitation";
+@use "./components/MobileNav";
+@use "./components/Monogram";
+@use "./components/slides/BrunchSlide";
+@use "./components/slides/CountdownSlide";
+@use "./components/slides/DomaineSlide";
+@use "./components/slides/HotelSlide";
+@use "./components/slides/InvitationSlide";
+@use "./components/slides/InvitedSlide";
+@use "./components/slides/RsvpSlide";
+@use "./components/slides/Slide";
+@use "./components/slides/StorySlide";
+@use "./components/slides/TimelineSlide";
+
+:root {
+	--color-night: #1b1512;
+	--color-ink: #271c17;
+	--color-white: #fff;
+	--color-muted: rgba(255, 255, 255, 0.78);
+	--color-accent: #e59b34;
+	--color-accent-light: #f3e6d3;
+	--color-border: rgba(255, 255, 255, 0.26);
+	--shadow-text: 0 2px 8px rgba(0, 0, 0, 0.75), 0 1px 3px rgba(0, 0, 0, 0.9);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html, body { height: 100%; }
+body { margin: 0; overflow: hidden; background: var(--color-night); color: var(--color-white); font-family: var(--font-montserrat), sans-serif; -webkit-font-smoothing: antialiased; }
+button, input, select, textarea { font: inherit; }
+button { cursor: pointer; }
+
+@keyframes subtle-jump { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+@keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(5px); } }
+@keyframes shimmer-sweep { 0% { transform: translateX(0); opacity: 0; } 20%, 80% { opacity: 0.3; } 100% { transform: translateX(350%); opacity: 0; } }
+@keyframes confetti-shower { 0% { transform: translate(0, 0) scale(0.4) rotate(0deg); opacity: 0; } 15% { opacity: 1; } 75% { opacity: 0.95; } 100% { transform: translate(var(--tx), var(--ty)) scale(1) rotate(var(--rot)); opacity: 0; } }
+
+.shimmer-active { animation: shimmer-sweep 1.8s cubic-bezier(0.25, 1, 0.5, 1) forwards; }
+
+::selection { background: #4a3522; color: #fff; }
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.2); }
+::-webkit-scrollbar-thumb { background: rgba(229, 155, 52, 0.4); border-radius: 4px; }

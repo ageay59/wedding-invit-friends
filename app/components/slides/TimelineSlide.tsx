@@ -22,74 +22,57 @@ const ICONS: Record<TimelineIcon, IconType> = {
 type TimelineSlideProps = { onNext: () => void };
 
 export default function TimelineSlide({ onNext }: TimelineSlideProps) {
-  const t = config.slides.timeline;
+  const { common, timeline: t } = config.slides.timeline;
 
   return (
     <Slide
       image={t.image}
-      alt={t.alt}
-      className="justify-between p-5 sm:p-7 pb-24 md:pb-6 bg-stone-900"
+      alt={common.title ?? "Déroulement"}
+      className="slide--timeline"
     >
-      <div className="relative z-10 pt-2 text-center">
-        <span className="text-[10px] tracking-[0.3em] uppercase text-amberaccent font-semibold block text-glow">
-          {t.eyebrow}
+      <div className="timeline-slide__heading">
+        <span className="timeline-slide__eyebrow">
+          {common.eyebrow}
         </span>
-        <h3 className="text-3xl font-philosopher text-white text-glow mt-0.5">{t.title}</h3>
-        <p className="text-sm font-philosopher italic text-champagne text-glow-subtle mt-0.5">
-          {t.subtitle}
-        </p>
+        <h3 className="timeline-slide__title">{common.title}</h3>
       </div>
 
-      <div className="relative z-10 my-auto h-[62%] flex flex-col justify-between max-w-sm mx-auto w-full px-2">
-        <div className="relative pl-10 h-full flex flex-col justify-between">
-          <div className="absolute left-4 top-3 bottom-3 w-0.5 bg-gradient-to-b from-amberaccent via-white/40 to-amberaccent" />
+      <div className="timeline-slide__events">
+        <div className="timeline-slide__events-list">
+          <div className="timeline-slide__line" />
           {t.events.map((event) => {
             const Icon = ICONS[event.icon];
             return (
-              <div key={event.time.fr} className="relative flex items-center">
+              <div key={event.time.fr} className="timeline-slide__event">
                 <div
-                  className={`absolute -left-10 w-8 h-8 rounded-full border flex items-center justify-center text-center shadow-lg ${
+                  className={`timeline-slide__icon ${
                     event.highlight
-                      ? "bg-amberaccent border-amberaccent"
-                      : "bg-stone-900/95 border-white/35"
+                      ? "timeline-slide__icon--highlight"
+                        : "timeline-slide__icon--default"
                   }`}
                 >
                   <Icon
-                    className={`text-[16px] ${
-                      event.highlight ? "text-stone-950 font-bold" : "text-amberaccent"
-                    }`}
+                    className="timeline-slide__icon-glyph"
                   />
                 </div>
-                <div className="flex items-center pl-2 w-full">
-                  <div className="w-16 flex-shrink-0 text-left pr-2">
+                <div className="timeline-slide__event-content">
+                  <div className="timeline-slide__time">
                     <span
-                      className={`text-[13px] font-bold block leading-none text-glow ${
-                        event.highlight ? "text-amberaccent" : "text-white"
-                      }`}
+                      className="timeline-slide__time-fr"
                     >
                       {event.time.fr}
                     </span>
                     <span
-                      className={`text-[11.5px] font-mono block leading-tight text-glow-subtle ${
-                        event.highlight ? "text-amberaccent font-semibold" : "text-champagne"
-                      }`}
+                      className="timeline-slide__time-en"
                     >
                       {event.time.en}
                     </span>
                   </div>
                   <div>
-                    <h4
-                      className={`text-xs sm:text-sm text-white text-glow leading-tight ${
-                        event.highlight ? "font-bold" : "font-semibold"
-                      }`}
-                    >
+                    <h4 className="timeline-slide__event-title">
                       {event.title.fr}
                     </h4>
-                    <p
-                      className={`text-[11.5px] font-philosopher italic leading-tight text-glow-subtle ${
-                        event.highlight ? "text-champagne" : "text-champagne/95"
-                      }`}
-                    >
+                    <p className="timeline-slide__event-subtitle">
                       {event.title.en}
                     </p>
                   </div>
@@ -100,9 +83,9 @@ export default function TimelineSlide({ onNext }: TimelineSlideProps) {
         </div>
       </div>
 
-      <div className="relative z-10 text-center pb-4">
+      <div className="timeline-slide__next">
         <button
-          className="inline-flex items-center px-4 py-1.5 rounded-full border border-white/40 bg-black/40 backdrop-blur-sm text-white hover:text-amberaccent text-[11px] font-medium transition"
+          className="timeline-slide__next-button"
           onClick={onNext}
         >
           {t.nextLabel}

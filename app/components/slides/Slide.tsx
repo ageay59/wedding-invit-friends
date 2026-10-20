@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import { forwardRef, type ReactNode } from "react";
 
 type SlideProps = {
   className: string;
@@ -7,19 +7,25 @@ type SlideProps = {
   children: ReactNode;
 };
 
-export default function Slide({ className, image, alt = "", children }: SlideProps) {
+const Slide = forwardRef<HTMLElement, SlideProps>(function Slide(
+  { className, image, alt = "", children },
+  ref,
+) {
   return (
     <section
-      className={`snap-slide relative w-full h-[100dvh] min-h-[100dvh] max-h-[100dvh] flex flex-col overflow-hidden snap-start snap-always ${className}`}
+      ref={ref}
+      className={`slide ${className}`}
     >
       {image && (
         <img
           alt={alt}
           src={image}
-          className="absolute inset-0 w-full h-full object-cover object-center filter contrast-105"
+          className="slide__image"
         />
       )}
       {children}
     </section>
   );
-}
+});
+
+export default Slide;

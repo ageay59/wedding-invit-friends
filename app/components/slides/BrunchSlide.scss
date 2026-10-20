@@ -1,0 +1,8 @@
+.brunch-slide {
+  &__content { position: relative; z-index: 10; width: 100%; max-width: 24rem; margin: auto auto 1rem; }
+  &__panel { padding: 1.5rem; text-align: center; }
+  &__date { display: inline-block; margin-bottom: 0.75rem; padding: 0.45rem 1.1rem; border: 1px solid var(--color-accent); border-radius: 999px; background: var(--color-accent); color: var(--color-ink); font-size: 0.88rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
+  &__title { margin: 0 0 0.65rem; color: white; font-family: var(--font-philosopher), serif; font-size: 2.45rem; text-shadow: var(--shadow-text); }
+  &__text { margin: 0; color: white; font-size: 1.014rem; line-height: 1.6; text-shadow: var(--shadow-text); & span { display: block; } }
+  &__text-en { font-style: italic; }
+}

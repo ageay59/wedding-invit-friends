@@ -1,0 +1,123 @@
+.rsvp-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  & > div { display: flex; flex-direction: column; gap: 0.50rem; }
+
+  & > &__attendance,
+  & > &__counts {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+  }
+
+  &__counts > div { min-width: 0; }
+
+  &__choice {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 0.75rem;
+    background: rgba(0, 0, 0, 0.6);
+    text-align: center;
+
+    &:hover { border-color: var(--color-accent); }
+  }
+
+  &__radio {
+    width: 0.875rem;
+    height: 0.875rem;
+    margin-right: 0.375rem;
+    accent-color: var(--color-accent);
+  }
+
+  &__choice-label { color: white; font-size: 0.68rem; }
+
+  &__label {
+    display: block;
+    color: var(--color-accent);
+    font-size: 0.625rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-shadow: var(--shadow-text);
+  }
+
+  &__field {
+    width: 100%;
+    min-height: 2.5rem;
+    padding: 0.45rem 2.25rem 0.45rem 0.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 0.75rem;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    font-size: 0.75rem;
+
+    &:is(select) { 
+      appearance: none; 
+      background-image: linear-gradient(45deg, transparent 44%, var(--color-white) 44%, var(--color-white) 56%, transparent 56%), linear-gradient(135deg, transparent 44%, var(--color-white) 44%, var(--color-white) 56%, transparent 56%); 
+      background-position: calc(100% - 0.95rem) 1.05rem, calc(100% - 0.7rem) 1.05rem; 
+      background-repeat: no-repeat; background-size: 0.3rem 0.3rem, 0.3rem 0.3rem; }
+
+    &:focus {
+      outline: 0;
+      border-color: var(--color-accent);
+    }
+  }
+
+  &__diet-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+  }
+
+  &__diet-tag {
+    padding: 0.125rem 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    font-size: 0.625rem;
+
+    &--selected {
+      border-color: var(--color-accent);
+      background: var(--color-accent);
+      color: var(--color-ink);
+      font-weight: 700;
+    }
+  }
+
+  &__message { min-height: 3rem; resize: vertical; }
+
+  &__submit {
+    width: 100%;
+    padding: 0.65rem;
+    border: 0;
+    border-radius: 0.75rem;
+    background: var(--color-accent);
+    color: var(--color-ink);
+    font-family: var(--font-philosopher), serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+  }
+
+  &__feedback {
+    margin: 0;
+    color: var(--color-accent-light);
+    font-size: 0.7rem;
+    text-align: center;
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.7);
+
+    &--error { color: #fecaca; }
+  }
+}

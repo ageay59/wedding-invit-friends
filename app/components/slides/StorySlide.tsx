@@ -1,19 +1,55 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import { config } from "@/config/config";
 import Slide from "./Slide";
 
-const STROKE = "rgba(255,255,255,0.95)";
+const TIMELINE_SRC = "/timeline.svg";
 
-const badgeBase = "inline-block rounded-full pill-badge font-philosopher shadow-xl pointer-events-auto";
-const badgeSmall = `${badgeBase} px-4 py-1 text-xs italic`;
-const badgeMajor = `${badgeBase} px-4 py-1.5 text-sm font-bold bg-black/75 border-amberaccent text-amberaccent`;
+type Position = { left: string; top: string };
+type Anchors = Record<string, Position>;
 
-type PlaceBadgeProps = { left: string; top: string; className: string; children: string };
+const fallbackAnchors: Anchors = {
+  dreux: { left: "26.98%", top: "2.72%" },
+  anywhere: { left: "72.98%", top: "2.72%" },
+  creapole: { left: "49.91%", top: "25.33%" },
+  shanghai: { left: "26.98%", top: "44.48%" },
+  paris: { left: "72.98%", top: "44.48%" },
+  lille: { left: "49.91%", top: "63.64%" },
+  viroflay: { left: "49.91%", top: "79.94%" },
+};
 
-function PlaceBadge({ left, top, className, children }: PlaceBadgeProps) {
+// Reads the invisible <circle data-anchor="..."> markers of the SVG and converts
+// them to percentages of its viewBox, so badges follow the image at any size.
+async function loadAnchors(): Promise<Anchors> {
+  const response = await fetch(TIMELINE_SRC);
+  if (!response.ok) throw new Error(`Unable to load ${TIMELINE_SRC}`);
+  const text = await response.text();
+  const svg = new DOMParser().parseFromString(text, "image/svg+xml").documentElement;
+  const [, , width, height] = (svg.getAttribute("viewBox") ?? "0 0 1 1").split(/\s+/).map(Number);
+  const anchors: Anchors = {};
+  svg.querySelectorAll("[data-anchor]").forEach((el) => {
+    const name = (el as SVGElement).dataset.anchor;
+    if (!name) return;
+    anchors[name] = {
+      left: `${(Number(el.getAttribute("cx")) / width) * 100}%`,
+      top: `${(Number(el.getAttribute("cy")) / height) * 100}%`,
+    };
+  });
+  return anchors;
+}
+
+const badgeBase = "story-slide__badge";
+const badgeSmall = `${badgeBase} story-slide__badge--small`;
+
+type PlaceBadgeProps = Readonly<{ position?: Position; className: string; children: string }>;
+
+function PlaceBadge({ position, className, children }: PlaceBadgeProps) {
+  if (!position) return null;
   return (
     <div
-      className="absolute -translate-x-1/2 -translate-y-1/2 pointer-events-none"
-      style={{ left, top }}
+      className="story-slide__place"
+      style={position}
     >
       <span className={className}>{children}</span>
     </div>
@@ -21,64 +57,61 @@ function PlaceBadge({ left, top, className, children }: PlaceBadgeProps) {
 }
 
 export default function StorySlide() {
-  const { image, alt, places } = config.slides.story;
+  const { story } = config.slides.story;
+  const { image, places } = story;
+  const [anchors, setAnchors] = useState<Anchors>(fallbackAnchors);
+
+  useEffect(() => {
+    let cancelled = false;
+    loadAnchors()
+      .then((result) => !cancelled && setAnchors(result))
+      .catch(() => undefined);
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   return (
     <Slide
       image={image}
-      alt={alt}
-      className="justify-between p-4 sm:p-6 pb-24 md:pb-6 bg-stone-900"
+      alt="Notre histoire"
+      className="slide--story"
     >
-      <div className="relative z-10 w-full h-full flex flex-col items-center justify-between py-2">
-        <div className="relative w-full h-full max-w-[360px] mx-auto">
-          <svg
-            className="absolute inset-0 w-full h-full pointer-events-none drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]"
-            fill="none"
-            preserveAspectRatio="none"
-            viewBox="0 0 1000 1590"
-          >
-            <g stroke={STROKE} strokeWidth={4.5} strokeLinecap="round" strokeLinejoin="round">
-              <path d="M 270 50 L 270 180 C 270 280 430 360 500 390" />
-              <path d="M 730 50 L 805 95 L 715 145 L 815 195 L 705 245 L 805 295 L 725 345 L 500 390" />
-              <path d="M 500 390 L 500 405" />
-              <path d="M 500 405 C 330 405 270 520 270 715 C 270 910 390 1020 500 1020" />
-              <path d="M 500 405 C 670 405 730 520 730 715 C 730 910 610 1020 500 1020" />
-              <path d="M 500 1020 L 500 1145" />
-              <path d="M 500 1145 L 500 1590" strokeDasharray="10 10" />
-            </g>
-            <g fill="#e59b34">
-              <circle cx="270" cy="50" r="5.5" />
-              <circle cx="730" cy="50" r="5.5" />
-              <circle cx="500" cy="405" r="7.5" />
-              <circle cx="270" cy="715" r="5.5" />
-              <circle cx="730" cy="715" r="5.5" />
-              <circle cx="500" cy="1020" r="7.5" />
-              <circle cx="500" cy="1145" r="7.5" />
-            </g>
-          </svg>
+      <div className="story-slide__content">
+        <div className="story-slide__title" aria-label={story.title}>
+          {Array.from(story.title).map((character, index) => (
+            <span key={`${character}-${index}`}>{character === " " ? "\u00a0" : character}</span>
+          ))}
+        </div>
+        <div className="story-slide__diagram">
+          <img
+            alt=""
+            aria-hidden="true"
+            className="story-slide__lines"
+            src={TIMELINE_SRC}
+          />
 
-          <PlaceBadge left="27%" top="3.1%" className={`${badgeSmall} font-bold text-white`}>
+          <PlaceBadge position={anchors.dreux} className={`${badgeSmall} story-slide__badge--dark`}>
             {places.dreux}
           </PlaceBadge>
-          <PlaceBadge left="73%" top="3.1%" className={`${badgeSmall} font-bold text-white`}>
+          <PlaceBadge position={anchors.anywhere} className={`${badgeSmall} story-slide__badge--dark`}>
             {places.anywhere}
           </PlaceBadge>
-          <PlaceBadge left="50%" top="25.5%" className={badgeMajor}>
+          <PlaceBadge position={anchors.creapole} className={`${badgeSmall} story-slide__badge--accent`}>
             {places.creapole}
           </PlaceBadge>
-          <PlaceBadge left="27%" top="45%" className={`${badgeSmall} font-medium text-white bg-black/75`}>
+          <PlaceBadge position={anchors.shanghai} className={`${badgeSmall} story-slide__badge--dark`}>
             {places.shanghai}
           </PlaceBadge>
-          <PlaceBadge left="73%" top="45%" className={`${badgeSmall} font-medium text-white bg-black/75`}>
+          <PlaceBadge position={anchors.paris} className={`${badgeSmall} story-slide__badge--dark`}>
             {places.paris}
           </PlaceBadge>
-          <PlaceBadge left="50%" top="64.1%" className={badgeMajor}>
+          <PlaceBadge position={anchors.lille} className={`${badgeSmall} story-slide__badge--accent`}>
             {places.lille}
           </PlaceBadge>
           <PlaceBadge
-            left="50%"
-            top="72%"
-            className={`${badgeBase} px-4 py-1.5 text-sm font-bold text-white bg-black/75`}
+            position={anchors.viroflay}
+            className={`${badgeSmall} story-slide__badge--accent`}
           >
             {places.viroflay}
           </PlaceBadge>

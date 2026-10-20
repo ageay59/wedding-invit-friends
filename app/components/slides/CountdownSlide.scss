@@ -1,0 +1,7 @@
+.countdown-slide {
+  &__content { position: relative; z-index: 10; width: 100%; max-width: 24rem; margin: auto auto 1rem; }
+  &__panel { padding: 1.5rem; text-align: center; }
+  &__title { margin: 0 0 0.75rem; color: white; font-family: var(--font-philosopher), serif; font-size: 2.45rem; text-shadow: var(--shadow-text); }
+  &__footer { padding-top: 0.25rem; border-top: 1px solid rgba(255, 255, 255, 0.2); }
+  &__tagline { margin: 0 0 0.75rem; color: var(--color-accent-light); font-family: var(--font-philosopher), serif; font-size: 1.75rem; font-style: italic; letter-spacing: 0.04em; text-shadow: var(--shadow-text); }
+}

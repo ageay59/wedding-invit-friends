@@ -1,0 +1,26 @@
+.story-slide {
+  &__content { position: relative; z-index: 10; display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; padding: 0.5rem 1rem 0; }
+  @media (min-width: 768px) { &__content { height: calc(100% + 1.5rem); margin-bottom: -1.5rem; } }
+  &__title { position: absolute; top: -0.5rem; right: -1rem; bottom: -0.5rem; display: flex; flex-direction: column; justify-content: space-between; color: white; font-family: var(--font-philosopher), serif; font-size: clamp(2rem, 7vw, 5rem); line-height: 1; opacity: 0.5; transform: rotate(180deg); }
+  &__title span { display: block; }
+  &__diagram { position: relative; width: 100%; height: 100%; max-width: 360px; }
+  &__lines { position: absolute; inset: 0; width: 100%; height: 100%; display: block; object-fit: fill; filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.85)); }
+  &__place { position: absolute; transform: translate(-50%, -50%); pointer-events: none; }
+
+  &__badge {
+    display: inline-block;
+    padding: 0.25rem 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    color: var(--color-white);
+    font-family: var(--font-philosopher), serif;
+    font-size: 0.75rem;
+    font-style: italic;
+    white-space: nowrap;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
+    background: rgba(0, 0, 0, 0.75);
+    font-weight: 700;
+
+    &--accent { border-color: var(--color-accent); color: var(--color-accent) }
+  }
+}
