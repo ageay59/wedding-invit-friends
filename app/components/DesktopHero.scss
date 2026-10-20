@@ -7,7 +7,7 @@
   background: var(--color-night);
 
   &__image {
-    position: absolute;
+    position: relative;
     inset: 0;
     width: 100%;
     height: 100%;
@@ -16,10 +16,18 @@
     filter: contrast(1.05);
   }
 
+  &__border {
+    position: absolute;
+    inset: var(--spacing-s);
+    z-index: 10;
+    border: 1px solid rgb(255 255 255 / 65%);
+    pointer-events: none;
+  }
+
   &__names {
     position: absolute;
-    top: var(--spacing-m);
-    left: var(--spacing-m);
+    top: 1.2rem;
+    left: -0.8rem;
     z-index: 20;
     pointer-events: none;
   }

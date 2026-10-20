@@ -19,13 +19,13 @@
       transform 0.2s ease;
 
     &:hover {
-      border-color: var(--color-accent);
-      color: var(--color-accent);
+      border-color: var(--color-accent-hover);
+      color: var(--color-accent-hover);
       transform: scale(1.1);
     }
 
     &:focus-visible {
-      outline: 2px solid var(--color-accent);
+      outline: 2px solid var(--color-accent-hover);
       outline-offset: 3px;
     }
   }

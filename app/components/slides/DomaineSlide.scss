@@ -1,7 +1,7 @@
 .domaine-slide {
   &__heading {
     flex-shrink: 0;
-    padding-top: 15%;
+    padding-top: 3rem;
 
     .slide-header__title-en {
       margin-top: var(--spacing-s);
@@ -86,7 +86,7 @@
     text-transform: uppercase;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
     &:hover {
-      background: #d97706;
+      background: var(--color-accent-hover);
     }
   }
   &__maps-icon {

@@ -70,7 +70,7 @@
     animation: subtle-jump 1.8s infinite ease-in-out;
 
     &:hover {
-      background: var(--color-accent);
+      background: var(--color-accent-hover);
       color: var(--color-ink);
     }
   }
@@ -125,7 +125,7 @@
     background: rgba(0, 0, 0, 0.3);
 
     &:hover {
-      border-color: var(--color-accent);
+      border-color: var(--color-accent-hover);
     }
   }
 

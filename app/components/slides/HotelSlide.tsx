@@ -1,5 +1,5 @@
 import { config } from "@/config/config";
-import { MdDirectionsCar, MdKey, MdLocalPhone, MdPayments } from "react-icons/md";
+import { MdDirectionsCar, MdKey, MdLocalPhone, MdOutlineNavigation, MdPayments } from "react-icons/md";
 import Slide from "./Slide";
 import SlideHeader from "./SlideHeader";
 
@@ -17,7 +17,18 @@ export default function HotelSlide() {
 
       <div className="hotel-slide__content">
         <div className="hotel-slide__panel">
-          <h3 className="hotel-slide__name">{h.name}</h3>
+          <div className="hotel-slide__name-row">
+            <h3 className="hotel-slide__name">{h.name}</h3>
+            <a
+              className="hotel-slide__maps-link"
+              href={h.mapsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Open ${h.name} in Google Maps`}
+            >
+              <MdOutlineNavigation />
+            </a>
+          </div>
           <div className="hotel-slide__facts">
             <div className="hotel-slide__fact"><MdLocalPhone /><a href={phoneHref}>{h.phone}</a></div>
             <div className="hotel-slide__fact"><MdKey /><span>{h.codeLabel.fr}<small>{h.codeLabel.en}</small> <strong>{h.code}</strong></span></div>

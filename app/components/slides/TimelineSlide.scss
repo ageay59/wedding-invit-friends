@@ -107,7 +107,7 @@
     border: 1px solid rgba(255, 255, 255, 0.4);
     border-radius: 999px;
     background: rgba(0, 0, 0, 0.4);
-    color: white;
+    color: var(--color-muted);
     font-size: var(--font-size-xs);
     font-weight: 500;
     &:hover {

@@ -201,8 +201,9 @@ export const config = {
         en: "Hotel",
       } as Bilingual,
       hotel: {
-        name: "Hôtel Le confort",
+        name: "Le Confort",
         image: "/photos/slides/07.jpg",
+        mapsUrl: "https://www.google.com/maps/place/Comfort+Hotel+Evreux/@49.0052758,1.1424487,17z/data=!4m10!3m9!1s0x47e14724ae97d4b9:0xf738a552ef4ef648!5m3!1s2026-10-25!4m1!1i2!8m2!3d49.0052723!4d1.1450236!16s%2Fg%2F1tdndjnw?entry=ttu&g_ep=EgoyMDI2MTAxNC4wIKXMDSoASAFQAw%3D%3D",
         phone: "+337859526",
         code: "MARIAGE CROBE",
         codeLabel: {

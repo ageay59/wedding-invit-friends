@@ -20,8 +20,26 @@
     text-align: center;
   }
   &__name {
-    margin: 0 0 var(--spacing-m);
+    margin: 0;
     font-size: var(--font-size-l);
+  }
+  &__name-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-s);
+    margin-bottom: var(--spacing-m);
+  }
+  &__maps-link {
+    display: inline-flex;
+    align-items: center;
+    color: var(--color-accent);
+    font-size: calc(var(--font-size-m) * 1.5);
+    text-decoration: none;
+    &:hover,
+    &:focus-visible {
+      color: var(--color-accent-hover);
+    }
   }
   &__facts {
     display: grid;

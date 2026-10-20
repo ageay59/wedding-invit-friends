@@ -12,6 +12,7 @@ export default function DesktopHero({ dots }: { dots: React.ReactNode }) {
         src={image}
         className="desktop-hero__image"
       />
+      <div className="desktop-hero__border" aria-hidden="true" />
       <div className="desktop-hero__names" aria-label={`${bride} & ${groom}`}>
         <Monogram className="desktop-hero__monogram" />
       </div>
