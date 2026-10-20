@@ -9,6 +9,7 @@
   overflow: hidden;
   scroll-snap-align: start;
   scroll-snap-stop: always;
+  padding: var(--spacing-l) calc(var(--spacing-l) + var(--spacing-s));
 
   & > :not(.slide__image):not(.invitation-slide__backgrounds) {
     z-index: 10;
@@ -33,11 +34,5 @@
 @media (max-width: 767px) {
   .slide {
     padding-bottom: calc(var(--spacing-l) * 3);
-  }
-}
-
-@media (min-width: 768px) {
-  .slide {
-    padding: var(--spacing-l) calc(var(--spacing-l) + var(--spacing-s));
   }
 }

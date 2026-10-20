@@ -164,4 +164,17 @@
       color: #fecaca;
     }
   }
+
+  &__success {
+    margin: 0;
+    color: white;
+    font-size: var(--font-size-s);
+    line-height: 1.4;
+    text-align: center;
+    text-shadow: var(--shadow-text);
+
+    & em {
+      color: var(--color-accent-light);
+    }
+  }
 }

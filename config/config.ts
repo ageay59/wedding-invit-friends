@@ -75,15 +75,15 @@ export const config = {
 
   // One entry per slide, in display order (labels feed the dots and the mobile bar)
   nav: [
-    { label: "Bienvenue" },
-    { label: "Histoire" },
-    { label: "Lieu" },
-    { label: "Planning" },
+    { label: "Welcome" },
+    { label: "Story" },
+    { label: "Place" },
+    { label: "Schedule" },
     { label: "Invite" },
     { label: "RSVP" },
     { label: "Hotel" },
     { label: "Brunch" },
-    { label: "Countdown" },
+    { label: "Woof" },
   ],
 
   slides: {
@@ -189,8 +189,10 @@ export const config = {
           "Allergies précises, chansons ou un mot doux... \nAnything else intereseting ?",
         submit: "Confirmer ma réponse",
         sending: "Envoi...",
-        success:
-          "Merci infiniment pour votre confirmation ! Nous avons hâte de célébrer le 15 Mai 2027 à vos côtés.",
+        success: {
+          fr: "Merci infiniment pour votre confirmation ! Nous avons hâte de célébrer le 15 Mai 2027 à vos côtés.",
+          en: "Thank you so much for confirming! We can't wait to celebrate with you on May 15, 2027.",
+        } as Bilingual,
         error: "Une erreur est survenue, merci de réessayer.",
       },
     },
@@ -203,7 +205,8 @@ export const config = {
       hotel: {
         name: "Le Confort",
         image: "/photos/slides/07.jpg",
-        mapsUrl: "https://www.google.com/maps/place/Comfort+Hotel+Evreux/@49.0052758,1.1424487,17z/data=!4m10!3m9!1s0x47e14724ae97d4b9:0xf738a552ef4ef648!5m3!1s2026-10-25!4m1!1i2!8m2!3d49.0052723!4d1.1450236!16s%2Fg%2F1tdndjnw?entry=ttu&g_ep=EgoyMDI2MTAxNC4wIKXMDSoASAFQAw%3D%3D",
+        mapsUrl:
+          "https://www.google.com/maps/place/Comfort+Hotel+Evreux/@49.0052758,1.1424487,17z/data=!4m10!3m9!1s0x47e14724ae97d4b9:0xf738a552ef4ef648!5m3!1s2026-10-25!4m1!1i2!8m2!3d49.0052723!4d1.1450236!16s%2Fg%2F1tdndjnw?entry=ttu&g_ep=EgoyMDI2MTAxNC4wIKXMDSoASAFQAw%3D%3D",
         phone: "+337859526",
         code: "MARIAGE CROBE",
         codeLabel: {
