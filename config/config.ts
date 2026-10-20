@@ -1,11 +1,5 @@
 export type Bilingual = { fr: string; en: string };
 
-export type SlideCommon = {
-  eyebrow?: string;
-  title?: string;
-  subtitle?: string;
-};
-
 export type TimelineIcon =
   | "car"
   | "door"
@@ -94,7 +88,6 @@ export const config = {
 
   slides: {
     invitation: {
-      common: {},
       invitation: {
         images: [
           "/photos/slides/02.jpg",
@@ -111,7 +104,6 @@ export const config = {
     },
 
     story: {
-      common: {},
       story: {
         title: "NOTRE HISTOIRE",
         image: "/photos/slides/02.jpg",
@@ -128,11 +120,9 @@ export const config = {
     },
 
     domaine: {
-      common: {
-        eyebrow: "Le Mariage • The Wedding",
-        title: "Domaine de Coulonge",
-      },
+      title: { en: "The Wedding", fr: "Le Mariage" } as Bilingual,
       domaine: {
+        title: "Domaine de Coulonge",
         image: "/photos/slides/03.jpg",
         addressLine1: "2 route de Damville",
         addressLine2: "27240 Sylvains-les-Moulins",
@@ -144,25 +134,19 @@ export const config = {
     },
 
     timeline: {
-      common: {
-        eyebrow: "Le jour J",
-        title: "Timeline",
-      },
+      title: { fr: "Déroulement", en: "Timeline" } as Bilingual,
       timeline: {
         image: "/photos/slides/04.jpg",
-        nextLabel: "Tu es invité • You are invited ! ↓",
+        nextLabel: "Invitation ↓",
         events: timelineEvents,
       },
     },
 
     invited: {
-      common: {
-        title: {
-          fr: "Tu es invité !",
-          en: "You are invited !",
-        } as Bilingual,
-        subtitle: "You are warmly invited",
-      },
+      title: {
+        fr: "Tu es invité !",
+        en: "You are invited !",
+      } as Bilingual,
       invited: {
         image: "/photos/slides/05.jpg",
         nextLabel: "Ta réponse • Your answer ↓",
@@ -170,7 +154,7 @@ export const config = {
     },
 
     rsvp: {
-      common: { eyebrow: "RSVP", title: "La Réponse" },
+      title: { fr: "Ta Réponse", en: "RSVP" } as Bilingual,
       rsvp: {
         image: "/photos/slides/06.jpg",
         form: { name: "wedding-rsvp", action: "/forms/wedding-rsvp.html" },
@@ -212,11 +196,15 @@ export const config = {
     },
 
     hotel: {
-      common: { eyebrow: "Séjour • Lodging", title: "Hôtel Le confort" },
+      title: {
+        fr: "Hébergement",
+        en: "Hotel",
+      } as Bilingual,
       hotel: {
+        name: "Hôtel Le confort",
         image: "/photos/slides/07.jpg",
         phone: "+337859526",
-        code: "MARIAGE2027",
+        code: "MARIAGE CROBE",
         codeLabel: {
           fr: "Code à annoncer :",
           en: "Booking code:",
@@ -226,7 +214,7 @@ export const config = {
           en: "15/18 min by car.",
         } as Bilingual,
         payment: {
-          fr: "Paiement directement sur place.",
+          fr: "Paiement sur place.",
           en: "Pay upon arrival on site.",
         } as Bilingual,
         help: {
@@ -266,7 +254,7 @@ export const config = {
     },
 
     countdown: {
-      common: { title: "Le Grand Jour Approche" },
+      common: { title: "The big day is coming !" },
       countdown: {
         image: "/photos/slides/09.jpg",
         units: {

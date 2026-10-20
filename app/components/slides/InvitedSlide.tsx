@@ -1,6 +1,7 @@
 import { useMemo, type CSSProperties } from "react";
 import { config } from "@/config/config";
 import Slide from "./Slide";
+import SlideHeader from "./SlideHeader";
 
 type Particle = {
   width: number;
@@ -33,14 +34,14 @@ function makeParticles(count = 90): Particle[] {
 type InvitedSlideProps = { onNext: () => void; cannonKey: number };
 
 export default function InvitedSlide({ onNext, cannonKey }: InvitedSlideProps) {
-  const { common, invited: s } = config.slides.invited;
+  const { title, invited: s } = config.slides.invited;
   // Particles are random, so they are only generated after a burst is triggered on the client
   const particles = useMemo(() => (cannonKey > 0 ? makeParticles() : []), [cannonKey]);
 
   return (
     <Slide
       image={s.image}
-      alt={common.title.fr}
+      alt={title.fr}
       className="slide--invited"
     >
       <div className="invited-slide__confetti">
@@ -65,12 +66,7 @@ export default function InvitedSlide({ onNext, cannonKey }: InvitedSlideProps) {
         </div>
       </div>
 
-      <div className="invited-slide__heading">
-        <h3 className="invited-slide__title">{common.title.fr}</h3>
-        <p className="invited-slide__subtitle">
-          {common.title.en}
-        </p>
-      </div>
+      <SlideHeader title={title} />
 
       <div className="invited-slide__spacer" />
 

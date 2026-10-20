@@ -1,11 +1,37 @@
 .countdown {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 0.5rem;
-  margin-bottom: 1rem;
+  gap: var(--spacing-s);
+  margin-bottom: var(--spacing-m);
 
-  &__unit { padding: 0.625rem 0.25rem; border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 1rem; background: rgba(0, 0, 0, 0.6); &--accent { .countdown__value { color: var(--color-accent); } } }
-  &__easter-eggs { display: flex; grid-column: 1 / -1; justify-content: center; gap: 0.75rem; }
-  &__value { display: block; color: white; font-family: var(--font-philosopher), serif; font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; text-shadow: var(--shadow-text); }
-  &__label { color: rgba(255, 255, 255, 0.8); font-size: 0.56rem; letter-spacing: 0.08em; text-transform: uppercase; }
+  &__unit {
+    padding: var(--spacing-s);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 1rem;
+    background: rgba(0, 0, 0, 0.6);
+    &--accent {
+      .countdown__value {
+        color: var(--color-accent);
+      }
+    }
+  }
+  &__easter-eggs {
+    display: flex;
+    grid-column: 1 / -1;
+    justify-content: center;
+    gap: calc(var(--spacing-s) * 1.5);
+  }
+  &__value {
+    display: block;
+    color: white;
+    font-size: clamp(var(--font-size-m), 3vw, var(--font-size-l));
+    font-weight: 700;
+    text-shadow: var(--shadow-text);
+  }
+  &__label {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: var(--font-size-xs);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
 }

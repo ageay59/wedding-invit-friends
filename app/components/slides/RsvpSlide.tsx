@@ -1,22 +1,18 @@
 import { config } from "@/config/config";
 import Form from "../Form";
 import Slide from "./Slide";
+import SlideHeader from "./SlideHeader";
 
 export default function RsvpSlide() {
-  const { common, rsvp: r } = config.slides.rsvp;
+  const { title, rsvp: r } = config.slides.rsvp;
 
   return (
     <Slide
       image={r.image}
-      alt={common.title ?? "RSVP"}
+      alt={title.fr}
       className="slide--rsvp"
     >
-      <div className="rsvp-slide__heading">
-        <span className="rsvp-slide__eyebrow">
-          {common.eyebrow}
-        </span>
-        <h3 className="rsvp-slide__title">{common.title}</h3>
-      </div>
+      <SlideHeader title={title} />
       <div className="rsvp-slide__form-wrap">
         <div className="rsvp-slide__form-panel">
           <Form />

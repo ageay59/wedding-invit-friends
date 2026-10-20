@@ -9,6 +9,7 @@ import {
 } from "react-icons/md";
 import { config, type TimelineIcon } from "@/config/config";
 import Slide from "./Slide";
+import SlideHeader from "./SlideHeader";
 
 const ICONS: Record<TimelineIcon, IconType> = {
   car: MdOutlineDirectionsCar,
@@ -22,20 +23,15 @@ const ICONS: Record<TimelineIcon, IconType> = {
 type TimelineSlideProps = { onNext: () => void };
 
 export default function TimelineSlide({ onNext }: TimelineSlideProps) {
-  const { common, timeline: t } = config.slides.timeline;
+  const { title, timeline: t } = config.slides.timeline;
 
   return (
     <Slide
       image={t.image}
-      alt={common.title ?? "Déroulement"}
+      alt={title.fr}
       className="slide--timeline"
     >
-      <div className="timeline-slide__heading">
-        <span className="timeline-slide__eyebrow">
-          {common.eyebrow}
-        </span>
-        <h3 className="timeline-slide__title">{common.title}</h3>
-      </div>
+      <SlideHeader title={title} />
 
       <div className="timeline-slide__events">
         <div className="timeline-slide__events-list">

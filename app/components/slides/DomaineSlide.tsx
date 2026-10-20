@@ -1,16 +1,17 @@
 import { MdOutlineNavigation } from "react-icons/md";
 import { config } from "@/config/config";
 import Slide from "./Slide";
+import SlideHeader from "./SlideHeader";
 
 type DomaineSlideProps = { shimmerKey: number };
 
 export default function DomaineSlide({ shimmerKey }: DomaineSlideProps) {
-  const { common, domaine: d } = config.slides.domaine;
+  const { title, domaine: d } = config.slides.domaine;
 
   return (
     <Slide
       image={d.image}
-      alt={common.title ?? "Domaine"}
+      alt="Domaine"
       className="slide--domaine"
     >
       <div className="domaine-slide__shimmer">
@@ -32,22 +33,17 @@ export default function DomaineSlide({ shimmerKey }: DomaineSlideProps) {
           className="domaine-slide__arrow"
           fill="none"
           stroke="currentColor"
-          viewBox="0 0 32 48"
+          viewBox="0 0 32 64"
         >
-          <line  x1="16" x2="16" y1="0" y2="34" />
-          <polyline points="8,26 16,36 24,26" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" />
+          <line x1="16" x2="16" y1="0" y2="62" />
+          <polyline points="8,50 16,64 24,50" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" />
         </svg>
-        <span className="domaine-slide__eyebrow">
-          {common.eyebrow}
-        </span>
-        <h3 className="domaine-slide__title">
-          {common.title}
-        </h3>
-        <div className="domaine-slide__divider" />
+        <SlideHeader title={title} />
       </div>
 
       <div className="domaine-slide__details">
         <div className="domaine-slide__details-content">
+          <h2 className="domaine-slide__title">{d.title}</h2>
           <p className="domaine-slide__address">
             <span className="domaine-slide__address-strong">{d.addressLine1}</span>
             <br />

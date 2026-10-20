@@ -98,6 +98,17 @@ This project is open to contributions. Feel free to fork it, improve it, or subm
 
 ## Customization
 
+Slide content is configured in [config/config.ts](./config/config.ts). Section
+headings use a root-level `title: { fr: "...", en: "..." }` on shared-header slide entries,
+with no `common` wrapper, eyebrow, or subtitle. These bilingual titles are rendered
+by [SlideHeader](./app/components/slides/SlideHeader.tsx), with no top spacing or
+arrow by default. Only Domaine adds an arrow and top spacing through its own heading
+wrapper and styles. Invited overrides the header with a top margin of four times
+`--spacing-l` and sets both title languages to `--font-size-xl`. The opening slide
+and Story retain their custom titles; Brunch and Countdown retain their existing
+`common` config and custom title rendering.
+Slide-specific content remains in its existing nested object.
+
 You can customize the following via environment variables:
 
 - Wedding Name, Dates, Countdown

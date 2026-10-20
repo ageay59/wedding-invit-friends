@@ -9,16 +9,6 @@ const TIMELINE_SRC = "/timeline.svg";
 type Position = { left: string; top: string };
 type Anchors = Record<string, Position>;
 
-const fallbackAnchors: Anchors = {
-  dreux: { left: "26.98%", top: "2.72%" },
-  anywhere: { left: "72.98%", top: "2.72%" },
-  creapole: { left: "49.91%", top: "25.33%" },
-  shanghai: { left: "26.98%", top: "44.48%" },
-  paris: { left: "72.98%", top: "44.48%" },
-  lille: { left: "49.91%", top: "63.64%" },
-  viroflay: { left: "49.91%", top: "79.94%" },
-};
-
 // Reads the invisible <circle data-anchor="..."> markers of the SVG and converts
 // them to percentages of its viewBox, so badges follow the image at any size.
 async function loadAnchors(): Promise<Anchors> {
@@ -26,14 +16,16 @@ async function loadAnchors(): Promise<Anchors> {
   if (!response.ok) throw new Error(`Unable to load ${TIMELINE_SRC}`);
   const text = await response.text();
   const svg = new DOMParser().parseFromString(text, "image/svg+xml").documentElement;
-  const [, , width, height] = (svg.getAttribute("viewBox") ?? "0 0 1 1").split(/\s+/).map(Number);
+  const [minX, minY, width, height] = (svg.getAttribute("viewBox") ?? "0 0 1 1")
+    .split(/\s+/)
+    .map(Number);
   const anchors: Anchors = {};
   svg.querySelectorAll("[data-anchor]").forEach((el) => {
     const name = (el as SVGElement).dataset.anchor;
     if (!name) return;
     anchors[name] = {
-      left: `${(Number(el.getAttribute("cx")) / width) * 100}%`,
-      top: `${(Number(el.getAttribute("cy")) / height) * 100}%`,
+      left: `${((Number(el.getAttribute("cx")) - minX) / width) * 100}%`,
+      top: `${((Number(el.getAttribute("cy")) - minY) / height) * 100}%`,
     };
   });
   return anchors;
@@ -42,7 +34,11 @@ async function loadAnchors(): Promise<Anchors> {
 const badgeBase = "story-slide__badge";
 const badgeSmall = `${badgeBase} story-slide__badge--small`;
 
-type PlaceBadgeProps = Readonly<{ position?: Position; className: string; children: string }>;
+type PlaceBadgeProps = Readonly<{
+  position?: Position;
+  className: string;
+  children: string;
+}>;
 
 function PlaceBadge({ position, className, children }: PlaceBadgeProps) {
   if (!position) return null;
@@ -51,7 +47,14 @@ function PlaceBadge({ position, className, children }: PlaceBadgeProps) {
       className="story-slide__place"
       style={position}
     >
-      <span className={className}>{children}</span>
+      <span
+        aria-label={children}
+        className="story-slide__badge-flip"
+        role="img"
+        tabIndex={0}
+      >
+        <span className={className}>{children}</span>
+      </span>
     </div>
   );
 }
@@ -59,7 +62,7 @@ function PlaceBadge({ position, className, children }: PlaceBadgeProps) {
 export default function StorySlide() {
   const { story } = config.slides.story;
   const { image, places } = story;
-  const [anchors, setAnchors] = useState<Anchors>(fallbackAnchors);
+  const [anchors, setAnchors] = useState<Anchors>({});
 
   useEffect(() => {
     let cancelled = false;

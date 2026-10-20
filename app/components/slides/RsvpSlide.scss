@@ -1,7 +1,12 @@
 .rsvp-slide {
-  &__heading { position: relative; z-index: 10; padding-top: 0.75rem; margin-bottom: 0.5rem; text-align: center; }
-  &__eyebrow { display: block; color: var(--color-accent); font-size: 0.65rem; font-weight: 600; letter-spacing: 0.28em; text-transform: uppercase; text-shadow: var(--shadow-text); }
-  &__title { margin: 0.25rem 0 0; color: white; font-family: var(--font-philosopher), serif; font-size: clamp(1.75rem, 3vw, 2.4rem); text-shadow: var(--shadow-text); }
-  &__form-wrap { position: relative; z-index: 10; width: 100%; max-width: 24rem; margin: 0 auto; }
-  &__form-panel { padding: 1rem; }
+  &__form-wrap {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    max-width: 24rem;
+    margin: 0 auto;
+  }
+  &__form-panel {
+    padding: var(--spacing-m) 0;
+  }
 }

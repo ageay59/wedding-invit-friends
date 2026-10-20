@@ -18,8 +18,8 @@
 
   &__names {
     position: absolute;
-    top: 1.5rem;
-    left: 1.5rem;
+    top: var(--spacing-m);
+    left: var(--spacing-m);
     z-index: 20;
     pointer-events: none;
   }
@@ -33,9 +33,13 @@
 }
 
 @media (max-width: 767px) {
-  .desktop-hero { display: none; }
+  .desktop-hero {
+    display: none;
+  }
 }
 
 @media (min-width: 768px) and (max-width: 1100px) {
-  .desktop-hero { width: 50%; }
+  .desktop-hero {
+    width: 50%;
+  }
 }

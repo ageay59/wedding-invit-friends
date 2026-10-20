@@ -14,34 +14,119 @@
 @use "./components/slides/InvitedSlide";
 @use "./components/slides/RsvpSlide";
 @use "./components/slides/Slide";
+@use "./components/slides/SlideHeader";
 @use "./components/slides/StorySlide";
 @use "./components/slides/TimelineSlide";
 
 :root {
-	--color-night: #1b1512;
-	--color-ink: #271c17;
-	--color-white: #fff;
-	--color-muted: rgba(255, 255, 255, 0.78);
-	--color-accent: #e59b34;
-	--color-accent-light: #f3e6d3;
-	--color-border: rgba(255, 255, 255, 0.26);
-	--shadow-text: 0 2px 8px rgba(0, 0, 0, 0.75), 0 1px 3px rgba(0, 0, 0, 0.9);
+  --color-night: #1b1512;
+  --color-ink: #271c17;
+  --color-white: #fff;
+  --color-muted: rgba(255, 255, 255, 0.78);
+  --color-accent: #e59b34;
+  --color-accent-light: #f3e6d3;
+  --color-border: rgba(255, 255, 255, 0.26);
+  --shadow-text: 0 2px 8px rgba(0, 0, 0, 0.75), 0 1px 3px rgba(0, 0, 0, 0.9);
+  --font-size-xs: 0.65rem;
+  --font-size-s: 0.85rem;
+  --font-size-m: 1rem;
+  --font-size-l: 2rem;
+  --font-size-xl: 3rem;
+  --spacing-s: 0.5rem;
+  --spacing-m: 1rem;
+  --spacing-l: 1.5rem;
 }
 
-*, *::before, *::after { box-sizing: border-box; }
-html, body { height: 100%; }
-body { margin: 0; overflow: hidden; background: var(--color-night); color: var(--color-white); font-family: var(--font-montserrat), sans-serif; -webkit-font-smoothing: antialiased; }
-button, input, select, textarea { font: inherit; }
-button { cursor: pointer; }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  overflow: hidden;
+  background: var(--color-night);
+  color: var(--color-white);
+  -webkit-font-smoothing: antialiased;
+}
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+button {
+  cursor: pointer;
+}
 
-@keyframes subtle-jump { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
-@keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(5px); } }
-@keyframes shimmer-sweep { 0% { transform: translateX(0); opacity: 0; } 20%, 80% { opacity: 0.3; } 100% { transform: translateX(350%); opacity: 0; } }
-@keyframes confetti-shower { 0% { transform: translate(0, 0) scale(0.4) rotate(0deg); opacity: 0; } 15% { opacity: 1; } 75% { opacity: 0.95; } 100% { transform: translate(var(--tx), var(--ty)) scale(1) rotate(var(--rot)); opacity: 0; } }
+@keyframes subtle-jump {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(5px);
+  }
+}
+@keyframes shimmer-sweep {
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  20%,
+  80% {
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateX(350%);
+    opacity: 0;
+  }
+}
+@keyframes confetti-shower {
+  0% {
+    transform: translate(0, 0) scale(0.4) rotate(0deg);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 0.95;
+  }
+  100% {
+    transform: translate(var(--tx), var(--ty)) scale(1) rotate(var(--rot));
+    opacity: 0;
+  }
+}
 
-.shimmer-active { animation: shimmer-sweep 1.8s cubic-bezier(0.25, 1, 0.5, 1) forwards; }
+.shimmer-active {
+  animation: shimmer-sweep 1.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
 
-::selection { background: #4a3522; color: #fff; }
-::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.2); }
-::-webkit-scrollbar-thumb { background: rgba(229, 155, 52, 0.4); border-radius: 4px; }
+::selection {
+  background: #4a3522;
+  color: #fff;
+}
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(229, 155, 52, 0.4);
+  border-radius: 4px;
+}

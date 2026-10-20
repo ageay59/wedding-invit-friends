@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import { Montserrat } from "next/font/google";
 import "./globals.scss";
 import { config } from "@/config/config";
 
@@ -11,14 +10,6 @@ const philosopher = localFont({
     { path: "./fonts/Philosopher-Bold.ttf", weight: "700", style: "normal" },
     { path: "./fonts/Philosopher-BoldItalic.ttf", weight: "700", style: "italic" },
   ],
-  variable: "--font-philosopher",
-  display: "swap",
-});
-
-const montserrat = Montserrat({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-montserrat",
   display: "swap",
 });
 
@@ -33,12 +24,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang={config.site.lang}>
-      <body
-        className={`${philosopher.variable} ${montserrat.variable}`}
-      >
-        {children}
-      </body>
+    <html lang={config.site.lang} className={philosopher.className}>
+      <body>{children}</body>
     </html>
   );
 }

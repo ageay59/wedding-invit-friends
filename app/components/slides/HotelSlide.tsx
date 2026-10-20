@@ -1,26 +1,23 @@
 import { config } from "@/config/config";
 import { MdDirectionsCar, MdKey, MdLocalPhone, MdPayments } from "react-icons/md";
 import Slide from "./Slide";
+import SlideHeader from "./SlideHeader";
 
 export default function HotelSlide() {
-  const { common, hotel: h } = config.slides.hotel;
+  const { title, hotel: h } = config.slides.hotel;
   const phoneHref = `tel:${h.phone}`;
 
   return (
     <Slide
       image={h.image}
-      alt={common.title ?? "Hôtel"}
+      alt={title.fr}
       className="slide--hotel"
     >
-      <div className="hotel-slide__heading">
-        <span className="hotel-slide__eyebrow">
-          {common.eyebrow}
-        </span>
-        <h3 className="hotel-slide__title">{common.title}</h3>
-      </div>
+      <SlideHeader title={title} />
 
       <div className="hotel-slide__content">
         <div className="hotel-slide__panel">
+          <h3 className="hotel-slide__name">{h.name}</h3>
           <div className="hotel-slide__facts">
             <div className="hotel-slide__fact"><MdLocalPhone /><a href={phoneHref}>{h.phone}</a></div>
             <div className="hotel-slide__fact"><MdKey /><span>{h.codeLabel.fr}<small>{h.codeLabel.en}</small> <strong>{h.code}</strong></span></div>

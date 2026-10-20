@@ -10,7 +10,9 @@
   scroll-snap-align: start;
   scroll-snap-stop: always;
 
-  & > :not(.slide__image):not(.invitation-slide__backgrounds) { z-index: 10; }
+  & > :not(.slide__image):not(.invitation-slide__backgrounds) {
+    z-index: 10;
+  }
 
   &__image {
     position: absolute;
@@ -24,8 +26,18 @@
   }
 }
 
-.text-glow { text-shadow: var(--shadow-text); }
+.text-glow {
+  text-shadow: var(--shadow-text);
+}
+
+@media (max-width: 767px) {
+  .slide {
+    padding-bottom: calc(var(--spacing-l) * 3);
+  }
+}
 
 @media (min-width: 768px) {
-  .slide { padding: 1.5rem 2rem; }
+  .slide {
+    padding: var(--spacing-l) calc(var(--spacing-l) + var(--spacing-s));
+  }
 }
