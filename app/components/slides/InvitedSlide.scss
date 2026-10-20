@@ -45,8 +45,7 @@
   }
   &__confetti-source {
     position: absolute;
-    top: 0;
-    left: 50%;
+    inset: 0 auto auto 50%;
     width: 0;
     height: 0;
     transform: translateX(-50%);

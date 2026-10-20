@@ -36,7 +36,7 @@ export default function DomaineSlide({ shimmerKey }: DomaineSlideProps) {
           viewBox="0 0 32 64"
         >
           <line x1="16" x2="16" y1="0" y2="62" />
-          <polyline points="8,50 16,64 24,50" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" />
+          <polyline points="8,50 16,64 24,50" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" />
         </svg>
         <SlideHeader title={title} />
       </div>

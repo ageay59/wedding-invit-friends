@@ -1,19 +1,20 @@
 import { config } from "@/config/config";
 
 type MobileNavProps = {
+  visible: boolean;
   activeIndex: number;
   onSelect: (index: number) => void;
 };
 
 const dotClass = "mobile-nav__dot";
 
-export default function MobileNav({ activeIndex, onSelect }: MobileNavProps) {
+export default function MobileNav({ visible, activeIndex, onSelect }: MobileNavProps) {
   const labels = config.nav.map((n) => n.label);
   const hasPrev = activeIndex > 0;
   const hasNext = activeIndex < labels.length - 1;
 
   return (
-    <div className="mobile-nav">
+    <div className={`mobile-nav ${visible ? "mobile-nav--visible" : ""}`}>
       <div className="mobile-nav__side mobile-nav__side--previous">
         {labels.slice(0, activeIndex).map((label, i) => (
           <button key={label} aria-label={label} className={dotClass} onClick={() => onSelect(i)} />

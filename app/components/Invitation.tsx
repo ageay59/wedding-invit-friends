@@ -34,7 +34,6 @@ export default function Invitation() {
   };
 
   const openInvitation = () => {
-    audioRef.current?.play().catch(() => {});
     scrollToSlide(1);
   };
 
@@ -86,8 +85,12 @@ export default function Invitation() {
         <CountdownSlide />
       </div>
 
-      <MobileNav activeIndex={activeIndex} onSelect={scrollToSlide} />
-      <audio ref={audioRef} src={config.music.src} preload="auto" />
+      <MobileNav
+        visible={dotsVisible}
+        activeIndex={activeIndex}
+        onSelect={scrollToSlide}
+      />
+      <audio ref={audioRef} src={config.music.src} preload="none" />
     </div>
   );
 }

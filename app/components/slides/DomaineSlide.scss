@@ -94,3 +94,9 @@
     font-size: var(--font-size-m);
   }
 }
+
+@media (max-width: 767px) {
+  .domaine-slide__arrow {
+    width: 3.5rem;
+  }
+}
