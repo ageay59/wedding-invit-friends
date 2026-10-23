@@ -45,7 +45,7 @@ export default function InvitationSlide({ onNext }: InvitationSlideProps) {
           </button>
         </div>
         <h2 className="invitation-slide__title">
-          {config.couple.bride} &amp; {config.couple.groom}
+          {config.couple.bride} <br /> &amp; {config.couple.groom}
         </h2>
         <div className="invitation-slide__divider" />
         <p className="invitation-slide__date">

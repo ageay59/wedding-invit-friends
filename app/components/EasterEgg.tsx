@@ -211,16 +211,19 @@ export default function EasterEgg({
 
   return (
     <>
-      <button
-        ref={buttonRef}
-        type="button"
-        className={["easter-egg__button", className].filter(Boolean).join(" ")}
-        onClick={handleClick}
-        aria-label={label}
-        title={label}
-      >
-        <FaPaw className="easter-egg__icon" aria-hidden="true" />
-      </button>
+      <div className="easter-egg__prompt">
+        <button
+          ref={buttonRef}
+          type="button"
+          className={["easter-egg__button", className].filter(Boolean).join(" ")}
+          onClick={handleClick}
+          aria-label={label}
+          title={label}
+        >
+          <FaPaw className="easter-egg__icon" aria-hidden="true" />
+        </button>
+        <span className="easter-egg__label">{label}</span>
+      </div>
       {mounted &&
         containerRef?.current &&
         createPortal(

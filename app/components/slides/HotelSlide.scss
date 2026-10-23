@@ -14,14 +14,13 @@
     padding: var(--spacing-m);
     border: 1px solid rgba(255, 255, 255, 0.24);
     border-radius: 1.25rem;
-    background: rgba(27, 21, 18, 0.52);
-    box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.28);
-    backdrop-filter: blur(12px);
+    background: rgba(27, 21, 18, 0.2);
+    backdrop-filter: blur(3px);
     text-align: center;
   }
   &__name {
     margin: 0;
-    font-size: var(--font-size-l);
+    font-size: 1.5rem;
   }
   &__name-row {
     display: flex;
@@ -33,12 +32,29 @@
   &__maps-link {
     display: inline-flex;
     align-items: center;
-    color: var(--color-accent);
-    font-size: calc(var(--font-size-m) * 1.5);
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    margin-left: var(--spacing-m);
+    border-radius: 50%;
+    background: var(--color-accent);
+    color: black;
+    font-size: 1.25rem;
     text-decoration: none;
+    box-shadow: 0 0.35rem 0.9rem rgba(0, 0, 0, 0.25);
+    transition:
+      transform 160ms ease,
+      background-color 160ms ease,
+      color 160ms ease;
     &:hover,
     &:focus-visible {
-      color: var(--color-accent-hover);
+      background: var(--color-accent-hover);
+      color: black;
+      transform: translateY(-2px);
+    }
+    &:focus-visible {
+      outline: 2px solid white;
+      outline-offset: 3px;
     }
   }
   &__facts {

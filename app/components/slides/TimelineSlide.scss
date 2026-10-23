@@ -18,16 +18,11 @@
   }
   &__line {
     position: absolute;
-    top: calc(var(--spacing-l) * -1);
-    bottom: calc(var(--spacing-l) * -1.3333);
+    top: var(--spacing-s);
+    bottom: calc(var(--spacing-l) * -1.5);
     left: var(--spacing-m);
     width: 2px;
-    background: linear-gradient(
-      to bottom,
-      var(--color-accent),
-      rgba(255, 255, 255, 0.4),
-      var(--color-accent)
-    );
+    background: var(--color-accent);
   }
   &__event {
     position: relative;
@@ -46,7 +41,6 @@
     border-radius: 50%;
     background: rgba(27, 21, 18, 0.95);
     color: var(--color-accent);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.35);
     &--highlight {
       border-color: var(--color-accent);
       background: var(--color-accent);
@@ -90,7 +84,6 @@
     margin: 0;
     color: var(--color-accent-light);
     font-size: var(--font-size-m);
-    font-style: italic;
     line-height: 1.15;
   }
   &__next {

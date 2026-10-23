@@ -1,7 +1,8 @@
 import { config } from "@/config/config";
-import { MdDirectionsCar, MdKey, MdLocalPhone, MdOutlineNavigation, MdPayments } from "react-icons/md";
+import { MdDirectionsCar, MdKey, MdLocalPhone, MdPayments } from "react-icons/md";
 import Slide from "./Slide";
 import SlideHeader from "./SlideHeader";
+import { SiGooglemaps } from "react-icons/si";
 
 export default function HotelSlide() {
   const { title, hotel: h } = config.slides.hotel;
@@ -26,7 +27,7 @@ export default function HotelSlide() {
               rel="noopener noreferrer"
               aria-label={`Open ${h.name} in Google Maps`}
             >
-              <MdOutlineNavigation />
+              <SiGooglemaps />
             </a>
           </div>
           <div className="hotel-slide__facts">
@@ -46,6 +47,7 @@ export default function HotelSlide() {
               </a>
             ))}
           </div>
+          <p className="hotel-slide__platform-label">{h.help2.fr}</p>
         </div>
       </div>
     </Slide>

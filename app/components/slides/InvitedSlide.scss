@@ -3,7 +3,9 @@
     margin-top: calc(var(--spacing-l) * 4);
   }
 
-  .slide-header__title-en,
+  .slide-header__title-en {
+    font-size: var(--font-size-l);
+  }
   .slide-header__title-fr {
     font-size: var(--font-size-xl);
   }
