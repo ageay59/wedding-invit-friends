@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="robots" content="noindex" />
+    <title>Netlify form mirror - brunch-rsvp</title>
+  </head>
+  <body>
+    <form
+      name="brunch-rsvp"
+      method="POST"
+      data-netlify="true"
+      data-netlify-honeypot="bot-field"
+      hidden
+    >
+      <input type="hidden" name="form-name" value="brunch-rsvp" />
+
+      <p>
+        <label for="brunch-bot-field">Don't fill this out</label>
+        <input id="brunch-bot-field" name="bot-field" type="text" />
+      </p>
+
+      <fieldset>
+        <legend>Attending</legend>
+        <label for="brunch-attending-yes">Yes</label>
+        <input id="brunch-attending-yes" name="attending" type="radio" value="yes" />
+        <label for="brunch-attending-no">No</label>
+        <input id="brunch-attending-no" name="attending" type="radio" value="no" />
+      </fieldset>
+
+      <label for="brunch-name">Name</label>
+      <input id="brunch-name" name="name" type="text" />
+    </form>
+  </body>
+</html>

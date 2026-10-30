@@ -33,6 +33,7 @@ async function loadAnchors(): Promise<Anchors> {
 
 const badgeBase = "story-slide__badge";
 const badgeSmall = `${badgeBase} story-slide__badge--small`;
+const HEART_COUNT = 5;
 
 type PlaceBadgeProps = Readonly<{
   position?: Position;
@@ -41,6 +42,12 @@ type PlaceBadgeProps = Readonly<{
 }>;
 
 function PlaceBadge({ position, className, children }: PlaceBadgeProps) {
+  const tone = className.includes("--accent") ? "accent" : "dark";
+  const [playCount, setPlayCount] = useState(0);
+  // Changing keys remounts the animated nodes, which restarts their animations.
+  const handleClick = () => {
+    if (globalThis.matchMedia("(hover: none)").matches) setPlayCount((count) => count + 1);
+  };
   if (!position) return null;
   return (
     <div
@@ -49,11 +56,18 @@ function PlaceBadge({ position, className, children }: PlaceBadgeProps) {
     >
       <span
         aria-label={children}
-        className="story-slide__badge-flip"
+        className={`story-slide__badge-flip story-slide__badge-flip--${tone}${playCount > 0 ? " story-slide__badge-flip--tapped" : ""}`}
+        onClick={handleClick}
         role="img"
         tabIndex={0}
       >
-        <span className={className}>{children}</span>
+        {tone === "accent" &&
+          Array.from({ length: HEART_COUNT }, (_, index) => (
+            <span key={`${playCount}-${index}`} aria-hidden="true" className="story-slide__heart">
+              ♥
+            </span>
+          ))}
+        <span key={`badge-${playCount}`} className={className}>{children}</span>
       </span>
     </div>
   );

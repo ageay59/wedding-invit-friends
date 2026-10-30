@@ -2,11 +2,17 @@
 
 import { useState } from "react";
 import { config } from "@/config/config";
-
-type Status = "idle" | "pending" | "success" | "error";
+import { useFormSubmit } from "../lib/useFormSubmit";
+import FormStage from "./FormStage";
+import {
+  AttendanceField,
+  Honeypot,
+  labelClass,
+  NameField,
+  SubmitButton,
+} from "./FormFields";
 
 const fieldClass = "rsvp-form__field";
-const labelClass = "rsvp-form__label";
 
 function countOptions(max: number, one: string, many: string, min: number) {
   return Array.from({ length: max - min + 1 }, (_, i) => {
@@ -17,163 +23,117 @@ function countOptions(max: number, one: string, many: string, min: number) {
 
 export default function Form() {
   const r = config.slides.rsvp.rsvp;
-  const [status, setStatus] = useState<Status>("idle");
+  const { status, submit, reset } = useFormSubmit(r.form.action);
   const [diet, setDiet] = useState<string[]>([]);
   const [name, setName] = useState("");
 
   const toggleDiet = (tag: string) =>
     setDiet((current) =>
-      current.includes(tag) ? current.filter((t) => t !== tag) : [...current, tag]
+      current.includes(tag)
+        ? current.filter((t) => t !== tag)
+        : [...current, tag],
     );
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    setStatus("pending");
-    try {
-      const formData = new FormData(event.currentTarget);
-      const res = await fetch(r.form.action, {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(
-          Array.from(formData.entries()) as [string, string][]
-        ).toString(),
-      });
-      setStatus(res.ok ? "success" : "error");
-    } catch {
-      setStatus("error");
-    }
+  const handleReplay = () => {
+    setName("");
+    setDiet([]);
+    reset();
   };
 
   return (
-    <form name={r.form.name} className="rsvp-form" onSubmit={handleSubmit}>
-      <input type="hidden" name="form-name" value={r.form.name} />
-      <input type="hidden" name="diet" value={diet.join(", ")} />
-      {status !== "success" && (
-        <>
-          <p hidden>
-            <label>
-              Don&apos;t fill this out: <input name="bot-field" />
-            </label>
-          </p>
+    <form name={r.form.name} className="rsvp-form" onSubmit={submit}>
+      <FormStage
+        status={status}
+        animal={r.animal}
+        onReplay={handleReplay}
+        success={
+          <>
+            {r.success.fr}
+            <br />
+            <em>{r.success.en}</em>
+          </>
+        }
+      >
+        <input type="hidden" name="form-name" value={r.form.name} />
+        <input type="hidden" name="diet" value={diet.join(", ")} />
+        <Honeypot />
 
-          <div className="rsvp-form__attendance">
-            <label className="rsvp-form__choice">
-              <input
-                defaultChecked
-                className="rsvp-form__radio"
-                name="attending"
-                type="radio"
-                value="yes"
-              />
-              <span className="rsvp-form__choice-label">{r.attending.yes}</span>
-            </label>
-            <label className="rsvp-form__choice">
-              <input
-                className="rsvp-form__radio"
-                name="attending"
-                type="radio"
-                value="no"
-              />
-              <span className="rsvp-form__choice-label">{r.attending.no}</span>
-            </label>
-          </div>
+        <AttendanceField labels={r.attending} />
 
-          <div>
-            <label className={labelClass} htmlFor="rsvp-name">
-              {r.nameLabel}
-            </label>
-            <input
-              id="rsvp-name"
-              name="you"
-              required
-              type="text"
-              value={name}
-              onChange={(event) => setName(event.target.value)}
-              placeholder={r.namePlaceholder}
-              className={fieldClass}
-            />
-          </div>
-          <div className="rsvp-form__counts">
-            <div>
-              <select
-                id="rsvp-adults"
-                name="adults"
-                defaultValue={r.adults.default}
-                className={fieldClass}
-              >
-                {countOptions(r.adults.max, r.adults.one, r.adults.many, 1).map((o) => (
-                  <option key={o.value} value={o.value}>
-                    {o.label}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <div>
-              <select
-                id="rsvp-children"
-                name="children"
-                defaultValue={r.children.default}
-                className={fieldClass}
-              >
-                {countOptions(r.children.max, r.children.one, r.children.many, 0).map((o) => (
-                  <option key={o.value} value={o.value}>
-                    {o.label}
-                  </option>
-                ))}
-                <option value="stop">{r.children.stop}</option>
-              </select>
-            </div>
-          </div>
+        <NameField
+          label={r.nameLabel}
+          placeholder={r.namePlaceholder}
+          emptyLabel={r.nameEmpty}
+          value={name}
+          onChange={setName}
+        />
 
-          <div>
-            <label className={labelClass}>{r.goodToKnowLabel}</label>
-            <div className="rsvp-form__diet-tags">
-              {r.dietTags.map((tag) => {
-                const selected = diet.includes(tag);
-                return (
-                  <button
-                    key={tag}
-                    type="button"
-                    aria-pressed={selected}
-                    onClick={() => toggleDiet(tag)}
-                    className={`rsvp-form__diet-tag ${
-                      selected
-                        ? "rsvp-form__diet-tag--selected"
-                        : ""
-                    }`}
-                  >
-                    {tag}
-                  </button>
-                );
-              })}
-            </div>
-            <textarea
-              name="message"
-              rows={2}
-              placeholder={r.messagePlaceholder}
-              className={`${fieldClass} rsvp-form__message`}
-            />
-          </div>
-
-          <button
-            type="submit"
-            disabled={status === "pending" || !name.trim()}
-            className="rsvp-form__submit"
+        <div className="rsvp-form__children">
+          <select
+            id="rsvp-children"
+            name="children"
+            defaultValue={r.children.default}
+            className={fieldClass}
           >
-            {status === "pending" ? r.sending : r.submit}
-          </button>
-        </>
-      )}
+            {countOptions(
+              r.children.max,
+              r.children.one,
+              r.children.many,
+              0,
+            ).map((o) => (
+              <option key={o.value} value={o.value}>
+                {o.label}
+              </option>
+            ))}
+            <option value="stop">{r.children.stop}</option>
+          </select>
+          <p className="rsvp-form__note">{r.babysitterNote}</p>
+        </div>
 
-      {status === "success" && (
-        <output className="rsvp-form__success">
-          {r.success.fr}
-          <br />
-          <em>{r.success.en}</em>
-        </output>
-      )}
+        <div>
+          <label className={labelClass} htmlFor="rsvp-message">
+            {r.goodToKnowLabel}
+          </label>
+          <div className="rsvp-form__diet-tags">
+            {r.dietTags.map((tag) => {
+              const selected = diet.includes(tag);
+              return (
+                <button
+                  key={tag}
+                  type="button"
+                  aria-pressed={selected}
+                  onClick={() => toggleDiet(tag)}
+                  className={`rsvp-form__diet-tag ${
+                    selected ? "rsvp-form__diet-tag--selected" : ""
+                  }`}
+                >
+                  {tag}
+                </button>
+              );
+            })}
+          </div>
+          <textarea
+            id="rsvp-message"
+            name="message"
+            rows={2}
+            placeholder={r.messagePlaceholder}
+            className={`${fieldClass} rsvp-form__message`}
+          />
+        </div>
+
+        <SubmitButton
+          status={status}
+          disabled={!name}
+          label={r.submit}
+          sendingLabel={r.sending}
+        />
+      </FormStage>
+
       {status === "error" && (
-        <p className="rsvp-form__feedback rsvp-form__feedback--error" role="alert">
+        <p
+          className="rsvp-form__feedback rsvp-form__feedback--error"
+          role="alert"
+        >
           {r.error}
         </p>
       )}

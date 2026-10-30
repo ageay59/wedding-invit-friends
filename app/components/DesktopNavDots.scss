@@ -28,7 +28,13 @@
       transform 0.2s,
       background 0.2s;
 
-    &:hover,
+    @media (hover: hover) {
+      &:hover {
+        background: var(--color-accent-hover);
+        transform: scale(1.25);
+      }
+    }
+
     &--active {
       background: var(--color-accent-hover);
       transform: scale(1.25);

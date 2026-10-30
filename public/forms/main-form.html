@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="robots" content="noindex" />
+    <title>Netlify form mirror - wedding-rsvp</title>
+  </head>
+  <body>
+    <form
+      name="wedding-rsvp"
+      method="POST"
+      data-netlify="true"
+      data-netlify-honeypot="bot-field"
+      hidden
+    >
+      <input type="hidden" name="form-name" value="wedding-rsvp" />
+
+      <p>
+        <label for="main-bot-field">Don't fill this out</label>
+        <input id="main-bot-field" name="bot-field" type="text" />
+      </p>
+
+      <fieldset>
+        <legend>Attending</legend>
+        <label for="main-attending-yes">Yes</label>
+        <input id="main-attending-yes" name="attending" type="radio" value="yes" />
+        <label for="main-attending-no">No</label>
+        <input id="main-attending-no" name="attending" type="radio" value="no" />
+      </fieldset>
+
+      <label for="main-name">Name</label>
+      <input id="main-name" name="name" type="text" />
+
+      <label for="main-children">Children</label>
+      <input id="main-children" name="children" type="text" />
+
+      <label for="main-diet">Diet</label>
+      <input id="main-diet" name="diet" type="text" />
+
+      <label for="main-message">Message</label>
+      <textarea id="main-message" name="message"></textarea>
+    </form>
+  </body>
+</html>

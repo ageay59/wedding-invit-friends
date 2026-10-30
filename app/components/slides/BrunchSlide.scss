@@ -42,5 +42,10 @@
   }
   &__text-en {
     font-style: italic;
+    color: var(--color-muted);
+  }
+  &__form {
+    margin-top: var(--spacing-m);
+    text-align: left;
   }
 }

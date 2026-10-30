@@ -14,14 +14,32 @@
     padding: var(--spacing-m);
     border: 1px solid rgba(255, 255, 255, 0.24);
     border-radius: 1.25rem;
-    background: rgba(27, 21, 18, 0.52);
-    box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.28);
-    backdrop-filter: blur(12px);
+    background: rgba(27, 21, 18, 0.2);
+    backdrop-filter: blur(3px);
     text-align: center;
   }
   &__name {
-    margin: 0;
-    font-size: var(--font-size-l);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: calc(var(--spacing-s) + 0.15rem) var(--spacing-l);
+    border-radius: 999px;
+    background: var(--color-accent);
+    color: var(--color-ink);
+    font-size: var(--font-size-xs);
+    font-weight: bolder;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    text-transform: uppercase;
+    @media (hover: hover) {
+      &:hover {
+        background: var(--color-accent-hover);
+      }
+    }
+  }
+  &__maps-icon {
+    margin-right: calc(var(--spacing-s) * 0.75);
+    font-size: var(--font-size-m);
   }
   &__name-row {
     display: flex;
@@ -30,20 +48,9 @@
     gap: var(--spacing-s);
     margin-bottom: var(--spacing-m);
   }
-  &__maps-link {
-    display: inline-flex;
-    align-items: center;
-    color: var(--color-accent);
-    font-size: calc(var(--font-size-m) * 1.5);
-    text-decoration: none;
-    &:hover,
-    &:focus-visible {
-      color: var(--color-accent-hover);
-    }
-  }
   &__facts {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    display: flex;
+    flex-direction: column;
     gap: calc(var(--spacing-s) * 1.7) calc(var(--spacing-s) * 1.5);
     text-align: left;
   }
@@ -91,7 +98,6 @@
   }
   &__platform-label {
     margin-bottom: var(--spacing-m);
-    color: white;
     font-size: var(--font-size-s);
     line-height: 1.4;
     text-shadow: var(--shadow-text);

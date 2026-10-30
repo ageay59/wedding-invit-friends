@@ -1,4 +1,5 @@
 import { config } from "@/config/config";
+import BrunchForm from "../BrunchForm";
 import Slide from "./Slide";
 
 export default function BrunchSlide() {
@@ -20,6 +21,9 @@ export default function BrunchSlide() {
             <span>{b.text.fr}</span>
             <span className="brunch-slide__text-en">{b.text.en}</span>
           </p>
+          <div className="brunch-slide__form">
+            <BrunchForm />
+          </div>
         </div>
       </div>
     </Slide>

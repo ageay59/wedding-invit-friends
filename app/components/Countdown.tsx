@@ -21,7 +21,7 @@ type CountdownProps = {
 };
 
 export default function Countdown({ animationContainerRef }: CountdownProps) {
-  const { units } = config.slides.countdown.countdown;
+  const { units, easterEggLabel } = config.slides.countdown.countdown;
   // Null until mounted so server and client markup match
   const [timeLeft, setTimeLeft] = useState<TimeLeft | null>(null);
 
@@ -62,7 +62,7 @@ export default function Countdown({ animationContainerRef }: CountdownProps) {
         <span className="countdown__label">{units.seconds}</span>
       </div>
       <div className="countdown__easter-eggs">
-        <EasterEgg label="Dog paw" containerRef={animationContainerRef} />
+        <EasterEgg label={easterEggLabel} containerRef={animationContainerRef} />
       </div>
     </div>
   );

@@ -1,23 +1,44 @@
 .rsvp-form {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-s);
+  gap: var(--spacing-m);
 
-  & > div {
+  &__body {
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-s);
+    gap: var(--spacing-m);
+
+    & > div {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-s);
+    }
+
+    & > .rsvp-form__attendance {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--spacing-s);
+    }
+
+    > div.rsvp-form__children {
+      display: grid;
+      grid-template-columns: 50% 50%;
+      gap: var(--spacing-s);
+      margin-top: calc(var(--spacing-s) * -1);
+    }
   }
 
-  & > &__attendance,
-  & > &__counts {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--spacing-s);
-  }
+  &__note {
+    margin: 0;
+    font-size: var(--font-size-s);
+    letter-spacing: 0.04em;
+    text-shadow: var(--shadow-text);
 
-  &__counts > div {
-    min-width: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   &__choice {
@@ -30,8 +51,10 @@
     background: rgba(0, 0, 0, 0.6);
     text-align: center;
 
-    &:hover {
-      border-color: var(--color-accent-hover);
+    @media (hover: hover) {
+      &:hover {
+        border-color: var(--color-accent-hover);
+      }
     }
   }
 
@@ -119,7 +142,13 @@
     // text-transform: uppercase;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
 
-    &:hover,
+    @media (hover: hover) {
+      &:hover {
+        background: var(--color-accent-hover);
+        color: var(--color-ink);
+      }
+    }
+
     &--selected {
       background: var(--color-accent);
       color: var(--color-ink);
@@ -135,7 +164,7 @@
     width: 100%;
     padding: calc(var(--spacing-s) + 0.15rem);
     border: 0;
-    border-radius: 0.75rem;
+    border-radius: 2rem;
     background: var(--color-accent);
     color: var(--color-ink);
     font-size: var(--font-size-s);
@@ -143,8 +172,10 @@
     letter-spacing: 0.12em;
     text-transform: uppercase;
 
-    &:not(:disabled):hover {
-      background: var(--color-accent-hover);
+    @media (hover: hover) {
+      &:not(:disabled):hover {
+        background: var(--color-accent-hover);
+      }
     }
 
     &:disabled {

@@ -19,40 +19,59 @@ const timelineEvents: TimelineEvent[] = [
   {
     icon: "car",
     time: { fr: "14h", en: "2pm" },
-    title: { fr: "Arrivée des invités", en: "Welcome & Arrival" },
+    title: { fr: "Arrivée au lieu", en: "Arrival" },
     highlight: false,
   },
   {
     icon: "door",
-    time: { fr: "14h30", en: "2:30pm" },
-    title: { fr: "Entrée des mariés", en: "Couple's Grand Entrance" },
+    time: { fr: "14h30", en: "2.30pm" },
+    title: { fr: "Arrivée du marié", en: "Groom's arrival" },
     highlight: false,
   },
   {
     icon: "heart",
     time: { fr: "15h", en: "3pm" },
-    title: { fr: "Cérémonie Laïque", en: "Wedding Ceremony & Vows" },
+    title: { fr: "Cérémonie laïque", en: "Wedding ceremony" },
     highlight: true,
   },
   {
     icon: "camera",
     time: { fr: "16h", en: "4pm" },
-    title: { fr: "Photos & Rafraîchissements", en: "Photos & Refreshments" },
+    title: { fr: "Photos & Miams", en: "Photos & Bites" },
     highlight: false,
   },
   {
     icon: "drink",
     time: { fr: "18h", en: "6pm" },
-    title: { fr: "Vin d'honneur", en: "Reception Cocktail & Canapés" },
+    title: { fr: "Vin d'honneur", en: "Cocktail" },
     highlight: false,
   },
   {
     icon: "party",
-    time: { fr: "20h30", en: "8:30pm" },
-    title: { fr: "Dîner & Soirée", en: "Dinner & Dancing" },
+    time: { fr: "20h30", en: "8.30pm" },
+    title: { fr: "A table !", en: "Let's eat (again)!" },
     highlight: true,
   },
 ];
+
+const attendingLabels = {
+  yes: "Yes, avec joie",
+  no: "Non...",
+};
+
+const nameFieldLabels = {
+  nameLabel: "Toi/Vous/You ♡",
+  namePlaceholder: "Cherche ton nom • Search your name",
+  nameEmpty: "Aucun résultat • No match",
+};
+
+// scale: size multiplier (default 1); flip: mirror the image so the head faces the form
+export type AnimalSweep = {
+  src: string;
+  from: "left" | "right";
+  scale?: number;
+  flip?: boolean;
+};
 
 export const config = {
   site: {
@@ -134,7 +153,7 @@ export const config = {
     },
 
     timeline: {
-      title: { fr: "Déroulement", en: "Timeline" } as Bilingual,
+      title: { fr: "Programme", en: "Timeline" } as Bilingual,
       timeline: {
         image: "/photos/slides/04.jpg",
         nextLabel: "Invitation ↓",
@@ -157,19 +176,14 @@ export const config = {
       title: { fr: "Ta Réponse", en: "RSVP" } as Bilingual,
       rsvp: {
         image: "/photos/slides/06.jpg",
-        form: { name: "wedding-rsvp", action: "/forms/wedding-rsvp.html" },
-        attending: {
-          yes: "Oui, avec joie / Yes",
-          no: "Non 😢 / Nope",
-        },
-        nameLabel: "Toi/Vous/You ❤️ ",
-        namePlaceholder: "Ex: Camille & Julien",
-        adults: {
-          one: "Adulte",
-          many: "Adultes",
-          max: 4,
-          default: 2,
-        },
+        form: { name: "wedding-rsvp", action: "/forms/main-form.html" },
+        animal: {
+          src: "/photos/animals/dog/01.png",
+          from: "right",
+        } as AnimalSweep,
+        attending: attendingLabels,
+        ...nameFieldLabels,
+        babysitterNote: "* Babysitter du cocktail aux gâteaux",
         children: {
           one: "Enfant",
           many: "Enfants",
@@ -178,20 +192,13 @@ export const config = {
           stop: "Stop making them",
         },
         goodToKnowLabel: "Good to savoir",
-        dietTags: [
-          "Végétarien",
-          "Vegan",
-          "Sans gluten",
-          "Sans lactose",
-          "Encore + casse pied",
-        ],
-        messagePlaceholder:
-          "Allergies précises, chansons ou un mot doux... \nAnything else intereseting ?",
-        submit: "Confirmer ma réponse",
+        dietTags: ["Végétarien", "Sans gluten", "Allergies"],
+        messagePlaceholder: "Plus d'infos ? \nAnything else ?",
+        submit: "Let's go",
         sending: "Envoi...",
         success: {
-          fr: "Merci infiniment pour votre confirmation ! Nous avons hâte de célébrer le 15 Mai 2027 à vos côtés.",
-          en: "Thank you so much for confirming! We can't wait to celebrate with you on May 15, 2027.",
+          fr: "Merci infiniment pour votre confirmation ! Nous avons hâte de célébrer notre union à vos côtés.",
+          en: "Thank you so much for confirming! We can't wait to celebrate with you on May 15th, 2027.",
         } as Bilingual,
         error: "Une erreur est survenue, merci de réessayer.",
       },
@@ -203,11 +210,11 @@ export const config = {
         en: "Hotel",
       } as Bilingual,
       hotel: {
-        name: "Le Confort",
+        name: "Comfort Hotel Evreux",
         image: "/photos/slides/07.jpg",
         mapsUrl:
           "https://www.google.com/maps/place/Comfort+Hotel+Evreux/@49.0052758,1.1424487,17z/data=!4m10!3m9!1s0x47e14724ae97d4b9:0xf738a552ef4ef648!5m3!1s2026-10-25!4m1!1i2!8m2!3d49.0052723!4d1.1450236!16s%2Fg%2F1tdndjnw?entry=ttu&g_ep=EgoyMDI2MTAxNC4wIKXMDSoASAFQAw%3D%3D",
-        phone: "+337859526",
+        phone: "+33232230707",
         code: "MARIAGE CROBE",
         codeLabel: {
           fr: "Code à annoncer :",
@@ -225,6 +232,9 @@ export const config = {
           fr: "Si besoin d'aide pour réserver, contactez-nous directement.",
           en: "If you cannot call France, let us know, we will do it for you.",
         } as Bilingual,
+        help2: {
+          fr: 'Ou taper: "Chambre d\'hôtes" sur Maps',
+        },
         platforms: [
           {
             name: "Airbnb",
@@ -254,11 +264,28 @@ export const config = {
           fr: "Ne manquez pas le brunch du lendemain !",
           en: "Don't miss the next day's brunch !",
         } as Bilingual,
+        rsvp: {
+          form: { name: "brunch-rsvp", action: "/forms/brunch-form.html" },
+          animal: {
+            src: "/photos/animals/cat/01.png",
+            from: "left",
+            scale: 1.5,
+          } as AnimalSweep,
+          attending: attendingLabels,
+          ...nameFieldLabels,
+          submit: "Let's brunch",
+          sending: "Envoi...",
+          success: {
+            fr: "C'est noté, à 'bientôt' !",
+            en: "Duely noted, see you soon•ish !",
+          } as Bilingual,
+          error: "Une erreur est survenue, merci de réessayer.",
+        },
       },
     },
 
     countdown: {
-      common: { title: "The big day is coming !" },
+      common: { title: "SEE 🤍 SOON" },
       countdown: {
         image: "/photos/slides/09.jpg",
         units: {
@@ -267,6 +294,7 @@ export const config = {
           minutes: "Minutes",
           seconds: "Secondes",
         },
+        easterEggLabel: "Tap here",
       },
     },
   },
