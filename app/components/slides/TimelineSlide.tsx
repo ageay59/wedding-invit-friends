@@ -26,11 +26,7 @@ export default function TimelineSlide({ onNext }: TimelineSlideProps) {
   const { title, timeline: t } = config.slides.timeline;
 
   return (
-    <Slide
-      image={t.image}
-      alt={title.fr}
-      className="slide--timeline"
-    >
+    <Slide image={t.image} alt={title.fr} className="slide--timeline">
       <SlideHeader title={title} />
 
       <div className="timeline-slide__events">
@@ -44,23 +40,17 @@ export default function TimelineSlide({ onNext }: TimelineSlideProps) {
                   className={`timeline-slide__icon ${
                     event.highlight
                       ? "timeline-slide__icon--highlight"
-                        : "timeline-slide__icon--default"
+                      : "timeline-slide__icon--default"
                   }`}
                 >
-                  <Icon
-                    className="timeline-slide__icon-glyph"
-                  />
+                  <Icon className="timeline-slide__icon-glyph" />
                 </div>
                 <div className="timeline-slide__event-content">
                   <div className="timeline-slide__time">
-                    <span
-                      className="timeline-slide__time-fr"
-                    >
+                    <span className="timeline-slide__time-fr">
                       {event.time.fr}
                     </span>
-                    <span
-                      className="timeline-slide__time-en"
-                    >
+                    <span className="timeline-slide__time-en">
                       {event.time.en}
                     </span>
                   </div>
@@ -80,10 +70,7 @@ export default function TimelineSlide({ onNext }: TimelineSlideProps) {
       </div>
 
       <div className="timeline-slide__next">
-        <button
-          className="timeline-slide__next-button"
-          onClick={onNext}
-        >
+        <button className="timeline-slide__next-button" onClick={onNext}>
           {t.nextLabel}
         </button>
       </div>

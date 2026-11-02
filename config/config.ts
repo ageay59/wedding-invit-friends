@@ -109,13 +109,17 @@ export const config = {
     invitation: {
       invitation: {
         images: [
-          "/photos/slides/02.jpg",
-          "/photos/slides/05.jpg",
-          "/photos/slides/06.jpg",
-          "/photos/slides/07.jpg",
-          "/photos/slides/08.jpg",
-          "/photos/slides/09.jpg",
-          "/photos/slides/01.jpg",
+          "/photos/carousel/A.jpg",
+          "/photos/carousel/B.jpg",
+          "/photos/carousel/C.jpg",
+          "/photos/carousel/D.jpg",
+          "/photos/carousel/E.jpg",
+          "/photos/carousel/F.jpg",
+          "/photos/carousel/G.jpg",
+          "/photos/carousel/H.jpg",
+          "/photos/carousel/I.jpg",
+          "/photos/carousel/K.jpg",
+          "/photos/carousel/L.jpg",
         ],
         badge: "Invitation au Mariage",
         scrollLabel: "Découvrir • Scroll",
@@ -142,7 +146,7 @@ export const config = {
       title: { en: "The Wedding", fr: "Le Mariage" } as Bilingual,
       domaine: {
         title: "Domaine de Coulonge",
-        image: "/photos/slides/03.jpg",
+        image: "/photos/slides/03b.jpg",
         addressLine1: "2 route de Damville",
         addressLine2: "27240 Sylvains-les-Moulins",
         addressLine3: "Normandie, France",
@@ -155,7 +159,7 @@ export const config = {
     timeline: {
       title: { fr: "Programme", en: "Timeline" } as Bilingual,
       timeline: {
-        image: "/photos/slides/04.jpg",
+        image: "/photos/slides/04b.jpg",
         nextLabel: "Invitation ↓",
         events: timelineEvents,
       },
@@ -258,7 +262,7 @@ export const config = {
     brunch: {
       common: { title: "Le Brunch" },
       brunch: {
-        image: "/photos/slides/08.jpg",
+        image: "/photos/slides/08a.jpg",
         dateLabel: "Dimanche 16 Mai 2027",
         text: {
           fr: "Ne manquez pas le brunch du lendemain !",

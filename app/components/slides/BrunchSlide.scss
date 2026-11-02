@@ -4,7 +4,7 @@
     z-index: 10;
     width: 100%;
     max-width: 24rem;
-    margin: auto auto var(--spacing-m);
+    margin: calc(var(--spacing-l) * 3) auto var(--spacing-m);
   }
   &__panel {
     padding-bottom: var(--spacing-l);
@@ -47,5 +47,8 @@
   &__form {
     margin-top: var(--spacing-m);
     text-align: left;
+  }
+  .slide__image {
+    filter: brightness(1.05);
   }
 }
