@@ -118,8 +118,8 @@ export const config = {
           "/photos/carousel/G.jpg",
           "/photos/carousel/H.jpg",
           "/photos/carousel/I.jpg",
+          "/photos/carousel/J.jpg",
           "/photos/carousel/K.jpg",
-          "/photos/carousel/L.jpg",
         ],
         badge: "Invitation au Mariage",
         scrollLabel: "Découvrir • Scroll",
@@ -146,7 +146,7 @@ export const config = {
       title: { en: "The Wedding", fr: "Le Mariage" } as Bilingual,
       domaine: {
         title: "Domaine de Coulonge",
-        image: "/photos/slides/03b.jpg",
+        image: "/photos/slides/03c.jpg",
         addressLine1: "2 route de Damville",
         addressLine2: "27240 Sylvains-les-Moulins",
         addressLine3: "Normandie, France",
